@@ -3,7 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AdsTube.in — Grow Your Channel Faster. Bigger.</title>
+<title>Online YouTube Video Promotion | Get More YouTube Video Views & YouTube Advertising | AdsTube</title>
+<meta name="description" content="Adstube is the Best Youtube Promotion Service Provider. We Provide YouTube channel Advertising and YouTube video marketing Services at an affordable Price.">
+<meta name="keywords" content="YouTube promotion, get YouTube video views, YouTube advertising, Increase YouTube subscribers, YouTube video promotion, YouTube Monetization, Youtube Promotions Service in India, Best Youtube Paid Promotion Services">
+<meta name="author" content="AdsTube India">
+<link rel="icon" type="image/png" href="images/logo.png">
+<meta property="og:title" content="Online YouTube Video promotion | Get More YouTube Video Views &amp; YouTube advertising| AdsTube">
+<meta property="og:description" content="Get YouTube Video Promotion services like YouTube video advertising and YouTube video views and many more with AdsTube.">
+<meta property="og:image" content="images/logo.png">
+<meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -59,6 +67,29 @@
   }
   .nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
 
+  /* HAMBURGER */
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px; cursor: pointer;
+    background: none; border: none; padding: 4px;
+  }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: all .3s; }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+  .mobile-menu {
+    display: none; position: fixed; top: 60px; left: 0; right: 0; z-index: 99;
+    background: rgba(10,10,10,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column; padding: 16px 24px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: #aaa; font-size: 15px; text-decoration: none; font-weight: 500;
+    padding: 13px 0; border-bottom: 1px solid var(--border); transition: color .2s;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--white); }
+
   /* TICKER */
   .ticker {
     background: var(--red);
@@ -110,7 +141,7 @@
   }
   .hero h1 {
     font-family: 'Oswald', sans-serif;
-    font-size: clamp(56px, 9vw, 110px);
+    font-size: clamp(36px, 9vw, 110px);
     font-weight: 700; line-height: 1;
     text-transform: uppercase;
     letter-spacing: -1px;
@@ -225,12 +256,18 @@
   .plan-toggle button:last-child { border-radius: 0 4px 4px 0; }
   .plan-toggle button.active { background: var(--red); border-color: var(--red); color: #fff; }
   .pricing-grid {
-    display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; align-items: start;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; align-items: start;
   }
   .price-card {
     background: var(--card); border: 1px solid var(--border);
-    border-radius: 8px; padding: 28px 22px;
+    border-radius: 8px; padding: 18px 16px;
     transition: border-color .3s; position: relative;
+  }
+  .price-card-header {
+    height: 70px;
+    background: linear-gradient(135deg, rgba(232,0,28,.18) 0%, rgba(232,0,28,.05) 100%);
+    border-radius: 6px; margin-bottom: 14px;
+    display: flex; align-items: center; justify-content: center; font-size: 28px;
   }
   .price-card.popular {
     border-color: var(--red);
@@ -243,18 +280,18 @@
   }
   .plan-name { font-size: 11px; color: #666; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
   .plan-views {
-    font-family: 'Oswald', sans-serif; font-size: 32px; font-weight: 700;
+    font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700;
     color: var(--white); margin-bottom: 4px;
   }
-  .plan-views small { font-size: 14px; font-family: 'Barlow', sans-serif; color: #888; font-weight: 400; }
+  .plan-views small { font-size: 12px; font-family: 'Barlow', sans-serif; color: #888; font-weight: 400; }
   .plan-price {
-    font-family: 'Oswald', sans-serif; font-size: 26px; font-weight: 700;
-    color: var(--red); margin: 16px 0 6px;
+    font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700;
+    color: var(--red); margin: 12px 0 4px;
   }
-  .plan-desc { color: #777; font-size: 12px; margin-bottom: 20px; line-height: 1.5; }
-  .plan-features { list-style: none; margin-bottom: 24px; }
+  .plan-desc { color: #777; font-size: 12px; margin-bottom: 12px; line-height: 1.4; }
+  .plan-features { list-style: none; margin-bottom: 16px; }
   .plan-features li {
-    font-size: 13px; color: #aaa; padding: 7px 0;
+    font-size: 12px; color: #aaa; padding: 6px 0;
     border-bottom: 1px solid rgba(255,255,255,.05);
     display: flex; align-items: center; gap: 8px;
   }
@@ -462,6 +499,39 @@
     color: #555; font-size: 13px;
   }
 
+  /* IMAGE HELPERS (additive — keeps existing color combo) */
+  .nav-logo-img { height: 34px; width: auto; display: block; }
+  .service-illu { width: 100%; height: 140px; object-fit: contain; border-radius: 6px; margin-bottom: 18px; background: rgba(255,255,255,.03); padding: 10px; }
+  .stat-icon { width: 42px; height: 42px; object-fit: contain; margin: 0 auto 12px; display: block; filter: brightness(0) invert(1); opacity: .85; }
+  .price-tile-img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; margin-bottom: 18px; }
+  .step-img { width: 100%; max-width: 360px; border-radius: 8px; display: block; margin: 0 auto; }
+  .author-avatar.has-img { background: transparent; padding: 0; overflow: hidden; }
+  .author-avatar.has-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .reports-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .report-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px; transition: border-color .3s, transform .3s;
+  }
+  .report-card:hover { border-color: rgba(232,0,28,.3); transform: translateY(-3px); }
+  .report-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 6px; margin-bottom: 12px; background: #fff; }
+  .report-card h4 { font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 500; color: #ddd; line-height: 1.4; }
+  .pay-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 24px; }
+  .pay-row img { height: 28px; width: auto; opacity: .85; transition: opacity .2s; }
+  .pay-row img:hover { opacity: 1; }
+  .float-cta {
+    position: fixed; right: 18px; bottom: 18px; z-index: 200;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .float-cta a img { width: 56px; height: 56px; border-radius: 50%; box-shadow: 0 6px 18px rgba(0,0,0,.5); }
+  @media (max-width: 900px) {
+    .reports-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .reports-grid { grid-template-columns: 1fr; }
+  }
+
   /* FADE IN ANIMATION */
   .fade-up {
     opacity: 0; transform: translateY(30px);
@@ -470,7 +540,7 @@
   .fade-up.visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 1100px) {
-    .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+    .pricing-grid { grid-template-columns: repeat(4, 1fr); }
     nav { padding: 14px 30px; }
   }
   @media (max-width: 900px) {
@@ -482,11 +552,22 @@
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
     .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-cta { display: none !important; }
+    .nav-brand-text { display: none; }
+    nav { padding: 14px 20px; }
   }
   @media (max-width: 600px) {
-    .services-grid, .stats-grid, .pricing-grid, .testi-grid { grid-template-columns: 1fr; }
+    .services-grid, .stats-grid, .testi-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: repeat(2, 1fr); }
     .form-row { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr; gap: 30px; }
+    section { padding: 70px 16px; }
+    .float-cta { right: 12px; bottom: 12px; }
+    .float-cta a img { width: 48px; height: 48px; }
+    .hero { padding: 60px 16px 50px; }
+    .hero-trust { gap: 14px; }
+    .trust-item { font-size: 12px; }
   }
 </style>
 </head>
@@ -494,59 +575,82 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">ADS<span>TUBE</span>.IN</div>
+  <a href="#" class="nav-logo" style="text-decoration:none;display:flex;align-items:center;gap:10px;">
+    <img src="images/logo.png" alt="AdsTube Logo" class="nav-logo-img">
+    <span class="nav-brand-text" style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;letter-spacing:1px;color:#fff;">ADS<span style="color:var(--red)">TUBE</span>.IN</span>
+  </a>
   <ul class="nav-links">
-    <li><a href="#">Services</a></li>
-    <li><a href="#">Pricing</a></li>
-    <li><a href="#">How It Works</a></li>
-    <li><a href="#">About Us</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#reports">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="nav-cta">Create a Video</button>
+  <a href="https://api.whatsapp.com/send?phone=918756655744" class="nav-cta" style="text-decoration:none;display:inline-block;">Get a Quote</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="closeMobileMenu()">Home</a>
+  <a href="#about" onclick="closeMobileMenu()">About Us</a>
+  <a href="#services" onclick="closeMobileMenu()">Services</a>
+  <a href="#pricing" onclick="closeMobileMenu()">Pricing</a>
+  <a href="#reports" onclick="closeMobileMenu()">Portfolio</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+</div>
+
+<!-- FLOATING WHATSAPP / CALL -->
+<div class="float-cta">
+  <a href="https://api.whatsapp.com/send?phone=917266024422" title="WhatsApp Now"><img src="images/whatsapp.gif" alt="WhatsApp"></a>
+  <a href="tel:+917007821741" title="Call Now"><img src="images/phone.gif" alt="Call"></a>
+</div>
 
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-inner">
-    <span class="ticker-item">★ GROW FAST</span>
-    <span class="ticker-item">★ 2CR+ SUBSCRIBERS DELIVERED</span>
-    <span class="ticker-item">★ GET SUBSCRIBERS</span>
-    <span class="ticker-item">★ REAL VIEWERS</span>
-    <span class="ticker-item">★ TRUSTED BY 50K+ CREATORS</span>
-    <span class="ticker-item">★ BOOST RANKING</span>
-    <span class="ticker-item">★ GET ORGANIC GROWTH</span>
-    <span class="ticker-item">★ GROW FAST</span>
-    <span class="ticker-item">★ 2CR+ SUBSCRIBERS DELIVERED</span>
-    <span class="ticker-item">★ GET SUBSCRIBERS</span>
-    <span class="ticker-item">★ REAL VIEWERS</span>
-    <span class="ticker-item">★ TRUSTED BY 50K+ CREATORS</span>
-    <span class="ticker-item">★ BOOST RANKING</span>
-    <span class="ticker-item">★ GET ORGANIC GROWTH</span>
+    <span class="ticker-item">★ 125K+ VIDEOS PROMOTED</span>
+    <span class="ticker-item">★ 1300M+ VIEWS DELIVERED</span>
+    <span class="ticker-item">★ 132M+ SUBSCRIBERS GIVEN</span>
+    <span class="ticker-item">★ REAL ORGANIC GROWTH</span>
+    <span class="ticker-item">★ GOOGLE ADS POWERED</span>
+    <span class="ticker-item">★ INDIA'S #1 YOUTUBE PROMOTION AGENCY</span>
+    <span class="ticker-item">★ TRANSPARENT REPORTING</span>
+    <span class="ticker-item">★ 125K+ VIDEOS PROMOTED</span>
+    <span class="ticker-item">★ 1300M+ VIEWS DELIVERED</span>
+    <span class="ticker-item">★ 132M+ SUBSCRIBERS GIVEN</span>
+    <span class="ticker-item">★ REAL ORGANIC GROWTH</span>
+    <span class="ticker-item">★ GOOGLE ADS POWERED</span>
+    <span class="ticker-item">★ INDIA'S #1 YOUTUBE PROMOTION AGENCY</span>
+    <span class="ticker-item">★ TRANSPARENT REPORTING</span>
   </div>
 </div>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="home">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content fade-up">
-    <div class="hero-badge">🚀 Traffic Powered by Google Ads</div>
+    <div class="hero-badge">🚀 YouTube Promotion Powered by Google Ads</div>
     <h1>
-      GROW YOUR CHANNEL<br>
-      <span class="accent">FASTER.</span> BIGGER.
+      YOUTUBE PROMOTION<br>
+      <span class="accent">SERVICES</span> IN INDIA
     </h1>
     <p class="hero-sub">
-      Start, Grow, Find subscribers.<br>
-      <b>Trusted by 50,000+ creators</b> to get real views and subscribers fast.
+      Supercharge your YouTube channel's growth with AdsTube.<br>
+      <b>Genuine views, real subscribers</b>, expert strategies and dedicated support.
     </p>
     <div class="hero-btns">
-      <a href="#" class="btn-primary">View All Plans</a>
-      <a href="#" class="btn-ghost">Get Started For Free</a>
+      <a href="#pricing" class="btn-primary">View All Plans</a>
+      <a href="#contact" class="btn-ghost">Get a Free Consultation</a>
     </div>
     <div class="hero-trust">
-      <div class="trust-item"><span class="trust-dot"></span> Real Views & Subscribers</div>
+      <div class="trust-item"><span class="trust-dot"></span> Real Views & Real Subscribers</div>
       <div class="trust-item"><span class="trust-dot"></span> Google Ads Powered</div>
-      <div class="trust-item"><span class="trust-dot"></span> 24/7 Support</div>
+      <div class="trust-item"><span class="trust-dot"></span> Transparent Reporting</div>
     </div>
   </div>
 </section>
@@ -555,277 +659,285 @@
 <div class="stats">
   <div class="stats-grid fade-up">
     <div>
-      <div class="stat-num">50<span>K+</span></div>
-      <div class="stat-label">Happy Creators</div>
+      <img src="images/icons/fact-workshop.png" alt="Videos Promoted" class="stat-icon">
+      <div class="stat-num">125<span>K</span></div>
+      <div class="stat-label">Videos Promoted</div>
     </div>
     <div>
-      <div class="stat-num">2<span>CR+</span></div>
-      <div class="stat-label">Subscribers Delivered</div>
+      <img src="images/icons/fact-speaker.png" alt="Views Delivered" class="stat-icon">
+      <div class="stat-num">1300<span>M</span></div>
+      <div class="stat-label">Views Delivered</div>
     </div>
     <div>
-      <div class="stat-num">98<span>%</span></div>
-      <div class="stat-label">Satisfaction Rate</div>
+      <img src="images/icons/fact-sponsor.png" alt="Subscribers Given" class="stat-icon">
+      <div class="stat-num">132<span>M</span></div>
+      <div class="stat-label">Subscribers Given</div>
     </div>
     <div>
-      <div class="stat-num">5<span>+</span></div>
-      <div class="stat-label">Years Experience</div>
+      <img src="images/icons/fact-country.png" alt="Watch Time" class="stat-icon">
+      <div class="stat-num">925<span>K</span></div>
+      <div class="stat-label">Watch Time Achieved</div>
     </div>
   </div>
 </div>
 
 <!-- SERVICES -->
-<section class="services">
+<section class="services" id="services">
   <div class="max-w">
     <div class="section-tag">What We Offer</div>
-    <h2 class="section-title">Everything You Need<br>To Grow On YouTube</h2>
-    <p class="section-sub">From views to subscribers, likes to comments — we have everything to supercharge your channel growth.</p>
+    <h2 class="section-title">YouTube Video Marketing<br>Services We Provide</h2>
+    <p class="section-sub">We serve our clients with an extensive range of YouTube video marketing services — from promotion and SEO to monetization and production.</p>
     <div class="services-grid fade-up">
       <div class="service-card">
-        <div class="service-icon">▶</div>
-        <h3>YouTube Views</h3>
-        <p>Get real, high-retention YouTube views powered by Google Ads targeting. Boost your video ranking and reach more people organically.</p>
-        <a href="#" class="service-link">LEARN MORE →</a>
+        <img src="images/indimg/VideoPromotion.png" alt="YouTube Video Promotion" class="service-illu">
+        <h3>YouTube Video Promotion</h3>
+        <p>Genuine, organic YouTube video promotion through highly targeted YouTube ad campaigns. Real viewers, real engagement, real growth.</p>
+        <a href="https://adstube.in/Youtube-Video-Promotion-Services" class="service-link">LEARN MORE →</a>
       </div>
       <div class="service-card">
-        <div class="service-icon">👤</div>
-        <h3>YouTube Subscribers</h3>
-        <p>Grow your subscriber base with genuine, interested viewers. Our subscribers are real people who actually watch your content.</p>
-        <a href="#" class="service-link">LEARN MORE →</a>
+        <img src="images/indimg/RealYouTubePromotion.png" alt="YouTube Video SEO" class="service-illu">
+        <h3>YouTube Video SEO</h3>
+        <p>Boost your video discoverability with expert keyword research, metadata optimization and tag strategies that put you in front of the right audience.</p>
+        <a href="https://adstube.in/Youtube-Video-SEO-Services" class="service-link">LEARN MORE →</a>
       </div>
       <div class="service-card">
-        <div class="service-icon">👍</div>
-        <h3>Likes & Comments</h3>
-        <p>Increase engagement with authentic likes and thoughtful comments. Better engagement signals boost your YouTube algorithm ranking.</p>
-        <a href="#" class="service-link">LEARN MORE →</a>
+        <img src="images/indimg/youtubegrowth.png" alt="YouTube Monetization" class="service-illu">
+        <h3>YouTube Monetization</h3>
+        <p>Hit your monetization milestones faster. We help you achieve the 4,000 hours of watch time and 1,000 subscribers required for YouTube Partner Program.</p>
+        <a href="https://adstube.in/Youtube-Video-Monetization-Services" class="service-link">LEARN MORE →</a>
       </div>
       <div class="service-card">
-        <div class="service-icon">#</div>
-        <h3>Custom Hashtags</h3>
-        <p>Optimize your content discoverability with custom hashtag strategies designed specifically for your niche and target audience.</p>
-        <a href="#" class="service-link">LEARN MORE →</a>
+        <img src="images/indimg/customize.png" alt="YouTube Video Production" class="service-illu">
+        <h3>YouTube Video Production</h3>
+        <p>End-to-end YouTube video production — from concept and scripting to shoot, editing and thumbnail design. High-quality content that performs.</p>
+        <a href="https://adstube.in/Youtube-Video-Production" class="service-link">LEARN MORE →</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- PRICING -->
-<section class="pricing">
+<section class="pricing" id="pricing">
   <div class="max-w">
-    <div class="section-tag">Choose Your Plan</div>
-    <h2 class="section-title">Pick The Perfect Plan</h2>
-    <p class="section-sub">Flexible plans for every creator. Scale up anytime as your channel grows.</p>
-    <div class="plan-toggle">
-      <button class="active" onclick="this.classList.add('active');this.nextElementSibling.classList.remove('active')">Video Plans</button>
-      <button onclick="this.classList.add('active');this.previousElementSibling.classList.remove('active')">Subscription Plans</button>
-    </div>
+    <div class="section-tag">Affordable Packages</div>
+    <h2 class="section-title">Affordable YouTube<br>Promotion Packages</h2>
+    <p class="section-sub">Flexible plans built around your goals — views, subscribers, monetization or full channel revenue.</p>
     <div class="pricing-grid fade-up">
-      <div class="price-card">
-        <div class="plan-name">Starter</div>
-        <div class="plan-views">5K <small>Views</small></div>
-        <div class="plan-price">₹549</div>
-        <p class="plan-desc">Perfect for new creators just starting their YouTube journey.</p>
-        <ul class="plan-features">
-          <li>5,000 Real Views</li>
-          <li>High Retention</li>
-          <li>Safe & Secure</li>
-          <li>Email Support</li>
-        </ul>
-        <button class="plan-btn">Get Started</button>
-      </div>
       <div class="price-card popular">
         <div class="popular-badge">POPULAR</div>
-        <div class="plan-name">Growth</div>
-        <div class="plan-views">10K <small>Views</small></div>
-        <div class="plan-price">₹1,349</div>
-        <p class="plan-desc">Most popular for growing creators ready to accelerate.</p>
+        <div class="price-card-header">👁️</div>
+        <div class="plan-name">Views</div>
+        <div class="plan-views">YouTube <small>Views Plans</small></div>
+        <p class="plan-desc">Real, high-retention views via targeted YouTube ad campaigns.</p>
         <ul class="plan-features">
-          <li>10,000 Real Views</li>
-          <li>High Retention</li>
-          <li>Likes Included</li>
-          <li>Priority Support</li>
+          <li>Genuine Google Ads Traffic</li>
+          <li>Worldwide & Geo-Targeted</li>
+          <li>Analytics Report</li>
         </ul>
-        <button class="plan-btn primary-btn">Get Started</button>
+        <a href="https://adstube.in/buy-youtube-views" class="plan-btn primary-btn" style="text-decoration:none;display:block;text-align:center;">View Details</a>
       </div>
       <div class="price-card">
-        <div class="plan-name">Viral</div>
-        <div class="plan-views">20K <small>Views</small></div>
-        <div class="plan-price">₹2,599</div>
-        <p class="plan-desc">For creators who want to go viral and reach a massive audience.</p>
+        <div class="price-card-header">📈</div>
+        <div class="plan-name">Subscribers</div>
+        <div class="plan-views">YouTube <small>Subscribers Plans</small></div>
+        <p class="plan-desc">Real subscribers interested in your niche and content.</p>
         <ul class="plan-features">
-          <li>20,000 Real Views</li>
-          <li>Premium Retention</li>
-          <li>Likes + Comments</li>
-          <li>24/7 Support</li>
+          <li>Organic Growth</li>
+          <li>Niche-Targeted Audience</li>
+          <li>Lifetime Retention Focus</li>
         </ul>
-        <button class="plan-btn">Get Started</button>
+        <a href="https://adstube.in/buy-youtube-subscribers" class="plan-btn" style="text-decoration:none;display:block;text-align:center;">View Details</a>
       </div>
       <div class="price-card">
-        <div class="plan-name">Elite</div>
-        <div class="plan-views">50K <small>Views</small></div>
-        <div class="plan-price">₹5,899</div>
-        <p class="plan-desc">Advanced package for serious creators scaling to the top.</p>
+        <div class="price-card-header">💰</div>
+        <div class="plan-name">Monetization</div>
+        <div class="plan-views">YouTube <small>Monetization Plans</small></div>
+        <p class="plan-desc">Hit 4K watch hours &amp; 1K subs for YouTube Partner Program.</p>
         <ul class="plan-features">
-          <li>50,000 Real Views</li>
-          <li>Max Retention</li>
-          <li>Full Engagement</li>
-          <li>Dedicated Manager</li>
+          <li>4K Watch Hours</li>
+          <li>1K Subscriber Milestone</li>
+          <li>Monetization Ready</li>
         </ul>
-        <button class="plan-btn">Get Started</button>
+        <a href="https://adstube.in/youtube-monetization-plans" class="plan-btn" style="text-decoration:none;display:block;text-align:center;">View Details</a>
       </div>
       <div class="price-card">
-        <div class="plan-name">Legend</div>
-        <div class="plan-views">100K <small>Views</small></div>
-        <div class="plan-price">₹3,999</div>
-        <p class="plan-desc">The ultimate plan for channels ready to dominate their niche.</p>
+        <div class="price-card-header">🏆</div>
+        <div class="plan-name">Revenue</div>
+        <div class="plan-views">YouTube <small>Revenue Plans</small></div>
+        <p class="plan-desc">Maximize ad revenue with high-CPM geo &amp; viewer targeting.</p>
         <ul class="plan-features">
-          <li>100,000 Real Views</li>
-          <li>Top Retention Rate</li>
-          <li>Full Engagement Pack</li>
-          <li>White Glove Support</li>
+          <li>High-CPM Audience</li>
+          <li>Tier-1 Country Targeting</li>
+          <li>Revenue-Focused Strategy</li>
         </ul>
-        <button class="plan-btn">Get Started</button>
+        <a href="https://adstube.in/youtube-revenue-plans" class="plan-btn" style="text-decoration:none;display:block;text-align:center;">View Details</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- STEPS -->
-<section class="steps">
+<section class="steps" id="how">
   <div class="max-w">
-    <div class="section-tag">How It Works</div>
-    <h2 class="section-title">Start Growing In<br>3 Simple Steps</h2>
-    <p class="section-sub">No complicated setup. No technical knowledge needed. Just pick a plan and watch your channel grow.</p>
+    <div class="section-tag">How We Work</div>
+    <h2 class="section-title">Our 5-Step Process For<br>YouTube Video Promotion</h2>
+    <p class="section-sub">AdsTube provides cheap and real YouTube views at an affordable price. We follow organic methods through these five steps to grow your channel.</p>
     <div class="steps-container">
       <div class="step-list fade-up">
         <div class="step-item">
           <div class="step-num">01</div>
           <div class="step-text">
-            <h3>Choose Your Plan</h3>
-            <p>Browse our flexible plans tailored for every creator — from beginners to seasoned YouTubers. Pick the one that fits your goals and budget.</p>
+            <h3>Understand Your Audience</h3>
+            <p>We begin by gaining a deep understanding of your target audience — their demographics, interests and preferences — to connect your channel with the right viewers.</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">02</div>
           <div class="step-text">
-            <h3>Share Your Link & Pay</h3>
-            <p>Simply paste your YouTube video or channel link and complete the secure payment. No passwords or account access ever required.</p>
+            <h3>Highly Targeted YouTube Ads</h3>
+            <p>We craft compelling, targeted ad campaigns using advanced targeting options like demographics, interests and keywords to maximize your reach and impact.</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">03</div>
           <div class="step-text">
-            <h3>Watch Your Channel Grow</h3>
-            <p>Sit back and watch real views and subscribers roll in. Track your growth in real-time from your YouTube analytics dashboard.</p>
+            <h3>Get Real Views & Real Subscribers</h3>
+            <p>We bring you genuine views and subscribers who are actually interested in your content — focused on long-term organic growth rather than temporary shortcuts.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">04</div>
+          <div class="step-text">
+            <h3>Customized Solutions</h3>
+            <p>Every YouTube channel is unique. We tailor promotion strategies, keyword research and optimization techniques to your specific niche, content and goals.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">05</div>
+          <div class="step-text">
+            <h3>Transparent Reporting</h3>
+            <p>We provide regular reports and analytics — view counts, subscriber growth, engagement metrics — so you can track progress and measure the success of every campaign.</p>
           </div>
         </div>
       </div>
-      <div class="steps-visual fade-up">
-        <div style="font-size:13px;color:#666;text-transform:uppercase;letter-spacing:2px;margin-bottom:20px;font-weight:700;">Channel Analytics</div>
-        <div class="progress-item">
-          <div class="progress-label"><span>Video Views</span><span style="color:var(--red)">87%</span></div>
-          <div class="progress-bar"><div class="progress-fill red" style="width:87%"></div></div>
+      <div class="fade-up" style="display:flex;flex-direction:column;gap:18px;align-items:center;justify-content:center;">
+        <img src="images/indimg/audiance.png" alt="Understand Audience" class="step-img">
+        <img src="images/indimg/ads.png" alt="Targeted Ads" class="step-img">
+        <img src="images/indimg/tranparent.png" alt="Transparent Reporting" class="step-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / VIDEO -->
+<section class="services" id="about" style="padding-top:80px;">
+  <div class="max-w">
+    <div class="section-tag">About AdsTube</div>
+    <h2 class="section-title">Increase Subscribers And Views<br>With Our YouTube Promotion</h2>
+    <p class="section-sub">At AdsTube, we specialise in exceptional YouTube Promotion Services that help you expand your channel and boost visibility by reaching a wider audience.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;" class="fade-up">
+      <a href="https://www.youtube.com/embed/ZVqfF13lmeY" target="_blank" style="display:block;position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--border);">
+        <img src="images/shrista-maurya-video-thumbnail.jpg" alt="About AdsTube" style="width:100%;display:block;">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.35);">
+          <div style="width:72px;height:72px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;box-shadow:0 0 35px var(--red-glow);">▶</div>
         </div>
-        <div class="progress-item">
-          <div class="progress-label"><span>Campaign Active</span><span style="color:var(--yellow)">64%</span></div>
-          <div class="progress-bar"><div class="progress-fill yellow" style="width:64%"></div></div>
-        </div>
-        <div class="progress-item">
-          <div class="progress-label"><span>Watch Delivering</span><span style="color:var(--green)">92%</span></div>
-          <div class="progress-bar"><div class="progress-fill green" style="width:92%"></div></div>
-        </div>
-        <div class="metrics-row">
-          <div class="metric-box">
-            <div class="metric-val" style="color:var(--red)">+12.4K</div>
-            <div class="metric-lbl">Views this week</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-val" style="color:var(--green)">+842</div>
-            <div class="metric-lbl">New subscribers</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-val">98%</div>
-            <div class="metric-lbl">Retention rate</div>
-          </div>
-          <div class="metric-box">
-            <div class="metric-val" style="color:var(--yellow)">4.9★</div>
-            <div class="metric-lbl">Creator rating</div>
-          </div>
-        </div>
+      </a>
+      <div>
+        <p style="color:#aaa;font-size:15px;line-height:1.8;margin-bottom:18px;">
+          Our team of experts will boost your channel visibility and employ effective techniques to increase your engagement and interactions, attract organic YouTube viewers, and engage with your target audience.
+        </p>
+        <p style="color:#aaa;font-size:15px;line-height:1.8;margin-bottom:28px;">
+          From optimising your videos to targeting the right keywords, we'll implement customised strategies to ensure your YouTube channel experiences substantial growth.
+        </p>
+        <a href="https://adstube.in/About-Adstube" class="btn-primary" style="display:inline-block;">Know More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPORT SAMPLES -->
+<section class="pricing" id="reports">
+  <div class="max-w">
+    <div class="section-tag">Portfolio</div>
+    <h2 class="section-title">YouTube Promotion<br>Report Samples</h2>
+    <p class="section-sub">Real performance data from real campaigns. Here's what transparent reporting actually looks like.</p>
+    <div class="reports-grid fade-up">
+      <div class="report-card">
+        <img src="images/reports/skip-and-discovery-ad-visual.png" alt="Skip And Discovery Ad Visual">
+        <h4>Youtube Video Skip And Discovery Ad Visual</h4>
+      </div>
+      <div class="report-card">
+        <img src="images/reports/youtube-gender-wise-views-statistic.png" alt="Gender Wise Views Statistic">
+        <h4>Youtube Gender Wise Views Statistic</h4>
+      </div>
+      <div class="report-card">
+        <img src="images/reports/youtube-video-ads-interaction-according-geographic-location.png" alt="Ads Interaction by Geographic Location">
+        <h4>Ads Interaction by Geographic Location</h4>
+      </div>
+      <div class="report-card">
+        <img src="images/reports/youtube-video-performance-report-according-devices.png" alt="Performance Report by Devices">
+        <h4>Performance Report by Devices</h4>
+      </div>
+      <div class="report-card">
+        <img src="images/reports/youtube-analytics-graph-visual11.png" alt="Analytics Graph Visual">
+        <h4>Youtube Analytics Graph Visual</h4>
+      </div>
+      <div class="report-card">
+        <img src="images/reports/youtube-video-performance-report-according-day-by-day.png" alt="Performance Report Day by Day">
+        <h4>Performance Report by Day or Hour</h4>
       </div>
     </div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="testimonials">
+<section class="testimonials" id="reviews">
   <div class="max-w">
-    <div class="section-tag">What Our Creators Say</div>
-    <h2 class="section-title">Real Results From Real Creators</h2>
-    <p class="section-sub">Join thousands of creators who have grown their channels with AdsTube.</p>
-    <div class="testi-grid fade-up">
+    <div class="section-tag">YouTube Client's Feedback</div>
+    <h2 class="section-title">Real Results From<br>Real Creators</h2>
+    <p class="section-sub">Hear from the creators we've worked with — real reviews from real YouTube channel owners.</p>
+    <div class="testi-grid fade-up" style="grid-template-columns:repeat(2,1fr);max-width:900px;margin:0 auto;">
       <div class="testi-card">
         <div class="stars">★★★★★</div>
-        <p class="testi-text">"I was skeptical at first, but AdsTube genuinely delivered. I went from 2,000 views per video to over 15,000 views within weeks. My channel finally started monetizing!"</p>
+        <p class="testi-text">"Best employers I came across with — since it's our first project with Adstube, it was a pleasure to get an opportunity to work with the Adstube team."</p>
         <div class="testi-author">
-          <div class="author-avatar">RS</div>
+          <div class="author-avatar has-img"><img src="images/clients/Dr.DD.jpg" alt="Dr.DD"></div>
           <div>
-            <div class="author-name">Rahul Sharma</div>
-            <div class="author-handle">Tech Reviewer • 45K subs</div>
+            <div class="author-name">Dr. DD</div>
+            <div class="author-handle">YouTube Creator</div>
           </div>
         </div>
       </div>
       <div class="testi-card">
         <div class="stars">★★★★★</div>
-        <p class="testi-text">"AdsTube is incredible. I ordered the Growth plan and within 3 days my video was trending in my niche. The views are real — people were actually commenting and engaging."</p>
+        <p class="testi-text">"The Adstube team is top notch — they are a full package. Not only in technical aspects, they also communicate better and guide you well enough."</p>
         <div class="testi-author">
-          <div class="author-avatar">PS</div>
+          <div class="author-avatar has-img"><img src="images/clients/DREAM CHASER.jpg" alt="Dream Chaser"></div>
           <div>
-            <div class="author-name">Priya Singh</div>
-            <div class="author-handle">Lifestyle Creator • 28K subs</div>
+            <div class="author-name">Dream Chaser</div>
+            <div class="author-handle">YouTube Creator</div>
           </div>
         </div>
       </div>
       <div class="testi-card">
         <div class="stars">★★★★★</div>
-        <p class="testi-text">"I've tried multiple growth services. AdsTube is the only one that delivers what they promise. The customer support is excellent and results come fast!"</p>
+        <p class="testi-text">"The entire team of Adstube is so helpful — they have guided me on every step of promotion, starting from my video making to publishing. Best service providers ever!"</p>
         <div class="testi-author">
-          <div class="author-avatar">AK</div>
+          <div class="author-avatar has-img"><img src="images/clients/Nazim Sha.jpg" alt="Nazim Sha"></div>
           <div>
-            <div class="author-name">Amit Kumar</div>
-            <div class="author-handle">Gaming Channel • 62K subs</div>
+            <div class="author-name">Nazim Sha</div>
+            <div class="author-handle">YouTube Creator</div>
           </div>
         </div>
       </div>
       <div class="testi-card">
         <div class="stars">★★★★★</div>
-        <p class="testi-text">"My cooking channel was stuck at 800 subscribers for months. After using AdsTube for just one month, I crossed 10K subscribers. Absolutely life-changing!"</p>
+        <p class="testi-text">"Their video promotion services are quite beneficial — they use smart and innovative advertising tactics, which is so important in today's world."</p>
         <div class="testi-author">
-          <div class="author-avatar">NA</div>
+          <div class="author-avatar has-img"><img src="images/clients/Shivam Sadana.jpg" alt="Shivam Sadana"></div>
           <div>
-            <div class="author-name">Neha Agarwal</div>
-            <div class="author-handle">Food Creator • 10K subs</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="stars">★★★★★</div>
-        <p class="testi-text">"The quality of traffic from AdsTube is unlike anything I've seen. High watch time, genuine engagement. My ad revenue increased by 3x in just 6 weeks."</p>
-        <div class="testi-author">
-          <div class="author-avatar">VG</div>
-          <div>
-            <div class="author-name">Vikram Gupta</div>
-            <div class="author-handle">Finance Creator • 35K subs</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="stars">★★★★★</div>
-        <p class="testi-text">"I'm a small creator from Bihar. AdsTube helped me get my first 1000 subscribers and get monetized. The support team guided me every step of the way."</p>
-        <div class="testi-author">
-          <div class="author-avatar">SK</div>
-          <div>
-            <div class="author-name">Sita Kumari</div>
-            <div class="author-handle">Education Creator • 8K subs</div>
+            <div class="author-name">Shivam Sadana</div>
+            <div class="author-handle">YouTube Creator</div>
           </div>
         </div>
       </div>
@@ -916,35 +1028,49 @@
 </section>
 
 <!-- CONTACT -->
-<section class="contact">
+<section class="contact" id="contact">
   <div class="max-w">
-    <div class="section-tag">We're Here</div>
+    <div class="section-tag">Enquiry Now</div>
     <div class="contact-grid">
       <div class="contact-left fade-up">
-        <h2>LET'S TALK ABOUT YOUR GROWTH</h2>
-        <p style="color:#777;font-size:15px;line-height:1.7;margin-bottom:36px;">Have questions? Our team of YouTube growth experts is ready to help you craft the perfect strategy for your channel.</p>
+        <h2>LET'S TALK ABOUT YOUR YOUTUBE GROWTH</h2>
+        <p style="color:#777;font-size:15px;line-height:1.7;margin-bottom:36px;">Have questions? Our team of YouTube growth experts is ready to help you craft the perfect promotion strategy for your channel.</p>
         <div class="contact-methods">
+          <div class="contact-method">
+            <div class="c-icon">📞</div>
+            <div>
+              <div class="c-label">Call Us</div>
+              <a href="tel:+919026232414" class="c-val" style="text-decoration:none;color:#ccc;">+91-9026232414</a>
+            </div>
+          </div>
           <div class="contact-method">
             <div class="c-icon">💬</div>
             <div>
               <div class="c-label">WhatsApp Support</div>
-              <div class="c-val">+91 98765 43210</div>
+              <a href="https://api.whatsapp.com/send?phone=919120647421" class="c-val" style="text-decoration:none;color:#ccc;">+91-9120647421</a>
             </div>
           </div>
           <div class="contact-method">
             <div class="c-icon">✉</div>
             <div>
               <div class="c-label">Email Us</div>
-              <div class="c-val">support@adstube.in</div>
+              <a href="mailto:contact@adstube.in" class="c-val" style="text-decoration:none;color:#ccc;">contact@adstube.in</a>
             </div>
           </div>
           <div class="contact-method">
-            <div class="c-icon">📍</div>
+            <div class="c-icon">🏢</div>
             <div>
-              <div class="c-label">Location</div>
-              <div class="c-val">New Delhi, India</div>
+              <div class="c-label">Company</div>
+              <div class="c-val">Inonego Services Pvt. Ltd. — India</div>
             </div>
           </div>
+        </div>
+        <div class="pay-row">
+          <img src="images/payment/visa.svg" alt="Visa">
+          <img src="images/payment/mastercard.svg" alt="Mastercard">
+          <img src="images/payment/rupay.svg" alt="RuPay">
+          <img src="images/payment/upi.svg" alt="UPI">
+          <img src="images/payment/net-banking.svg" alt="Net Banking">
         </div>
       </div>
       <div class="fade-up">
@@ -988,50 +1114,70 @@
 <footer>
   <div class="footer-top">
     <div>
-      <div class="footer-logo">ADS<span>TUBE</span>.IN</div>
-      <p class="footer-desc">India's #1 YouTube growth platform. Real views, real subscribers, real results. Powered by Google Ads.</p>
+      <a href="#" style="display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:16px;">
+        <img src="images/logo.png" alt="AdsTube" style="height:36px;width:auto;">
+        <span class="footer-logo" style="margin:0;">ADS<span>TUBE</span>.IN</span>
+      </a>
+      <p class="footer-desc">AdsTube is the easiest way to get your YouTube video seen by real viewers. We help you achieve watch time and subscribers for YouTube monetization.</p>
       <div class="footer-social">
-        <a href="#" class="soc-btn">𝕏</a>
-        <a href="#" class="soc-btn">in</a>
-        <a href="#" class="soc-btn">▶</a>
-        <a href="#" class="soc-btn">📸</a>
+        <a href="https://www.youtube.com/c/AdsTube-India" target="_blank" class="soc-btn" title="YouTube">▶</a>
+        <a href="https://www.facebook.com/AdsTube-1059588454225853/" target="_blank" class="soc-btn" title="Facebook">f</a>
+        <a href="https://www.instagram.com/adstube.in" target="_blank" class="soc-btn" title="Instagram">📸</a>
+        <a href="https://twitter.com/Adstube1" target="_blank" class="soc-btn" title="Twitter / X">𝕏</a>
+        <a href="https://www.linkedin.com/company/adstube/" target="_blank" class="soc-btn" title="LinkedIn">in</a>
       </div>
+    </div>
+    <div class="footer-col">
+      <h4>Our Pricing</h4>
+      <ul>
+        <li><a href="https://adstube.in/buy-youtube-views">YouTube Views Plans</a></li>
+        <li><a href="https://adstube.in/buy-youtube-subscribers">YouTube Subscribers Plans</a></li>
+        <li><a href="https://adstube.in/youtube-monetization-plans">YouTube Monetization Plans</a></li>
+        <li><a href="https://adstube.in/youtube-revenue-plans">YouTube Revenue Plans</a></li>
+      </ul>
     </div>
     <div class="footer-col">
       <h4>Services</h4>
       <ul>
-        <li><a href="#">YouTube Views</a></li>
-        <li><a href="#">YouTube Subscribers</a></li>
-        <li><a href="#">Likes & Comments</a></li>
-        <li><a href="#">Custom Hashtags</a></li>
+        <li><a href="https://adstube.in/Youtube-Video-Promotion-Services">YouTube Video Promotion</a></li>
+        <li><a href="https://adstube.in/Youtube-Video-SEO-Services">YouTube Video SEO</a></li>
+        <li><a href="https://adstube.in/Youtube-Video-Monetization-Services">YouTube Monetization</a></li>
+        <li><a href="https://adstube.in/Youtube-Video-Production">YouTube Video Production</a></li>
+        <li><a href="https://adstube.in/youtube-revenue-service">YouTube Revenue Service</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Company</h4>
+      <h4>Quick Links</h4>
       <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">How It Works</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Legal</h4>
-      <ul>
-        <li><a href="#">Terms of Service</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Refund Policy</a></li>
-        <li><a href="#">Cookie Policy</a></li>
+        <li><a href="https://adstube.in/About-Adstube">About Us</a></li>
+        <li><a href="https://adstube.in/faq">FAQ</a></li>
+        <li><a href="https://adstube.in/privacy-policy">Privacy Policy</a></li>
+        <li><a href="https://adstube.in/refund-policy">Refund Policy</a></li>
+        <li><a href="https://adstube.in/terms-and-conditions">Terms &amp; Conditions</a></li>
+        <li><a href="https://adstube.in/disclaimer">Disclaimer</a></li>
+        <li><a href="https://adstube.in/AdstubeProfile.pdf" target="_blank">Download Profile (PDF)</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <div>© 2026 AdsTube.in — All rights reserved.</div>
+    <div>© 2025 AdsTube — A subsidiary of Inonego Services Private Limited</div>
     <div>Made with ❤ in India</div>
   </div>
 </footer>
 
 <script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger && hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobileMenu() {
+    hamburger && hamburger.classList.remove('open');
+    mobileMenu && mobileMenu.classList.remove('open');
+  }
+
   // Scroll animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
