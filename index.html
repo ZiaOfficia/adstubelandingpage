@@ -520,16 +520,341 @@
   .pay-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 24px; }
   .pay-row img { height: 28px; width: auto; opacity: .85; transition: opacity .2s; }
   .pay-row img:hover { opacity: 1; }
-  .float-cta {
-    position: fixed; right: 18px; bottom: 18px; z-index: 200;
-    display: flex; flex-direction: column; gap: 10px;
+  .float-btn {
+    position: fixed; bottom: 22px; z-index: 200;
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+    border-radius: 50px;
+    padding: 10px;
+    transition: padding .3s ease, border-radius .3s ease, box-shadow .3s ease, transform .25s ease;
+    overflow: hidden;
+    white-space: nowrap;
   }
-  .float-cta a img { width: 56px; height: 56px; border-radius: 50%; box-shadow: 0 6px 18px rgba(0,0,0,.5); }
+  .float-btn-icon {
+    width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .float-btn-icon img {
+    width: 26px; height: 26px; object-fit: contain;
+    filter: brightness(0) invert(1);
+    display: block;
+  }
+  .float-btn-label {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px; font-weight: 700;
+    color: #fff; letter-spacing: .4px;
+    max-width: 0; opacity: 0;
+    transition: max-width .35s ease, opacity .3s ease;
+    overflow: hidden;
+  }
+  .float-btn:hover .float-btn-label {
+    max-width: 110px; opacity: 1;
+  }
+  .float-btn:hover { transform: translateY(-3px); }
+
+  /* WhatsApp — bottom LEFT, green */
+  .float-wa {
+    left: 22px;
+    background: #25D366;
+    box-shadow: 0 6px 22px rgba(37,211,102,.45);
+  }
+  .float-wa:hover { box-shadow: 0 10px 32px rgba(37,211,102,.65); }
+  .float-wa .float-btn-icon { background: rgba(0,0,0,.15); }
+
+  /* Phone — bottom RIGHT, brand red */
+  .float-call {
+    right: 22px;
+    background: var(--red);
+    box-shadow: 0 6px 22px rgba(232,0,28,.45);
+    flex-direction: row-reverse;
+  }
+  .float-call:hover { box-shadow: 0 10px 32px rgba(232,0,28,.65); }
+  .float-call .float-btn-icon { background: rgba(0,0,0,.15); }
+
+  /* Pulse ring animation */
+  @keyframes floatPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(255,255,255,.35); }
+    70%  { box-shadow: 0 0 0 12px rgba(255,255,255,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+  }
+  .float-btn-icon { animation: floatPulse 2.4s ease-out infinite; }
   @media (max-width: 900px) {
     .reports-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 600px) {
     .reports-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===== POPUP MODAL ===== */
+  .popup-backdrop {
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.82);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+    opacity: 0; pointer-events: none;
+    transition: opacity .35s ease;
+  }
+  .popup-backdrop.show { opacity: 1; pointer-events: all; }
+
+  .popup-modal {
+    background: #111;
+    border: 1px solid rgba(232,0,28,.35);
+    border-radius: 16px;
+    width: 100%; max-width: 520px;
+    position: relative;
+    overflow: hidden;
+    transform: translateY(40px) scale(.97);
+    transition: transform .4s cubic-bezier(.22,1,.36,1);
+    box-shadow: 0 0 80px rgba(232,0,28,.25), 0 40px 100px rgba(0,0,0,.7);
+  }
+  .popup-backdrop.show .popup-modal { transform: translateY(0) scale(1); }
+
+  .popup-header {
+    background: linear-gradient(135deg, #e8001c 0%, #8b0010 100%);
+    padding: 28px 32px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .popup-header::before {
+    content: '';
+    position: absolute; top: -40px; right: -40px;
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.08);
+  }
+  .popup-header::after {
+    content: '';
+    position: absolute; bottom: -30px; left: -20px;
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.05);
+  }
+  .popup-header-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,.18); border-radius: 20px;
+    padding: 4px 12px; font-size: 11px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase; color: #fff;
+    margin-bottom: 12px; position: relative; z-index: 1;
+  }
+  .popup-header h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 26px; font-weight: 700;
+    text-transform: uppercase; color: #fff;
+    line-height: 1.1; margin-bottom: 6px;
+    position: relative; z-index: 1;
+  }
+  .popup-header p {
+    font-size: 13px; color: rgba(255,255,255,.75);
+    font-weight: 400; position: relative; z-index: 1;
+  }
+
+  .popup-close {
+    position: absolute; top: 14px; right: 16px;
+    width: 30px; height: 30px;
+    background: rgba(255,255,255,.15);
+    border: none; border-radius: 50%;
+    color: #fff; font-size: 16px; line-height: 1;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: background .2s;
+    z-index: 2;
+  }
+  .popup-close:hover { background: rgba(255,255,255,.3); }
+
+  .popup-body { padding: 28px 32px 32px; }
+
+  .popup-steps {
+    display: flex; gap: 8px; margin-bottom: 24px;
+  }
+  .popup-step-dot {
+    height: 3px; border-radius: 2px; flex: 1;
+    background: rgba(255,255,255,.08);
+    transition: background .3s;
+  }
+  .popup-step-dot.active { background: var(--red); }
+
+  .popup-form { display: flex; flex-direction: column; gap: 14px; }
+
+  .popup-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .popup-field { display: flex; flex-direction: column; gap: 6px; }
+  .popup-field label {
+    font-size: 12px; font-weight: 600; color: #888;
+    text-transform: uppercase; letter-spacing: .8px;
+  }
+  .popup-field input,
+  .popup-field select,
+  .popup-field textarea {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 8px; padding: 12px 14px;
+    color: #fff; font-size: 14px;
+    font-family: 'Barlow', sans-serif;
+    transition: border-color .2s, background .2s;
+    outline: none; width: 100%;
+  }
+  .popup-field input::placeholder,
+  .popup-field textarea::placeholder { color: #555; }
+  .popup-field input:focus,
+  .popup-field select:focus,
+  .popup-field textarea:focus {
+    border-color: rgba(232,0,28,.6);
+    background: rgba(232,0,28,.05);
+  }
+  .popup-field select { appearance: none; }
+  .popup-field select option { background: #1a1a1a; }
+  .popup-field textarea { resize: none; height: 80px; }
+
+  .popup-submit {
+    width: 100%; padding: 14px;
+    background: linear-gradient(135deg, #e8001c, #b50016);
+    border: none; border-radius: 8px;
+    color: #fff; font-size: 15px; font-weight: 700;
+    font-family: 'Barlow', sans-serif; letter-spacing: .5px;
+    cursor: pointer; margin-top: 4px;
+    transition: all .25s;
+    box-shadow: 0 4px 20px rgba(232,0,28,.4);
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .popup-submit:hover {
+    background: linear-gradient(135deg, #ff1a33, #e8001c);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(232,0,28,.55);
+  }
+
+  .popup-footer-note {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    margin-top: 14px; font-size: 12px; color: #555;
+  }
+  .popup-footer-note span { color: var(--green); font-size: 14px; }
+
+  .popup-trust {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    margin-top: 18px; padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,.06);
+  }
+  .popup-trust-item {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 11px; color: #666;
+  }
+  .popup-trust-item b { color: #999; }
+
+  .popup-success {
+    display: none; flex-direction: column;
+    align-items: center; text-align: center;
+    padding: 40px 32px 32px;
+  }
+  .popup-success.show { display: flex; }
+  .popup-success-icon {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: rgba(34,197,94,.15);
+    border: 2px solid rgba(34,197,94,.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px; margin-bottom: 20px;
+  }
+  .popup-success h4 {
+    font-family: 'Oswald', sans-serif; font-size: 24px;
+    text-transform: uppercase; color: #fff; margin-bottom: 10px;
+  }
+  .popup-success p { color: #888; font-size: 14px; line-height: 1.6; max-width: 320px; }
+
+  /* --- Popup: tablet (≤ 600px) --- */
+  @media (max-width: 600px) {
+    /* Slide up as a bottom sheet */
+    .popup-backdrop {
+      align-items: flex-end;
+      padding: 0;
+    }
+    .popup-modal {
+      max-width: 100%;
+      border-radius: 20px 20px 0 0;
+      border-bottom: none;
+      /* slide in from below instead of scaling */
+      transform: translateY(100%);
+      transition: transform .4s cubic-bezier(.22,1,.36,1);
+      /* limit height so it's scrollable on small phones */
+      max-height: 92dvh;
+      display: flex;
+      flex-direction: column;
+    }
+    .popup-backdrop.show .popup-modal {
+      transform: translateY(0);
+    }
+
+    /* Drag handle pill at top of sheet */
+    .popup-modal::before {
+      content: '';
+      display: block;
+      width: 40px; height: 4px;
+      background: rgba(255,255,255,.18);
+      border-radius: 2px;
+      margin: 10px auto 0;
+      flex-shrink: 0;
+    }
+
+    /* Header compact */
+    .popup-header {
+      padding: 16px 20px 16px;
+      flex-shrink: 0;
+    }
+    .popup-header h3 { font-size: 22px; }
+    .popup-header p { font-size: 12px; }
+    .popup-header-tag { font-size: 10px; padding: 3px 10px; margin-bottom: 8px; }
+
+    /* Close button — bigger tap target on mobile */
+    .popup-close {
+      width: 34px; height: 34px; font-size: 18px;
+      top: 12px; right: 14px;
+    }
+
+    /* Scrollable body */
+    .popup-body {
+      padding: 18px 18px 28px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      flex: 1;
+    }
+
+    /* Stack all field rows */
+    .popup-form-row { grid-template-columns: 1fr; gap: 14px; }
+
+    /* 16px font prevents iOS auto-zoom on focus */
+    .popup-field input,
+    .popup-field select,
+    .popup-field textarea {
+      font-size: 16px;
+      padding: 13px 14px;
+    }
+
+    /* Shorter textarea on mobile */
+    .popup-field textarea { height: 70px; }
+
+    /* Bigger submit tap target */
+    .popup-submit { padding: 15px; font-size: 15px; }
+
+    /* Trust bar — center & wrap */
+    .popup-trust {
+      justify-content: center;
+      gap: 10px;
+    }
+
+    /* Steps bar closer together */
+    .popup-steps { margin-bottom: 18px; }
+
+    /* Success screen compact */
+    .popup-success { padding: 30px 20px 24px; }
+    .popup-success-icon { width: 60px; height: 60px; font-size: 26px; }
+    .popup-success h4 { font-size: 20px; }
+  }
+
+  /* --- Popup: very small phones (≤ 380px) --- */
+  @media (max-width: 380px) {
+    .popup-modal { max-height: 95dvh; }
+    .popup-header h3 { font-size: 19px; }
+    .popup-body { padding: 14px 14px 24px; }
+    .popup-trust-item { font-size: 10px; }
   }
 
   /* FADE IN ANIMATION */
@@ -563,8 +888,12 @@
     .form-row { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr; gap: 30px; }
     section { padding: 70px 16px; }
-    .float-cta { right: 12px; bottom: 12px; }
-    .float-cta a img { width: 48px; height: 48px; }
+    .float-btn { bottom: 14px; padding: 8px; }
+    .float-wa  { left: 14px; }
+    .float-call { right: 14px; }
+    .float-btn-icon { width: 38px; height: 38px; }
+    .float-btn-icon img { width: 22px; height: 22px; }
+    .float-btn-label { display: none; }
     .hero { padding: 60px 16px 50px; }
     .hero-trust { gap: 14px; }
     .trust-item { font-size: 12px; }
@@ -603,11 +932,17 @@
   <a href="#contact" onclick="closeMobileMenu()">Contact</a>
 </div>
 
-<!-- FLOATING WHATSAPP / CALL -->
-<div class="float-cta">
-  <a href="https://api.whatsapp.com/send?phone=917266024422" title="WhatsApp Now"><img src="images/whatsapp.gif" alt="WhatsApp"></a>
-  <a href="tel:+917007821741" title="Call Now"><img src="images/phone.gif" alt="Call"></a>
-</div>
+<!-- FLOATING WHATSAPP — bottom left -->
+<a href="https://api.whatsapp.com/send?phone=917266024422" class="float-btn float-wa" title="WhatsApp Now">
+  <div class="float-btn-icon"><img src="images/logo.png" alt="AdsTube WhatsApp"></div>
+  <span class="float-btn-label">WhatsApp Us</span>
+</a>
+
+<!-- FLOATING CALL — bottom right -->
+<a href="tel:+917007821741" class="float-btn float-call" title="Call Now">
+  <div class="float-btn-icon"><img src="images/logo.png" alt="AdsTube Call"></div>
+  <span class="float-btn-label">Call Us Now</span>
+</a>
 
 <!-- TICKER -->
 <div class="ticker">
@@ -1165,6 +1500,108 @@
   </div>
 </footer>
 
+<!-- POPUP FORM MODAL -->
+<div class="popup-backdrop" id="popupBackdrop" role="dialog" aria-modal="true" aria-label="Get a Free Quote">
+  <div class="popup-modal" id="popupModal">
+
+    <!-- Header -->
+    <div class="popup-header">
+      <button class="popup-close" id="popupClose" aria-label="Close">&times;</button>
+      <div class="popup-header-tag">🚀 Limited Offer — Free Consultation</div>
+      <h3>Grow Your Channel<br>Today</h3>
+      <p>Fill in your details &amp; get a custom YouTube promotion strategy in 24 hrs.</p>
+    </div>
+
+    <!-- Form Body -->
+    <div class="popup-body" id="popupFormWrap">
+      <div class="popup-steps">
+        <div class="popup-step-dot active"></div>
+        <div class="popup-step-dot active"></div>
+        <div class="popup-step-dot active"></div>
+      </div>
+
+      <form class="popup-form" id="popupForm" onsubmit="handlePopupSubmit(event)">
+        <div class="popup-form-row">
+          <div class="popup-field">
+            <label>Your Name</label>
+            <input type="text" placeholder="Rahul Sharma" required>
+          </div>
+          <div class="popup-field">
+            <label>Phone / WhatsApp</label>
+            <input type="tel" placeholder="+91 9000000000" required>
+          </div>
+        </div>
+
+        <div class="popup-field">
+          <label>Email Address</label>
+          <input type="email" placeholder="rahul@email.com" required>
+        </div>
+
+        <div class="popup-field">
+          <label>YouTube Channel URL</label>
+          <input type="url" placeholder="https://youtube.com/@yourchannel">
+        </div>
+
+        <div class="popup-form-row">
+          <div class="popup-field">
+            <label>Service Needed</label>
+            <select required>
+              <option value="" disabled selected>Select...</option>
+              <option>YouTube Views</option>
+              <option>YouTube Subscribers</option>
+              <option>YouTube Monetization</option>
+              <option>YouTube Revenue Boost</option>
+              <option>Video SEO</option>
+              <option>Full Channel Growth</option>
+            </select>
+          </div>
+          <div class="popup-field">
+            <label>Your Budget</label>
+            <select>
+              <option value="" disabled selected>Select...</option>
+              <option>Under ₹2,000</option>
+              <option>₹2,000 – ₹5,000</option>
+              <option>₹5,000 – ₹15,000</option>
+              <option>₹15,000+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="popup-field">
+          <label>Your Goal (Optional)</label>
+          <textarea placeholder="E.g. I want 10K views on my latest video and reach 1000 subscribers for monetization..."></textarea>
+        </div>
+
+        <button type="submit" class="popup-submit">
+          <span>Get My Free Strategy</span>
+          <span>→</span>
+        </button>
+      </form>
+
+      <div class="popup-footer-note">
+        <span>✓</span> No spam · 100% free consultation · Reply within 24 hrs
+      </div>
+
+      <div class="popup-trust">
+        <div class="popup-trust-item">🔒 <b>Secure &amp; Private</b></div>
+        <div class="popup-trust-item">⚡ <b>125K+ Videos Promoted</b></div>
+        <div class="popup-trust-item">🌟 <b>5-Star Rated</b></div>
+      </div>
+    </div>
+
+    <!-- Success State -->
+    <div class="popup-success" id="popupSuccess">
+      <div class="popup-success-icon">✓</div>
+      <h4>You're All Set!</h4>
+      <p>Thanks! Our YouTube growth expert will reach out to you within 24 hours with a custom strategy.</p>
+      <a href="https://api.whatsapp.com/send?phone=918756655744" class="popup-submit" style="margin-top:24px;text-decoration:none;display:inline-flex;width:auto;padding:13px 28px;">
+        <span>Chat on WhatsApp</span> <span>→</span>
+      </a>
+    </div>
+
+  </div>
+</div>
+
 <script>
   // Hamburger menu
   const hamburger = document.getElementById('hamburger');
@@ -1209,6 +1646,85 @@
     });
   });
   document.querySelector('.steps-visual') && pbObserver.observe(document.querySelector('.steps-visual'));
+
+  // ===== POPUP MODAL =====
+  const popupBackdrop = document.getElementById('popupBackdrop');
+  const popupClose = document.getElementById('popupClose');
+  const popupForm = document.getElementById('popupForm');
+  const popupFormWrap = document.getElementById('popupFormWrap');
+  const popupSuccess = document.getElementById('popupSuccess');
+
+  function openPopup() {
+    popupBackdrop.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePopup() {
+    const modal = document.getElementById('popupModal');
+    if (modal) modal.style.transform = '';
+    popupBackdrop.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  // Auto-open after 6 seconds (only once per session)
+  if (!sessionStorage.getItem('popupSeen')) {
+    setTimeout(() => {
+      openPopup();
+      sessionStorage.setItem('popupSeen', '1');
+    }, 6000);
+  }
+
+  // Close handlers
+  popupClose && popupClose.addEventListener('click', closePopup);
+  popupBackdrop && popupBackdrop.addEventListener('click', (e) => {
+    if (e.target === popupBackdrop) closePopup();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closePopup();
+  });
+
+  // Swipe-down to close on mobile
+  (function() {
+    const modal = document.getElementById('popupModal');
+    if (!modal) return;
+    let startY = 0, isDragging = false;
+    modal.addEventListener('touchstart', (e) => {
+      startY = e.touches[0].clientY;
+      isDragging = true;
+    }, { passive: true });
+    modal.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      const delta = e.touches[0].clientY - startY;
+      if (delta > 0) modal.style.transform = `translateY(${delta}px)`;
+    }, { passive: true });
+    modal.addEventListener('touchend', (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      const delta = e.changedTouches[0].clientY - startY;
+      if (delta > 80) {
+        closePopup();
+      } else {
+        modal.style.transform = '';
+      }
+    });
+  })();
+
+  // Open popup on CTA buttons
+  document.querySelectorAll('.btn-primary, .nav-cta, .plan-btn.primary-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const href = btn.getAttribute('href');
+      if (!href || href === '#' || href === '#pricing' || href === '#contact') {
+        e.preventDefault();
+        openPopup();
+      }
+    });
+  });
+
+  // Form submit → show success
+  function handlePopupSubmit(e) {
+    e.preventDefault();
+    popupFormWrap.style.display = 'none';
+    popupSuccess.classList.add('show');
+  }
 </script>
 </body>
 </html>
