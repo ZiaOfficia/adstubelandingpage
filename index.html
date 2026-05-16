@@ -43,59 +43,113 @@
 
   /* NAV */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 500;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 60px;
-    background: rgba(10,10,10,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 0 60px; height: 68px;
+    background: rgba(8,8,8,.82);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255,255,255,.05);
+    transition: background .35s, box-shadow .35s, border-color .35s;
   }
-  .nav-logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 22px; font-weight: 800; letter-spacing: 1px;
-    color: var(--white);
+  nav.scrolled {
+    background: rgba(4,4,4,.97);
+    box-shadow: 0 4px 40px rgba(0,0,0,.55);
+    border-bottom-color: rgba(255,255,255,.09);
   }
-  .nav-logo span { color: var(--red); }
-  .nav-links { display: flex; gap: 30px; list-style: none; }
-  .nav-links a { color: #aaa; font-size: 14px; text-decoration: none; font-weight: 500; transition: color .2s; }
-  .nav-links a:hover { color: var(--white); }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+  .nav-logo-img { height: 38px; width: auto; display: block; }
+
+  .nav-links { display: flex; gap: 2px; list-style: none; align-items: center; }
+  .nav-links a {
+    position: relative; color: #777;
+    font-size: 13.5px; text-decoration: none;
+    font-weight: 500; letter-spacing: .25px;
+    padding: 7px 14px; border-radius: 7px;
+    transition: color .2s, background .2s;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute;
+    bottom: 3px; left: 50%; transform: translateX(-50%);
+    width: 0; height: 2px; border-radius: 2px;
+    background: var(--red);
+    transition: width .25s ease;
+  }
+  .nav-links a:hover { color: #fff; background: rgba(255,255,255,.05); }
+  .nav-links a:hover::after,
+  .nav-links a.nav-active::after { width: 18px; }
+  .nav-links a.nav-active { color: #fff; }
+
+  .nav-divider { width: 1px; height: 22px; background: rgba(255,255,255,.1); margin: 0 20px; flex-shrink: 0; }
+
   .nav-cta {
-    background: var(--red); color: #fff; padding: 10px 22px;
-    border: none; border-radius: 4px; font-size: 14px; font-weight: 600;
-    cursor: pointer; font-family: 'Barlow', sans-serif; letter-spacing: .5px;
-    transition: background .2s, transform .15s;
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--red); color: #fff;
+    padding: 9px 22px; border: none; border-radius: 7px;
+    font-size: 13.5px; font-weight: 700; letter-spacing: .4px;
+    cursor: pointer; font-family: 'Barlow', sans-serif;
+    text-decoration: none; flex-shrink: 0;
+    box-shadow: 0 4px 18px rgba(232,0,28,.3);
+    position: relative; overflow: hidden;
+    transition: background .22s, transform .22s, box-shadow .22s;
   }
-  .nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
+  .nav-cta::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,.14) 0%, transparent 55%);
+    opacity: 0; transition: opacity .22s;
+  }
+  .nav-cta:hover { background: #ff1a35; transform: translateY(-1px); box-shadow: 0 8px 28px rgba(232,0,28,.42); }
+  .nav-cta:hover::before { opacity: 1; }
 
   /* HAMBURGER */
   .hamburger {
     display: none; flex-direction: column; gap: 5px; cursor: pointer;
-    background: none; border: none; padding: 4px;
+    background: none; border: none; padding: 7px;
+    border-radius: 8px; transition: background .2s;
   }
-  .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: all .3s; }
-  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger:hover { background: rgba(255,255,255,.06); }
+  .hamburger span { display: block; width: 22px; height: 2px; background: #999; border-radius: 2px; transition: all .3s; }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); background: #fff; }
   .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); background: #fff; }
+
+  /* MOBILE MENU */
   .mobile-menu {
-    display: none; position: fixed; top: 60px; left: 0; right: 0; z-index: 99;
-    background: rgba(10,10,10,0.97); backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    flex-direction: column; padding: 16px 24px;
+    display: flex; flex-direction: column;
+    position: fixed; top: 68px; left: 0; right: 0; z-index: 499;
+    background: rgba(5,5,5,.98); backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,.07);
+    max-height: 0; overflow: hidden;
+    transition: max-height .38s cubic-bezier(.4,0,.2,1);
   }
-  .mobile-menu.open { display: flex; }
+  .mobile-menu.open { max-height: 500px; }
   .mobile-menu a {
-    color: #aaa; font-size: 15px; text-decoration: none; font-weight: 500;
-    padding: 13px 0; border-bottom: 1px solid var(--border); transition: color .2s;
+    color: #666; font-size: 15px; text-decoration: none; font-weight: 500;
+    padding: 14px 28px;
+    border-left: 2px solid transparent;
+    transition: color .2s, border-color .2s, background .2s, padding-left .22s;
   }
-  .mobile-menu a:last-child { border-bottom: none; }
-  .mobile-menu a:hover { color: var(--white); }
+  .mobile-menu a:hover {
+    color: #fff; border-left-color: var(--red);
+    background: rgba(232,0,28,.05); padding-left: 38px;
+  }
+  .mobile-menu-cta {
+    margin: 16px 24px 20px;
+    background: var(--red); color: #fff;
+    text-align: center; padding: 14px;
+    border-radius: 8px; font-weight: 700; font-size: 15px;
+    text-decoration: none; display: block;
+    box-shadow: 0 4px 20px rgba(232,0,28,.28);
+    transition: background .22s, transform .22s;
+    letter-spacing: .4px;
+  }
+  .mobile-menu-cta:hover { background: #ff1a35; transform: translateY(-1px); }
 
   /* TICKER */
   .ticker {
     background: var(--red);
     padding: 8px 0;
     overflow: hidden;
-    margin-top: 60px;
+    margin-top: 68px;
   }
   .ticker-inner {
     display: flex; gap: 60px;
@@ -117,83 +171,210 @@
     position: relative; min-height: 92vh;
     display: flex; align-items: center; justify-content: center;
     text-align: center;
-    padding: 80px 20px 60px;
+    padding: 100px 20px 80px;
     overflow: hidden;
   }
   .hero-bg {
     position: absolute; inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(232,0,28,0.18) 0%, transparent 65%),
-                radial-gradient(ellipse 50% 40% at 50% 100%, rgba(232,0,28,0.08) 0%, transparent 60%);
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 35%, rgba(232,0,28,.22) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 35% at 50% 100%, rgba(232,0,28,.09) 0%, transparent 60%),
+      radial-gradient(ellipse 28% 40% at 0% 60%, rgba(232,0,28,.07) 0%, transparent 60%),
+      radial-gradient(ellipse 28% 40% at 100% 40%, rgba(232,0,28,.07) 0%, transparent 60%);
   }
   .hero-grid {
     position: absolute; inset: 0;
-    background-image: linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+    background-image:
+      linear-gradient(rgba(255,255,255,.026) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.026) 1px, transparent 1px);
     background-size: 60px 60px;
-    opacity: .5;
+    -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 100%);
+    mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 100%);
   }
+  .hero-scan {
+    position: absolute; left: 0; right: 0; height: 1px; top: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(232,0,28,.25) 30%, rgba(232,0,28,.5) 50%, rgba(232,0,28,.25) 70%, transparent 100%);
+    animation: hero-scan-move 7s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes hero-scan-move {
+    0%   { top: 8%;  opacity: 0; }
+    8%   { opacity: 1; }
+    92%  { opacity: 1; }
+    100% { top: 92%; opacity: 0; }
+  }
+  .hero-corner {
+    position: absolute; width: 160px; height: 160px; pointer-events: none;
+  }
+  .hero-corner-tl {
+    top: 90px; left: 50px;
+    border-top: 1px solid rgba(232,0,28,.22);
+    border-left: 1px solid rgba(232,0,28,.22);
+  }
+  .hero-corner-br {
+    bottom: 50px; right: 50px;
+    border-bottom: 1px solid rgba(232,0,28,.22);
+    border-right: 1px solid rgba(232,0,28,.22);
+  }
+
   .hero-content { position: relative; z-index: 2; max-width: 900px; }
+
   .hero-badge {
-    display: inline-block; background: rgba(232,0,28,.15); border: 1px solid rgba(232,0,28,.4);
-    color: var(--red); padding: 6px 16px; border-radius: 20px;
-    font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
-    margin-bottom: 30px;
+    display: inline-flex; align-items: center; gap: 9px;
+    background: rgba(232,0,28,.1); border: 1px solid rgba(232,0,28,.38);
+    color: var(--red);
+    padding: 7px 18px; border-radius: 100px;
+    font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 32px;
   }
+  .hero-badge-dot {
+    width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+    background: var(--red); box-shadow: 0 0 10px var(--red);
+    animation: hero-dot 2s ease-in-out infinite;
+  }
+  @keyframes hero-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: .5; transform: scale(1.4); }
+  }
+
   .hero h1 {
     font-family: 'Oswald', sans-serif;
     font-size: clamp(36px, 9vw, 110px);
     font-weight: 700; line-height: 1;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    margin-bottom: 16px;
+    text-transform: uppercase; letter-spacing: -1px;
+    margin-bottom: 24px;
   }
-  .hero h1 .accent { color: var(--red); }
+  .hero h1 .accent {
+    background: linear-gradient(120deg, #e8001c 0%, #ff4040 50%, #ff6a00 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 22px rgba(232,0,28,.55));
+  }
+
   .hero-sub {
-    font-size: 17px; color: #bbb; max-width: 500px; margin: 0 auto 36px;
-    font-weight: 300; line-height: 1.6;
+    font-size: 17px; color: #bbb; max-width: 500px; margin: 0 auto 40px;
+    font-weight: 300; line-height: 1.7;
   }
   .hero-sub b { color: var(--white); font-weight: 600; }
-  .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 52px; }
+
   .btn-primary {
     background: var(--red); color: #fff; padding: 15px 34px;
-    border: none; border-radius: 4px; font-size: 15px; font-weight: 700;
+    border: none; border-radius: 6px; font-size: 15px; font-weight: 700;
     cursor: pointer; font-family: 'Barlow', sans-serif; letter-spacing: .5px;
-    transition: all .2s; text-decoration: none; display: inline-block;
-    box-shadow: 0 0 30px var(--red-glow);
+    transition: all .22s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: 0 8px 28px rgba(232,0,28,.32);
+    position: relative; overflow: hidden;
   }
-  .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 0 45px var(--red-glow); }
+  .btn-primary::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,.13) 0%, transparent 55%);
+    opacity: 0; transition: opacity .22s;
+  }
+  .btn-primary:hover { background: #ff1a35; transform: translateY(-2px); box-shadow: 0 14px 40px rgba(232,0,28,.45); }
+  .btn-primary:hover::before { opacity: 1; }
+  .btn-primary svg { transition: transform .22s; }
+  .btn-primary:hover svg { transform: translateX(4px); }
+
   .btn-ghost {
     background: transparent; color: #fff; padding: 15px 34px;
-    border: 1px solid rgba(255,255,255,.2); border-radius: 4px; font-size: 15px; font-weight: 600;
+    border: 1px solid rgba(255,255,255,.18); border-radius: 6px; font-size: 15px; font-weight: 600;
     cursor: pointer; font-family: 'Barlow', sans-serif;
-    transition: all .2s; text-decoration: none; display: inline-block;
+    transition: all .22s; text-decoration: none; display: inline-block;
+    background: rgba(255,255,255,.03);
   }
-  .btn-ghost:hover { border-color: rgba(255,255,255,.5); transform: translateY(-2px); }
-  .hero-trust {
-    margin-top: 50px; display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;
+  .btn-ghost:hover { border-color: rgba(255,255,255,.45); background: rgba(255,255,255,.07); transform: translateY(-2px); }
+
+  .hero-trust { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .trust-item {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+    padding: 8px 16px; border-radius: 100px;
+    color: #888; font-size: 13px;
+    transition: all .2s;
   }
-  .trust-item { display: flex; align-items: center; gap: 8px; color: #888; font-size: 13px; }
-  .trust-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+  .trust-item:hover { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.15); color: #aaa; }
+  .trust-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; box-shadow: 0 0 6px var(--green); flex-shrink: 0; }
+
+  @media (max-width: 600px) {
+    .hero-corner { display: none; }
+  }
 
   /* STATS */
   .stats {
-    background: var(--bg2);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 60px 20px;
+    background: #0d0d0d;
+    border-top: 1px solid rgba(255,255,255,.06);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    padding: 0 20px;
+    position: relative; overflow: hidden;
+  }
+  .stats::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(232,0,28,.06) 0%, transparent 70%);
+    pointer-events: none;
   }
   .stats-grid {
     max-width: 1100px; margin: 0 auto;
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
-    text-align: center;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    position: relative; z-index: 1;
+  }
+  .stat-card {
+    padding: 52px 28px; text-align: center;
+    position: relative;
+    border-right: 1px solid rgba(255,255,255,.06);
+    transition: background .3s ease;
+  }
+  .stat-card:last-child { border-right: none; }
+  .stat-card::after {
+    content: ''; position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--red), transparent);
+    transition: width .35s ease; opacity: 0;
+  }
+  .stat-card:hover { background: rgba(255,255,255,.022); }
+  .stat-card:hover::after { width: 80px; opacity: 1; }
+
+  .stat-icon-wrap {
+    width: 58px; height: 58px;
+    background: rgba(232,0,28,.08);
+    border: 1px solid rgba(232,0,28,.18);
+    border-radius: 14px;
+    margin: 0 auto 22px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .3s, border-color .3s;
+  }
+  .stat-card:hover .stat-icon-wrap {
+    background: rgba(232,0,28,.14);
+    border-color: rgba(232,0,28,.32);
+  }
+  .stat-icon {
+    width: 26px; height: 26px; object-fit: contain;
+    filter: brightness(0) invert(1); opacity: .85;
+    margin: 0; display: block;
   }
   .stat-num {
     font-family: 'Oswald', sans-serif;
     font-size: clamp(36px, 5vw, 56px); font-weight: 700;
-    color: var(--white);
+    color: var(--white); line-height: 1; margin-bottom: 12px;
+    letter-spacing: -1px;
   }
-  .stat-num span { color: var(--red); }
-  .stat-label { color: #666; font-size: 13px; margin-top: 6px; text-transform: uppercase; letter-spacing: 1.5px; }
+  .stat-num .suf { color: var(--red); }
+  .stat-label {
+    color: #555; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 2.5px; font-weight: 600;
+  }
+
+  @media (max-width: 900px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .stat-card:nth-child(odd)  { border-right: 1px solid rgba(255,255,255,.06); }
+    .stat-card:nth-child(3), .stat-card:nth-child(4) { border-bottom: none; }
+  }
+  @media (max-width: 480px) {
+    .stat-card { padding: 36px 16px; }
+  }
 
   /* SECTION COMMON */
   section { padding: 100px 20px; }
@@ -459,162 +640,968 @@
     transform: translateY(-1px);
   }
 
-  /* STEPS */
+  /* ===== STEPS — REDESIGNED ===== */
   .steps { background: var(--bg); }
-  .steps-container {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-  }
-  .step-list { display: flex; flex-direction: column; gap: 32px; }
-  .step-item { display: flex; gap: 20px; }
-  .step-num {
-    width: 44px; height: 44px; flex-shrink: 0;
-    background: rgba(232,0,28,.12); border: 1px solid rgba(232,0,28,.3);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 700; color: var(--red);
-  }
-  .step-text h3 { font-family: 'Oswald', sans-serif; font-size: 20px; margin-bottom: 8px; }
-  .step-text p { color: #777; font-size: 14px; line-height: 1.7; }
-  .steps-visual {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 12px; padding: 28px;
-  }
-  .progress-item { margin-bottom: 20px; }
-  .progress-label { display: flex; justify-content: space-between; font-size: 13px; color: #aaa; margin-bottom: 8px; }
-  .progress-bar { height: 6px; background: rgba(255,255,255,.08); border-radius: 3px; overflow: hidden; }
-  .progress-fill { height: 100%; border-radius: 3px; }
-  .progress-fill.red { background: var(--red); }
-  .progress-fill.yellow { background: var(--yellow); }
-  .progress-fill.green { background: var(--green); }
-  .metrics-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
-  .metric-box {
-    background: rgba(255,255,255,.04); border: 1px solid var(--border);
-    border-radius: 8px; padding: 16px;
-  }
-  .metric-val { font-family: 'Oswald', sans-serif; font-size: 26px; font-weight: 700; color: var(--white); }
-  .metric-lbl { font-size: 12px; color: #666; margin-top: 4px; }
 
-  /* TESTIMONIALS */
-  .testimonials { background: var(--bg2); }
-  .testi-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-    margin-bottom: 20px;
+  .steps-layout {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
   }
+
+  /* --- Vertical timeline (left) --- */
+  .steps-timeline { position: relative; display: flex; flex-direction: column; }
+
+  .timeline-track {
+    position: absolute; left: 25px; top: 26px; bottom: 26px; width: 2px;
+    background: linear-gradient(to bottom, #e8001c 0%, #3b82f6 25%, #22c55e 50%, #f59e0b 75%, #8b5cf6 100%);
+    border-radius: 2px; z-index: 0;
+  }
+
+  .step-card {
+    display: flex; gap: 22px; align-items: flex-start;
+    position: relative; z-index: 1; padding-bottom: 36px;
+  }
+  .step-card:last-child { padding-bottom: 0; }
+
+  /* Numbered node */
+  .step-node {
+    width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 800;
+    color: #fff; position: relative; z-index: 2;
+    transition: transform .3s;
+  }
+  .step-card:hover .step-node { transform: scale(1.12); }
+
+  .sn-1 { background: linear-gradient(135deg, #e8001c, #7a0010); box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px rgba(232,0,28,.4); }
+  .sn-2 { background: linear-gradient(135deg, #3b82f6, #1e3a8a); box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px rgba(59,130,246,.4); }
+  .sn-3 { background: linear-gradient(135deg, #22c55e, #14532d); box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px rgba(34,197,94,.4); }
+  .sn-4 { background: linear-gradient(135deg, #f59e0b, #92400e); box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px rgba(245,158,11,.4); }
+  .sn-5 { background: linear-gradient(135deg, #8b5cf6, #4c1d95); box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px rgba(139,92,246,.4); }
+
+  /* Step text content */
+  .step-content { padding-top: 6px; flex: 1; }
+  .step-tag-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; margin-bottom: 6px;
+  }
+  .st-1 { color: #e8001c; } .st-2 { color: #3b82f6; }
+  .st-3 { color: #22c55e; } .st-4 { color: #f59e0b; } .st-5 { color: #8b5cf6; }
+
+  .step-content h3 {
+    font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700;
+    color: var(--white); margin-bottom: 8px; line-height: 1.2;
+  }
+  .step-content p { color: #666; font-size: 13px; line-height: 1.7; }
+
+  /* --- Results panel (right) --- */
+  .steps-panel { display: flex; flex-direction: column; gap: 14px; }
+
+  .panel-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 24px; position: relative; overflow: hidden;
+  }
+  .panel-card::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse 100% 50% at 50% 0%, rgba(232,0,28,.08) 0%, transparent 65%);
+  }
+
+  /* Live badge */
+  .panel-live {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(34,197,94,.1); border: 1px solid rgba(34,197,94,.28);
+    border-radius: 20px; padding: 5px 13px; margin-bottom: 18px;
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: #22c55e;
+  }
+  .panel-live-dot {
+    width: 7px; height: 7px; border-radius: 50%; background: #22c55e;
+    animation: liveBlink 1.5s ease infinite;
+  }
+  @keyframes liveBlink { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+  .panel-heading {
+    font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700;
+    color: #fff; margin-bottom: 20px;
+  }
+
+  /* Progress bars */
+  .prog-item { margin-bottom: 14px; }
+  .prog-item:last-child { margin-bottom: 0; }
+  .prog-label {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: #999; margin-bottom: 7px; font-weight: 500;
+  }
+  .prog-pct { font-weight: 700; font-size: 13px; }
+  .prog-pct-r { color: #e8001c; } .prog-pct-b { color: #3b82f6; } .prog-pct-g { color: #22c55e; }
+  .prog-bar { height: 7px; background: rgba(255,255,255,.07); border-radius: 4px; overflow: hidden; }
+  .prog-fill { height: 100%; border-radius: 4px; }
+  .pf-r { background: linear-gradient(90deg, #e8001c, #ff4d63); width: 92%; }
+  .pf-b { background: linear-gradient(90deg, #3b82f6, #60a5fa); width: 85%; }
+  .pf-g { background: linear-gradient(90deg, #22c55e, #4ade80); width: 78%; }
+
+  .panel-divider { height: 1px; background: rgba(255,255,255,.06); margin: 18px 0; }
+
+  /* Metric grid */
+  .panel-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .panel-metric {
+    background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .panel-metric .metric-val {
+    font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 800;
+  }
+  .mv-r { color: #e8001c; } .mv-b { color: #3b82f6; }
+  .mv-g { color: #22c55e; } .mv-y { color: #f59e0b; }
+  .panel-metric .metric-lbl { font-size: 11px; color: #555; margin-top: 4px; text-transform: uppercase; letter-spacing: .8px; }
+
+  /* Bottom mini card */
+  .panel-mini {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    background: linear-gradient(135deg, rgba(232,0,28,.1) 0%, rgba(139,92,246,.08) 100%);
+    border: 1px solid rgba(232,0,28,.22);
+    border-radius: 14px; padding: 18px 22px;
+  }
+  .panel-mini-left h4 {
+    font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 4px;
+  }
+  .panel-mini-left p { font-size: 12px; color: #666; }
+  .panel-mini-num {
+    font-family: 'Oswald', sans-serif; font-size: 42px; font-weight: 800;
+    background: linear-gradient(135deg, #e8001c, #8b5cf6);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; flex-shrink: 0;
+  }
+
+  @media (max-width: 900px) {
+    .steps-layout { grid-template-columns: 1fr; gap: 48px; }
+    .steps-panel { display: none; }
+  }
+
+  /* ===== ABOUT ===== */
+  .about-section { background: var(--bg); }
+
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center;
+  }
+
+  /* Video thumbnail */
+  .about-video {
+    position: relative; border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 0 60px rgba(232,0,28,.12);
+    transition: box-shadow .3s;
+    text-decoration: none; display: block;
+  }
+  .about-video:hover { box-shadow: 0 0 80px rgba(232,0,28,.25); }
+  .about-video img { width: 100%; display: block; border-radius: 16px; }
+  .about-video-overlay {
+    position: absolute; inset: 0; border-radius: 16px;
+    background: rgba(0,0,0,.38);
+    display: flex; align-items: center; justify-content: center;
+    transition: background .3s;
+  }
+  .about-video:hover .about-video-overlay { background: rgba(0,0,0,.55); }
+  .about-play {
+    width: 78px; height: 78px; border-radius: 50%;
+    background: linear-gradient(135deg, #e8001c, #b50016);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; color: #fff;
+    animation: aboutPulse 2.2s ease infinite;
+    transition: transform .3s;
+  }
+  .about-video:hover .about-play { transform: scale(1.12); }
+  @keyframes aboutPulse {
+    0%   { box-shadow: 0 0 0 0   rgba(232,0,28,.55); }
+    70%  { box-shadow: 0 0 0 22px rgba(232,0,28,0);  }
+    100% { box-shadow: 0 0 0 0   rgba(232,0,28,0);  }
+  }
+  .about-watch-pill {
+    position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+    background: rgba(0,0,0,.65); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,.1); border-radius: 20px;
+    padding: 7px 18px; font-size: 12px; color: #ccc;
+    font-family: 'Barlow', sans-serif; font-weight: 500;
+    white-space: nowrap; display: flex; align-items: center; gap: 7px;
+  }
+  .about-watch-pill span { color: var(--red); font-size: 9px; }
+
+  /* Text side */
+  .about-tag-pill {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(232,0,28,.1); border: 1px solid rgba(232,0,28,.28);
+    color: var(--red); padding: 5px 14px; border-radius: 20px;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+
+  .about-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(26px, 3.2vw, 40px); font-weight: 700;
+    text-transform: uppercase; line-height: 1.1;
+    color: var(--white); margin-bottom: 10px;
+  }
+  .about-title .abt-accent { color: var(--red); }
+
+  .about-rule {
+    width: 50px; height: 3px; border-radius: 2px;
+    background: linear-gradient(90deg, #e8001c, #3b82f6);
+    margin-bottom: 22px;
+  }
+
+  .about-desc {
+    color: #777; font-size: 15px; line-height: 1.85;
+    font-family: 'Barlow', sans-serif; margin-bottom: 14px;
+  }
+  .about-desc:last-of-type { margin-bottom: 26px; }
+
+  .about-features { display: flex; flex-direction: column; gap: 13px; margin-bottom: 32px; }
+  .about-feat {
+    display: flex; align-items: center; gap: 13px;
+    font-size: 14px; color: #bbb; font-family: 'Barlow', sans-serif;
+  }
+  .about-feat-icon {
+    width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 15px;
+  }
+  .afi-red  { background: rgba(232,0,28,.12);  border: 1px solid rgba(232,0,28,.25); }
+  .afi-blue { background: rgba(59,130,246,.12); border: 1px solid rgba(59,130,246,.25); }
+  .afi-grn  { background: rgba(34,197,94,.12);  border: 1px solid rgba(34,197,94,.25); }
+  .about-feat strong { color: #fff; font-weight: 600; }
+
+  .about-cta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .about-stat-chip {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 13px; color: #666;
+  }
+  .about-stat-chip b { color: #aaa; font-weight: 600; }
+  .about-stat-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--border); }
+
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 36px; }
+  }
+
+  /* ===== TESTIMONIALS — REDESIGNED ===== */
+  .testimonials { background: var(--bg2); }
+
+  /* Rating summary strip */
+  .testi-summary {
+    display: flex; align-items: center; justify-content: center;
+    gap: 36px; flex-wrap: wrap;
+    padding: 20px 32px; margin-bottom: 52px;
+    background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.07);
+    border-radius: 14px;
+  }
+  .testi-sum-item { display: flex; align-items: center; gap: 12px; }
+  .testi-sum-val {
+    font-family: 'Oswald', sans-serif; font-size: 30px; font-weight: 800; color: #fff;
+    line-height: 1;
+  }
+  .testi-sum-val em { color: #f59e0b; font-style: normal; }
+  .testi-sum-label { line-height: 1.4; }
+  .testi-sum-label b { display: block; font-size: 13px; font-weight: 700; color: #ccc; }
+  .testi-sum-label span { font-size: 11px; color: #555; }
+  .testi-sum-sep { width: 1px; height: 40px; background: rgba(255,255,255,.08); }
+
+  /* 2×2 grid */
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+    max-width: 960px; margin: 0 auto;
+  }
+
+  /* Base card */
   .testi-card {
     background: var(--card); border: 1px solid var(--border);
-    border-radius: 8px; padding: 24px;
-    transition: border-color .3s;
+    border-radius: 16px; padding: 28px 28px 24px;
+    position: relative; overflow: hidden;
+    transition: border-color .35s, box-shadow .35s, transform .3s;
   }
-  .testi-card:hover { border-color: rgba(232,0,28,.3); }
-  .stars { color: var(--red); font-size: 14px; margin-bottom: 14px; letter-spacing: 2px; }
-  .testi-text { color: #aaa; font-size: 14px; line-height: 1.7; margin-bottom: 18px; }
-  .testi-author { display: flex; align-items: center; gap: 12px; }
-  .author-avatar {
-    width: 38px; height: 38px; border-radius: 50%;
-    background: var(--red); display: flex; align-items: center; justify-content: center;
-    font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; color: #fff; flex-shrink: 0;
-  }
-  .author-name { font-size: 14px; font-weight: 600; color: var(--white); }
-  .author-handle { font-size: 12px; color: #666; }
+  .testi-card:hover { transform: translateY(-5px); }
 
-  /* FAQ */
+  /* Colored left border */
+  .testi-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; width: 3px; height: 100%;
+    border-radius: 16px 0 0 16px;
+  }
+
+  /* Big decorative quote mark */
+  .testi-qmark {
+    position: absolute; top: 12px; right: 20px;
+    font-size: 80px; line-height: 1;
+    font-family: Georgia, serif; font-weight: 900;
+    opacity: .06; color: #fff; pointer-events: none; user-select: none;
+  }
+
+  /* Stars */
+  .testi-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+  .testi-star { color: #f59e0b; font-size: 15px; }
+
+  /* Quote */
+  .testi-text {
+    color: #999; font-size: 15px; line-height: 1.78;
+    margin-bottom: 20px; font-style: italic;
+    font-family: 'Barlow', sans-serif; position: relative;
+  }
+
+  /* Divider */
+  .testi-divider { height: 1px; background: rgba(255,255,255,.07); margin-bottom: 18px; }
+
+  /* Author row */
+  .testi-author { display: flex; align-items: center; gap: 13px; }
+  .author-avatar {
+    width: 46px; height: 46px; border-radius: 50%; flex-shrink: 0;
+    background: var(--red); border: 2px solid transparent;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 700; color: #fff;
+  }
+  .author-avatar.has-img { background: transparent; padding: 0; overflow: hidden; }
+  .author-avatar.has-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .author-info { flex: 1; }
+  .author-name {
+    font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700;
+    color: var(--white); margin-bottom: 2px;
+  }
+  .author-handle { font-size: 12px; color: #555; }
+  .author-verified {
+    font-size: 10px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; padding: 4px 10px; border-radius: 20px;
+    white-space: nowrap; flex-shrink: 0;
+  }
+
+  /* --- Per-card color variants --- */
+  .tc-red::before  { background: #e8001c; }
+  .tc-red  { border-color: rgba(232,0,28,.2); }
+  .tc-red:hover    { border-color: rgba(232,0,28,.5);  box-shadow: 0 14px 44px rgba(232,0,28,.12); }
+  .tc-red  .author-avatar { border-color: rgba(232,0,28,.45); }
+  .tc-red  .author-verified { background: rgba(232,0,28,.1); color: #e8001c; border: 1px solid rgba(232,0,28,.25); }
+
+  .tc-blue::before { background: #3b82f6; }
+  .tc-blue { border-color: rgba(59,130,246,.2); }
+  .tc-blue:hover   { border-color: rgba(59,130,246,.5); box-shadow: 0 14px 44px rgba(59,130,246,.12); }
+  .tc-blue .author-avatar { border-color: rgba(59,130,246,.45); }
+  .tc-blue .author-verified { background: rgba(59,130,246,.1); color: #3b82f6; border: 1px solid rgba(59,130,246,.25); }
+
+  .tc-green::before { background: #22c55e; }
+  .tc-green { border-color: rgba(34,197,94,.2); }
+  .tc-green:hover  { border-color: rgba(34,197,94,.5);  box-shadow: 0 14px 44px rgba(34,197,94,.12); }
+  .tc-green .author-avatar { border-color: rgba(34,197,94,.45); }
+  .tc-green .author-verified { background: rgba(34,197,94,.1); color: #22c55e; border: 1px solid rgba(34,197,94,.25); }
+
+  .tc-gold::before  { background: #f59e0b; }
+  .tc-gold  { border-color: rgba(245,158,11,.2); }
+  .tc-gold:hover    { border-color: rgba(245,158,11,.5); box-shadow: 0 14px 44px rgba(245,158,11,.12); }
+  .tc-gold  .author-avatar { border-color: rgba(245,158,11,.45); }
+  .tc-gold  .author-verified { background: rgba(245,158,11,.1); color: #f59e0b; border: 1px solid rgba(245,158,11,.25); }
+
+  @media (max-width: 680px) {
+    .testi-grid { grid-template-columns: 1fr; }
+    .testi-sum-sep { display: none; }
+    .testi-summary { gap: 18px; padding: 16px 20px; }
+  }
+
+  /* ===== FAQ — REDESIGNED ===== */
   .faq { background: var(--bg); }
-  .faq-list { max-width: 720px; margin: 0 auto; }
+
+  /* Two-column layout */
+  .faq-layout {
+    display: grid; grid-template-columns: 1fr 310px; gap: 36px; align-items: start;
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  /* Left: accordion list */
+  .faq-list { display: flex; flex-direction: column; gap: 10px; max-width: none; margin: 0; }
+
+  /* Individual FAQ card */
   .faq-item {
-    border-bottom: 1px solid var(--border);
-    overflow: hidden;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+    transition: border-color .3s, box-shadow .3s;
+    cursor: pointer;
   }
+
+  /* Question row */
   .faq-q {
-    width: 100%; text-align: left; padding: 22px 0;
-    background: none; border: none; color: var(--white); font-size: 16px;
-    font-family: 'Barlow', sans-serif; font-weight: 500;
-    cursor: pointer; display: flex; justify-content: space-between; align-items: center;
-    gap: 16px;
+    width: 100%; text-align: left; padding: 16px 18px;
+    background: none; border: none;
+    cursor: pointer; display: flex; align-items: center; gap: 14px;
+    pointer-events: none; /* click handled by parent */
   }
-  .faq-arrow { color: var(--red); font-size: 20px; flex-shrink: 0; transition: transform .3s; }
-  .faq-item.open .faq-arrow { transform: rotate(45deg); }
-  .faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
-  .faq-item.open .faq-a { max-height: 200px; }
-  .faq-a p { color: #888; font-size: 15px; line-height: 1.7; padding-bottom: 22px; }
+
+  /* Colored number badge */
+  .faq-num {
+    width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 800;
+    transition: background .3s, color .3s;
+  }
+  .fq-red   .faq-num { background: rgba(232,0,28,.12);  color: #e8001c;  border: 1px solid rgba(232,0,28,.3); }
+  .fq-blue  .faq-num { background: rgba(59,130,246,.12); color: #3b82f6;  border: 1px solid rgba(59,130,246,.3); }
+  .fq-green .faq-num { background: rgba(34,197,94,.12);  color: #22c55e;  border: 1px solid rgba(34,197,94,.3); }
+  .fq-gold  .faq-num { background: rgba(245,158,11,.12); color: #f59e0b;  border: 1px solid rgba(245,158,11,.3); }
+  .fq-purple .faq-num{ background: rgba(139,92,246,.12); color: #8b5cf6;  border: 1px solid rgba(139,92,246,.3); }
+  .fq-cyan  .faq-num { background: rgba(6,182,212,.12);  color: #06b6d4;  border: 1px solid rgba(6,182,212,.3); }
+
+  /* Question text */
+  .faq-q-text {
+    flex: 1; color: var(--white);
+    font-family: 'Barlow', sans-serif; font-size: 15px; font-weight: 600; line-height: 1.4;
+  }
+
+  /* Toggle icon */
+  .faq-icon {
+    width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,.12); color: #666; font-size: 20px;
+    display: flex; align-items: center; justify-content: center; line-height: 1;
+    transition: transform .35s, background .3s, border-color .3s, color .3s;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); color: #fff; }
+
+  /* Open state — border + icon color per card */
+  .fq-red.faq-item.open    { border-color: rgba(232,0,28,.45);  box-shadow: 0 6px 24px rgba(232,0,28,.1); }
+  .fq-blue.faq-item.open   { border-color: rgba(59,130,246,.45); box-shadow: 0 6px 24px rgba(59,130,246,.1); }
+  .fq-green.faq-item.open  { border-color: rgba(34,197,94,.45);  box-shadow: 0 6px 24px rgba(34,197,94,.1); }
+  .fq-gold.faq-item.open   { border-color: rgba(245,158,11,.45); box-shadow: 0 6px 24px rgba(245,158,11,.1); }
+  .fq-purple.faq-item.open { border-color: rgba(139,92,246,.45); box-shadow: 0 6px 24px rgba(139,92,246,.1); }
+  .fq-cyan.faq-item.open   { border-color: rgba(6,182,212,.45);  box-shadow: 0 6px 24px rgba(6,182,212,.1); }
+
+  .fq-red.faq-item.open    .faq-icon { background: #e8001c;  border-color: #e8001c; }
+  .fq-blue.faq-item.open   .faq-icon { background: #3b82f6;  border-color: #3b82f6; }
+  .fq-green.faq-item.open  .faq-icon { background: #22c55e;  border-color: #22c55e; }
+  .fq-gold.faq-item.open   .faq-icon { background: #f59e0b;  border-color: #f59e0b; }
+  .fq-purple.faq-item.open .faq-icon { background: #8b5cf6;  border-color: #8b5cf6; }
+  .fq-cyan.faq-item.open   .faq-icon { background: #06b6d4;  border-color: #06b6d4; }
+
+  /* Solid badge fill when open */
+  .fq-red.faq-item.open    .faq-num { background: rgba(232,0,28,.2); }
+  .fq-blue.faq-item.open   .faq-num { background: rgba(59,130,246,.2); }
+  .fq-green.faq-item.open  .faq-num { background: rgba(34,197,94,.2); }
+  .fq-gold.faq-item.open   .faq-num { background: rgba(245,158,11,.2); }
+  .fq-purple.faq-item.open .faq-num { background: rgba(139,92,246,.2); }
+  .fq-cyan.faq-item.open   .faq-num { background: rgba(6,182,212,.2); }
+
+  /* Answer */
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height .42s ease; }
+  .faq-item.open .faq-a { max-height: 300px; }
+  .faq-a-inner {
+    padding: 2px 18px 20px 66px;
+    color: #777; font-size: 14px; line-height: 1.78;
+    font-family: 'Barlow', sans-serif;
+    border-top: 1px solid rgba(255,255,255,.05);
+    padding-top: 14px;
+  }
+
+  /* Right: Contact panel */
+  .faq-panel { display: flex; flex-direction: column; gap: 14px; position: sticky; top: 88px; }
+
+  .faq-panel-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+  }
+  .faq-panel-top {
+    background: linear-gradient(135deg, #e8001c 0%, #7a0010 100%);
+    padding: 22px 22px 20px; position: relative; overflow: hidden;
+  }
+  .faq-panel-top::before {
+    content: ''; position: absolute; top: -30px; right: -30px;
+    width: 100px; height: 100px; border-radius: 50%; background: rgba(255,255,255,.08);
+  }
+  .faq-panel-top::after {
+    content: ''; position: absolute; bottom: -20px; left: -15px;
+    width: 70px; height: 70px; border-radius: 50%; background: rgba(255,255,255,.05);
+  }
+  .faq-panel-top h4 {
+    font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700;
+    color: #fff; margin-bottom: 5px; position: relative; z-index: 1;
+  }
+  .faq-panel-top p { font-size: 12px; color: rgba(255,255,255,.7); position: relative; z-index: 1; }
+
+  .faq-panel-body { padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+
+  .faq-cbtn {
+    display: flex; align-items: center; gap: 12px; padding: 13px 14px;
+    border-radius: 10px; text-decoration: none; border: 1px solid;
+    transition: all .25s;
+  }
+  .faq-cbtn:hover { transform: translateX(4px); }
+  .faq-cbtn-icon {
+    width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 16px;
+  }
+  .faq-cbtn-txt { flex: 1; }
+  .faq-cbtn-txt b { display: block; font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 1px; }
+  .faq-cbtn-txt span { font-size: 11px; color: #555; }
+  .faq-cbtn-arr { color: #444; font-size: 14px; flex-shrink: 0; }
+
+  .fcb-wa   { background: rgba(37,211,102,.05);  border-color: rgba(37,211,102,.2); }
+  .fcb-wa:hover   { border-color: rgba(37,211,102,.5);  background: rgba(37,211,102,.09); }
+  .fcb-wa   .faq-cbtn-icon { background: rgba(37,211,102,.12);  color: #25D366; border: 1px solid rgba(37,211,102,.25); }
+
+  .fcb-call { background: rgba(232,0,28,.05);    border-color: rgba(232,0,28,.2); }
+  .fcb-call:hover { border-color: rgba(232,0,28,.5);    background: rgba(232,0,28,.09); }
+  .fcb-call .faq-cbtn-icon { background: rgba(232,0,28,.12);    color: #e8001c;  border: 1px solid rgba(232,0,28,.25); }
+
+  .fcb-mail { background: rgba(59,130,246,.05);  border-color: rgba(59,130,246,.2); }
+  .fcb-mail:hover { border-color: rgba(59,130,246,.5);  background: rgba(59,130,246,.09); }
+  .fcb-mail .faq-cbtn-icon { background: rgba(59,130,246,.12);  color: #3b82f6;  border: 1px solid rgba(59,130,246,.25); }
+
+  /* Guarantee chip */
+  .faq-guarantee {
+    background: rgba(34,197,94,.05); border: 1px solid rgba(34,197,94,.2);
+    border-radius: 14px; padding: 16px 18px;
+    display: flex; align-items: center; gap: 13px;
+  }
+  .faq-gicon {
+    width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+    background: rgba(34,197,94,.1); border: 1px solid rgba(34,197,94,.25);
+    display: flex; align-items: center; justify-content: center; font-size: 18px;
+  }
+  .faq-gtxt h5 {
+    font-family: 'Oswald', sans-serif; font-size: 14px; font-weight: 700;
+    color: #fff; margin-bottom: 3px;
+  }
+  .faq-gtxt p { font-size: 11px; color: #555; line-height: 1.5; }
+
+  @media (max-width: 900px) {
+    .faq-layout { grid-template-columns: 1fr; gap: 28px; }
+    .faq-panel { position: static; }
+  }
 
   /* GUARANTEE */
-  .guarantee {
-    background: var(--bg2);
-    text-align: center;
-    position: relative; overflow: hidden;
-  }
+  .guarantee { background: var(--bg2); padding: 100px 20px; position: relative; overflow: hidden; }
   .guarantee::before {
     content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(232,0,28,.12) 0%, transparent 65%);
+    background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(232,0,28,.08) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 15% 80%, rgba(59,130,246,.06) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 40% at 85% 70%, rgba(34,197,94,.05) 0%, transparent 50%);
   }
-  .guarantee-content { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
-  .guarantee-icon {
-    width: 70px; height: 70px; background: rgba(232,0,28,.15); border: 2px solid rgba(232,0,28,.4);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 32px; margin: 0 auto 28px;
+  .guarantee-inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; }
+  .guar-hero { text-align: center; margin-bottom: 60px; }
+  .guar-shield {
+    width: 90px; height: 90px;
+    background: linear-gradient(135deg, #e8001c 0%, #7a0010 100%);
+    border-radius: 20px; display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 28px; position: relative;
+    box-shadow: 0 0 0 8px rgba(232,0,28,.08), 0 0 0 16px rgba(232,0,28,.04), 0 20px 60px rgba(232,0,28,.3);
+    animation: guarPulse 2.5s ease infinite;
   }
-  .guarantee h2 { font-family: 'Oswald', sans-serif; font-size: 48px; font-weight: 700; text-transform: uppercase; margin-bottom: 16px; }
-  .guarantee p { color: #888; font-size: 16px; line-height: 1.7; margin-bottom: 36px; }
-  .guarantee-badges { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
-  .g-badge { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #aaa; }
-  .g-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+  @keyframes guarPulse {
+    0%   { box-shadow: 0 0 0 8px rgba(232,0,28,.08), 0 0 0 16px rgba(232,0,28,.04), 0 20px 60px rgba(232,0,28,.3); }
+    50%  { box-shadow: 0 0 0 14px rgba(232,0,28,.12), 0 0 0 26px rgba(232,0,28,.06), 0 20px 60px rgba(232,0,28,.4); }
+    100% { box-shadow: 0 0 0 8px rgba(232,0,28,.08), 0 0 0 16px rgba(232,0,28,.04), 0 20px 60px rgba(232,0,28,.3); }
+  }
+  .guar-shield img { width: 44px; height: 44px; object-fit: contain; filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(0,0,0,.4)); }
+  .guar-hero h2 {
+    font-family: 'Oswald', sans-serif; font-size: 52px; font-weight: 700; text-transform: uppercase;
+    line-height: 1.1; margin-bottom: 14px;
+    background: linear-gradient(135deg, #fff 60%, rgba(255,255,255,.5) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .guar-hero p { color: #888; font-size: 17px; line-height: 1.7; max-width: 600px; margin: 0 auto; }
+  .guar-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; margin-bottom: 20px; }
+  .guar-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+    transition: transform .3s, box-shadow .3s, border-color .3s;
+  }
+  .guar-card:hover { transform: translateY(-6px); }
+  .guar-card-header {
+    height: 100px; display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .guar-card-header img { width: 38px; height: 38px; object-fit: contain; filter: brightness(0) invert(1) drop-shadow(0 2px 6px rgba(0,0,0,.3)); position: relative; z-index: 1; }
+  .guar-card-header::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.22) 100%); }
+  .gc-red  { background: linear-gradient(135deg, #e8001c 0%, #7a0010 100%); }
+  .gc-blue { background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%); }
+  .gc-grn  { background: linear-gradient(135deg, #22c55e 0%, #14532d 100%); }
+  .gc-gold { background: linear-gradient(135deg, #f59e0b 0%, #92400e 100%); }
+  .guar-card:has(.gc-red):hover  { border-color: rgba(232,0,28,.5);  box-shadow: 0 12px 40px rgba(232,0,28,.18); }
+  .guar-card:has(.gc-blue):hover { border-color: rgba(59,130,246,.5); box-shadow: 0 12px 40px rgba(59,130,246,.18); }
+  .guar-card:has(.gc-grn):hover  { border-color: rgba(34,197,94,.5);  box-shadow: 0 12px 40px rgba(34,197,94,.18); }
+  .guar-card:has(.gc-gold):hover { border-color: rgba(245,158,11,.5); box-shadow: 0 12px 40px rgba(245,158,11,.18); }
+  .guar-card-body { padding: 20px; }
+  .guar-card-body h3 { font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 7px; }
+  .guar-card-body p { color: #777; font-size: 13px; line-height: 1.65; }
+  .guar-trust {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 1px;
+    background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+    margin-bottom: 50px;
+  }
+  .guar-trust-item { background: var(--card); padding: 26px 20px; text-align: center; }
+  .guar-trust-num { font-family: 'Oswald', sans-serif; font-size: 34px; font-weight: 700; line-height: 1; margin-bottom: 5px; }
+  .guar-trust-label { color: #666; font-size: 13px; }
+  .gtn-red  { color: #e8001c; }
+  .gtn-blue { color: #3b82f6; }
+  .gtn-grn  { color: #22c55e; }
+  .gtn-gold { color: #f59e0b; }
+  .guar-cta { text-align: center; margin-top: 50px; }
+  .guar-cta .btn-primary { font-size: 17px; padding: 16px 44px; }
+  @media (max-width: 900px) {
+    .guar-grid { grid-template-columns: repeat(2,1fr); }
+    .guar-trust { grid-template-columns: repeat(2,1fr); }
+  }
+  @media (max-width: 600px) {
+    .guar-hero h2 { font-size: 36px; }
+    .guar-grid { grid-template-columns: repeat(2,1fr); gap: 12px; }
+  }
+  @media (max-width: 380px) {
+    .guar-grid { grid-template-columns: 1fr; }
+    .guar-trust { grid-template-columns: repeat(2,1fr); }
+  }
 
   /* CTA SECTION */
   .cta-section {
-    background: var(--bg); text-align: center;
     position: relative; overflow: hidden;
+    background: #050505;
+    padding: 130px 20px;
+    text-align: center;
   }
-  .cta-section::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse 50% 70% at 50% 50%, rgba(232,0,28,.1) 0%, transparent 60%);
+  .cta-bg-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(232,0,28,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,0,28,.045) 1px, transparent 1px);
+    background-size: 60px 60px;
+    -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 20%, transparent 100%);
+    mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 20%, transparent 100%);
   }
-  .cta-section h2 {
+  .cta-bg-glow {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 65% 55% at 50% 50%, rgba(232,0,28,.2) 0%, transparent 65%),
+      radial-gradient(ellipse 35% 35% at 15% 85%, rgba(232,0,28,.07) 0%, transparent 60%),
+      radial-gradient(ellipse 35% 35% at 85% 15%, rgba(232,0,28,.07) 0%, transparent 60%);
+  }
+  .cta-streak {
+    position: absolute; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(232,0,28,.35) 35%, rgba(232,0,28,.55) 50%, rgba(232,0,28,.35) 65%, transparent 100%);
+  }
+  .cta-streak-1 { top: 28%; }
+  .cta-streak-2 { bottom: 28%; opacity: .45; }
+
+  .cta-inner { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+
+  .cta-badge {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: rgba(232,0,28,.1);
+    border: 1px solid rgba(232,0,28,.28);
+    color: var(--red);
+    font-size: 11px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; padding: 9px 20px; border-radius: 100px;
+    margin-bottom: 34px;
+  }
+  .cta-badge-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--red); box-shadow: 0 0 10px var(--red);
+    animation: cta-pulse 2s ease-in-out infinite;
+  }
+  @keyframes cta-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .55; transform: scale(1.35); }
+  }
+
+  .cta-heading {
     font-family: 'Oswald', sans-serif;
-    font-size: clamp(40px, 6vw, 80px); font-weight: 700;
-    text-transform: uppercase; line-height: 1; margin-bottom: 20px;
-    position: relative;
+    font-size: clamp(48px, 7.5vw, 100px);
+    font-weight: 700; text-transform: uppercase;
+    line-height: .92; margin-bottom: 30px; letter-spacing: -1px;
   }
-  .cta-section h2 .red-line { color: var(--red); display: block; }
-  .cta-section p { color: #888; font-size: 16px; max-width: 450px; margin: 0 auto 36px; position: relative; }
+  .cta-heading-line1 { display: block; color: #fff; }
+  .cta-heading-accent {
+    display: block;
+    background: linear-gradient(130deg, #e8001c 0%, #ff4040 45%, #ff8c00 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 28px rgba(232,0,28,.55));
+  }
+
+  .cta-divider {
+    display: flex; align-items: center; gap: 14px;
+    max-width: 300px; margin: 0 auto 30px;
+  }
+  .cta-divider-line {
+    flex: 1; height: 1px;
+  }
+  .cta-divider-line.left  { background: linear-gradient(90deg, transparent, rgba(232,0,28,.45)); }
+  .cta-divider-line.right { background: linear-gradient(270deg, transparent, rgba(232,0,28,.45)); }
+  .cta-divider-icon { color: var(--red); font-size: 9px; filter: drop-shadow(0 0 6px var(--red)); flex: none; }
+
+  .cta-desc {
+    color: #999; font-size: 17px; line-height: 1.75;
+    max-width: 490px; margin: 0 auto 46px; font-weight: 400;
+  }
+  .cta-desc strong { color: #ddd; font-weight: 600; }
+  .cta-desc em { color: #fff; font-style: normal; font-weight: 600; }
+
+  .cta-buttons {
+    display: flex; align-items: center; justify-content: center;
+    gap: 16px; flex-wrap: wrap; margin-bottom: 56px;
+  }
+  .cta-btn-main {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--red); color: #fff;
+    font-family: 'Barlow', sans-serif;
+    font-size: 16px; font-weight: 700; letter-spacing: .5px;
+    padding: 18px 40px; border-radius: 6px;
+    text-decoration: none; position: relative; overflow: hidden;
+    box-shadow: 0 8px 32px rgba(232,0,28,.32), 0 0 0 0 rgba(232,0,28,.4);
+    transition: all .25s ease;
+  }
+  .cta-btn-main::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,.14) 0%, transparent 55%);
+    opacity: 0; transition: opacity .25s;
+  }
+  .cta-btn-main:hover {
+    background: #ff1a35; transform: translateY(-3px);
+    box-shadow: 0 16px 48px rgba(232,0,28,.48), 0 0 0 5px rgba(232,0,28,.14);
+  }
+  .cta-btn-main:hover::before { opacity: 1; }
+  .cta-btn-main svg { transition: transform .25s; }
+  .cta-btn-main:hover svg { transform: translateX(5px); }
+
+  .cta-btn-ghost {
+    display: inline-flex; align-items: center;
+    color: #aaa; font-family: 'Barlow', sans-serif;
+    font-size: 15px; font-weight: 600; letter-spacing: .3px;
+    padding: 18px 34px; border-radius: 6px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,.13);
+    background: rgba(255,255,255,.03);
+    transition: all .25s ease;
+  }
+  .cta-btn-ghost:hover {
+    color: #fff; border-color: rgba(255,255,255,.26);
+    background: rgba(255,255,255,.07); transform: translateY(-3px);
+  }
+
+  .cta-proof {
+    display: flex; align-items: center; justify-content: center;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,.07);
+    padding-top: 42px;
+  }
+  .cta-proof-item {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 5px; padding: 0 38px;
+  }
+  .cta-proof-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 26px; font-weight: 700; color: #fff;
+  }
+  .cta-proof-label {
+    font-size: 11px; color: #555; font-weight: 600;
+    letter-spacing: .8px; text-transform: uppercase;
+  }
+  .cta-proof-sep { width: 1px; height: 44px; background: rgba(255,255,255,.1); }
+  @media (max-width: 600px) {
+    .cta-proof-sep { display: none; }
+    .cta-proof { gap: 28px; }
+    .cta-proof-item { padding: 0 12px; }
+    .cta-buttons { flex-direction: column; align-items: stretch; }
+    .cta-btn-main, .cta-btn-ghost { text-align: center; justify-content: center; }
+  }
 
   /* CONTACT */
-  .contact { background: var(--bg2); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .contact-left h2 {
-    font-family: 'Oswald', sans-serif; font-size: 42px; font-weight: 700;
-    text-transform: uppercase; line-height: 1.1; margin-bottom: 30px;
+  .contact {
+    background: #070707;
+    position: relative; overflow: hidden;
   }
-  .contact-methods { display: flex; flex-direction: column; gap: 20px; }
-  .contact-method { display: flex; align-items: center; gap: 14px; }
-  .c-icon {
-    width: 42px; height: 42px; background: rgba(232,0,28,.1); border: 1px solid rgba(232,0,28,.25);
-    border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px;
+  .contact::before {
+    content: ''; position: absolute;
+    top: -220px; left: -220px; width: 650px; height: 650px;
+    background: radial-gradient(circle, rgba(232,0,28,.09) 0%, transparent 70%);
+    pointer-events: none;
   }
-  .c-label { font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 1px; }
-  .c-val { font-size: 15px; color: #ccc; font-weight: 500; }
-  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .contact::after {
+    content: ''; position: absolute;
+    bottom: -220px; right: -220px; width: 650px; height: 650px;
+    background: radial-gradient(circle, rgba(245,158,11,.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .contact-wrap { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+  .contact-header { text-align: center; margin-bottom: 60px; }
+  .contact-header h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(30px, 4.5vw, 50px); font-weight: 700;
+    text-transform: uppercase; line-height: 1.1;
+  }
+  .contact-header h2 span { color: var(--red); }
+  .contact-header p { color: #666; font-size: 16px; line-height: 1.7; max-width: 480px; margin: 14px auto 0; }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: start; }
+
+  /* Info card */
+  .contact-info-card {
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 16px; padding: 38px;
+  }
+  .contact-methods { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+  .contact-method {
+    display: flex; align-items: center; gap: 16px;
+    padding: 15px 18px;
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 12px;
+    text-decoration: none; color: inherit;
+    transition: all .25s ease;
+  }
+  .contact-method:hover {
+    background: rgba(255,255,255,.06);
+    border-color: rgba(255,255,255,.12);
+    transform: translateX(5px);
+  }
+  .cm-icon {
+    width: 46px; height: 46px; border-radius: 12px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 19px;
+  }
+  .cm-icon.red   { background: rgba(232,0,28,.14);  border: 1px solid rgba(232,0,28,.25); }
+  .cm-icon.green { background: rgba(34,197,94,.11);  border: 1px solid rgba(34,197,94,.22); }
+  .cm-icon.amber { background: rgba(245,158,11,.11); border: 1px solid rgba(245,158,11,.22); }
+  .cm-icon.indigo{ background: rgba(99,102,241,.11); border: 1px solid rgba(99,102,241,.22); }
+  .cm-text { flex: 1; min-width: 0; }
+  .cm-label { font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin-bottom: 3px; }
+  .cm-val { font-size: 15px; color: #d0d0d0; font-weight: 500; }
+  .cm-arrow { color: #333; font-size: 18px; font-weight: 300; transition: color .2s, transform .2s; }
+  .contact-method:hover .cm-arrow { color: #666; transform: translateX(3px); }
+
+  .contact-pay-label { font-size: 11px; color: #444; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; margin-bottom: 12px; }
+  .pay-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 0; }
+  .pay-pill {
+    background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09);
+    border-radius: 8px; padding: 8px 13px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .2s;
+  }
+  .pay-pill:hover { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.18); }
+  .pay-pill img { height: 22px; width: auto; opacity: .75; display: block; transition: opacity .2s; }
+  .pay-pill:hover img { opacity: 1; }
+
+  /* Form card */
+  .contact-form-card {
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px; padding: 40px;
+    position: relative; overflow: hidden;
+  }
+  .contact-form-card::before {
+    content: ''; position: absolute;
+    top: -1px; left: 50px; right: 50px; height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(232,0,28,.65), transparent);
+  }
+  .contact-form { display: flex; flex-direction: column; gap: 18px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .form-group { display: flex; flex-direction: column; gap: 8px; }
-  .form-group label { font-size: 13px; color: #777; font-weight: 500; }
-  .form-group input, .form-group select, .form-group textarea {
-    background: rgba(255,255,255,.05); border: 1px solid var(--border);
-    border-radius: 6px; padding: 13px 16px; color: var(--white);
-    font-size: 14px; font-family: 'Barlow', sans-serif;
-    transition: border-color .2s;
-    outline: none;
+  .form-group { display: flex; flex-direction: column; gap: 7px; }
+  .form-label { font-size: 11px; color: #555; font-weight: 700; text-transform: uppercase; letter-spacing: 1.4px; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 10px; padding: 13px 16px;
+    color: var(--white); font-size: 14px;
+    font-family: 'Barlow', sans-serif;
+    transition: border-color .2s, background .2s, box-shadow .2s;
+    outline: none; width: 100%;
   }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    border-color: rgba(232,0,28,.5);
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: #383838; }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: rgba(232,0,28,.55);
+    background: rgba(232,0,28,.04);
+    box-shadow: 0 0 0 3px rgba(232,0,28,.09);
   }
-  .form-group select { appearance: none; }
-  .form-group select option { background: #222; }
-  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group select {
+    appearance: none; cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23555' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
+  }
+  .form-group select option { background: #1a1a1a; color: #fff; }
+  .form-group textarea { resize: vertical; min-height: 110px; }
   .submit-btn {
-    background: var(--red); color: #fff; padding: 15px;
-    border: none; border-radius: 6px; font-size: 15px; font-weight: 700;
-    cursor: pointer; font-family: 'Barlow', sans-serif; letter-spacing: .5px;
-    transition: all .2s; box-shadow: 0 0 30px var(--red-glow);
+    background: var(--red); color: #fff;
+    border: none; border-radius: 10px;
+    padding: 16px 28px; font-size: 15px; font-weight: 700;
+    font-family: 'Barlow', sans-serif; letter-spacing: .5px;
+    cursor: pointer; width: 100%;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    box-shadow: 0 8px 28px rgba(232,0,28,.28);
+    transition: all .25s ease; position: relative; overflow: hidden;
   }
-  .submit-btn:hover { background: var(--red-dark); transform: translateY(-2px); }
+  .submit-btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,.13) 0%, transparent 55%);
+    opacity: 0; transition: opacity .25s;
+  }
+  .submit-btn:hover {
+    background: #ff1a35; transform: translateY(-2px);
+    box-shadow: 0 14px 40px rgba(232,0,28,.42);
+  }
+  .submit-btn:hover::before { opacity: 1; }
+  .submit-btn svg { transition: transform .25s; }
+  .submit-btn:hover svg { transform: translateX(4px); }
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 28px; }
+  }
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; }
+    .contact-info-card, .contact-form-card { padding: 24px 18px; }
+  }
+
+  /* LIGHTBOX */
+  .lb-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,.93);
+    backdrop-filter: blur(10px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity .3s ease;
+  }
+  .lb-overlay.lb-active { opacity: 1; pointer-events: all; }
+  .lb-content {
+    position: relative; display: flex; flex-direction: column;
+    align-items: center; gap: 16px;
+    max-width: 92vw; max-height: 92vh;
+  }
+  #lbImg {
+    max-width: 90vw; max-height: 78vh;
+    object-fit: contain; border-radius: 10px;
+    box-shadow: 0 0 80px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.07);
+    transition: opacity .18s ease;
+    display: block;
+  }
+  .lb-meta { text-align: center; }
+  .lb-caption { font-family: 'Barlow', sans-serif; font-size: 14px; color: #bbb; font-weight: 500; margin-bottom: 4px; }
+  .lb-counter { font-size: 11px; color: #444; letter-spacing: 1.5px; text-transform: uppercase; }
+  .lb-close {
+    position: fixed; top: 20px; right: 24px;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14);
+    color: #fff; font-size: 18px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s, transform .25s; z-index: 10001;
+  }
+  .lb-close:hover { background: rgba(232,0,28,.35); transform: rotate(90deg); }
+  .lb-arrow {
+    position: fixed; top: 50%; transform: translateY(-50%);
+    width: 50px; height: 50px; border-radius: 50%;
+    background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+    color: #fff; font-size: 28px; cursor: pointer; z-index: 10001;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s, transform .2s;
+    line-height: 1;
+  }
+  .lb-arrow:hover { background: rgba(232,0,28,.3); }
+  .lb-prev { left: 20px; }
+  .lb-next { right: 20px; }
+  .lb-prev:hover { transform: translateY(-50%) translateX(-2px); }
+  .lb-next:hover { transform: translateY(-50%) translateX(2px); }
+  @media (max-width: 600px) {
+    .lb-arrow { width: 38px; height: 38px; font-size: 22px; }
+    .lb-prev { left: 8px; } .lb-next { right: 8px; }
+  }
 
   /* FOOTER */
   footer {
@@ -656,19 +1643,145 @@
   .nav-logo-img { height: 34px; width: auto; display: block; }
   .stat-icon { width: 42px; height: 42px; object-fit: contain; margin: 0 auto 12px; display: block; filter: brightness(0) invert(1); opacity: .85; }
   .price-tile-img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; margin-bottom: 18px; }
-  .step-img { width: 100%; max-width: 360px; border-radius: 8px; display: block; margin: 0 auto; }
   .author-avatar.has-img { background: transparent; padding: 0; overflow: hidden; }
   .author-avatar.has-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  /* ===== PORTFOLIO / REPORTS ===== */
+  .reports-section { background: var(--bg2); padding: 100px 20px; }
+
   .reports-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 18px;
   }
-  .report-card {
+  .rpt-featured { grid-column: span 2; }
+
+  /* Base card */
+  .rpt-card {
     background: var(--card); border: 1px solid var(--border);
-    border-radius: 8px; padding: 14px; transition: border-color .3s, transform .3s;
+    border-radius: 16px; overflow: hidden;
+    transition: border-color .35s, box-shadow .35s, transform .3s;
+    cursor: pointer;
   }
-  .report-card:hover { border-color: rgba(232,0,28,.3); transform: translateY(-3px); }
-  .report-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 6px; margin-bottom: 12px; background: #fff; }
-  .report-card h4 { font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 500; color: #ddd; line-height: 1.4; }
+  .rpt-card:hover { transform: translateY(-5px); }
+
+  /* Image wrapper */
+  .rpt-img-wrap { position: relative; overflow: hidden; }
+  .rpt-img-wrap img {
+    width: 100%; display: block; height: 200px;
+    object-fit: cover; background: #fff;
+    transition: transform .5s ease;
+  }
+  .rpt-featured .rpt-img-wrap img { height: 280px; }
+  .rpt-card:hover .rpt-img-wrap img { transform: scale(1.06); }
+
+  /* Hover overlay */
+  .rpt-overlay {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity .3s;
+  }
+  .rpt-card:hover .rpt-overlay { opacity: 1; }
+
+  /* View button inside overlay */
+  .rpt-view-btn {
+    padding: 11px 24px; border-radius: 8px;
+    font-family: 'Barlow', sans-serif; font-size: 13px; font-weight: 700;
+    color: #fff; letter-spacing: .5px;
+    transform: translateY(14px); transition: transform .35s;
+    display: flex; align-items: center; gap: 6px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.4);
+  }
+  .rpt-card:hover .rpt-view-btn { transform: translateY(0); }
+
+  /* Numbered badge */
+  .rpt-num {
+    position: absolute; top: 14px; left: 14px;
+    width: 30px; height: 30px; border-radius: 50%;
+    font-family: 'Oswald', sans-serif; font-size: 12px; font-weight: 800;
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    z-index: 2;
+  }
+
+  /* Card body */
+  .rpt-body { padding: 16px 18px 20px; }
+  .rpt-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .rpt-title {
+    font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 600;
+    color: #ccc; line-height: 1.4;
+  }
+  .rpt-featured .rpt-title { font-size: 19px; }
+  .rpt-line { width: 28px; height: 2px; border-radius: 2px; margin-top: 10px; }
+
+  /* --- Per-card color variants --- */
+  .rpt-red    { border-color: rgba(232,0,28,.18); }
+  .rpt-red:hover    { border-color: rgba(232,0,28,.55);  box-shadow: 0 14px 44px rgba(232,0,28,.16); }
+  .rpt-red    .rpt-overlay  { background: rgba(180,0,10,.6); }
+  .rpt-red    .rpt-view-btn { background: #e8001c; }
+  .rpt-red    .rpt-num      { background: #e8001c; box-shadow: 0 2px 12px rgba(232,0,28,.55); }
+  .rpt-red    .rpt-tag      { color: #e8001c; }
+  .rpt-red    .rpt-line     { background: #e8001c; }
+
+  .rpt-blue   { border-color: rgba(59,130,246,.18); }
+  .rpt-blue:hover   { border-color: rgba(59,130,246,.55); box-shadow: 0 14px 44px rgba(59,130,246,.16); }
+  .rpt-blue   .rpt-overlay  { background: rgba(29,100,210,.6); }
+  .rpt-blue   .rpt-view-btn { background: #3b82f6; }
+  .rpt-blue   .rpt-num      { background: #3b82f6; box-shadow: 0 2px 12px rgba(59,130,246,.55); }
+  .rpt-blue   .rpt-tag      { color: #3b82f6; }
+  .rpt-blue   .rpt-line     { background: #3b82f6; }
+
+  .rpt-green  { border-color: rgba(34,197,94,.18); }
+  .rpt-green:hover  { border-color: rgba(34,197,94,.55);  box-shadow: 0 14px 44px rgba(34,197,94,.16); }
+  .rpt-green  .rpt-overlay  { background: rgba(15,130,55,.6); }
+  .rpt-green  .rpt-view-btn { background: #22c55e; }
+  .rpt-green  .rpt-num      { background: #22c55e; box-shadow: 0 2px 12px rgba(34,197,94,.55); }
+  .rpt-green  .rpt-tag      { color: #22c55e; }
+  .rpt-green  .rpt-line     { background: #22c55e; }
+
+  .rpt-gold   { border-color: rgba(245,158,11,.18); }
+  .rpt-gold:hover   { border-color: rgba(245,158,11,.55); box-shadow: 0 14px 44px rgba(245,158,11,.16); }
+  .rpt-gold   .rpt-overlay  { background: rgba(170,100,5,.6); }
+  .rpt-gold   .rpt-view-btn { background: #f59e0b; }
+  .rpt-gold   .rpt-num      { background: #f59e0b; box-shadow: 0 2px 12px rgba(245,158,11,.55); }
+  .rpt-gold   .rpt-tag      { color: #f59e0b; }
+  .rpt-gold   .rpt-line     { background: #f59e0b; }
+
+  .rpt-purple { border-color: rgba(139,92,246,.18); }
+  .rpt-purple:hover { border-color: rgba(139,92,246,.55); box-shadow: 0 14px 44px rgba(139,92,246,.16); }
+  .rpt-purple .rpt-overlay  { background: rgba(90,40,180,.6); }
+  .rpt-purple .rpt-view-btn { background: #8b5cf6; }
+  .rpt-purple .rpt-num      { background: #8b5cf6; box-shadow: 0 2px 12px rgba(139,92,246,.55); }
+  .rpt-purple .rpt-tag      { color: #8b5cf6; }
+  .rpt-purple .rpt-line     { background: #8b5cf6; }
+
+  .rpt-cyan   { border-color: rgba(6,182,212,.18); }
+  .rpt-cyan:hover   { border-color: rgba(6,182,212,.55);  box-shadow: 0 14px 44px rgba(6,182,212,.16); }
+  .rpt-cyan   .rpt-overlay  { background: rgba(4,120,145,.6); }
+  .rpt-cyan   .rpt-view-btn { background: #06b6d4; }
+  .rpt-cyan   .rpt-num      { background: #06b6d4; box-shadow: 0 2px 12px rgba(6,182,212,.55); }
+  .rpt-cyan   .rpt-tag      { color: #06b6d4; }
+  .rpt-cyan   .rpt-line     { background: #06b6d4; }
+
+  /* Bottom CTA strip */
+  .rpt-cta-strip {
+    background: linear-gradient(135deg, rgba(232,0,28,.07) 0%, rgba(139,92,246,.05) 100%);
+    border: 1px solid rgba(232,0,28,.16);
+    border-radius: 14px; padding: 22px 28px;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    flex-wrap: wrap;
+  }
+  .rpt-cta-text h4 {
+    font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 700;
+    color: #fff; margin-bottom: 4px;
+  }
+  .rpt-cta-text p { font-size: 13px; color: #666; }
+  .rpt-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+  .rpt-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+    border-radius: 20px; padding: 5px 13px; font-size: 11px; color: #888;
+    font-weight: 500;
+  }
   .pay-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 24px; }
   .pay-row img { height: 28px; width: auto; opacity: .85; transition: opacity .2s; }
   .pay-row img:hover { opacity: 1; }
@@ -733,9 +1846,13 @@
   .float-btn-icon { animation: floatPulse 2.4s ease-out infinite; }
   @media (max-width: 900px) {
     .reports-grid { grid-template-columns: repeat(2, 1fr); }
+    .rpt-featured { grid-column: span 2; }
+    .rpt-cta-strip { flex-direction: column; align-items: flex-start; }
   }
   @media (max-width: 600px) {
     .reports-grid { grid-template-columns: 1fr; }
+    .rpt-featured { grid-column: span 1; }
+    .rpt-featured .rpt-img-wrap img { height: 200px; }
   }
 
   /* ===== POPUP MODAL ===== */
@@ -1025,14 +2142,14 @@
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
     .pricing-grid { grid-template-columns: repeat(2, 1fr); }
     .testi-grid { grid-template-columns: 1fr 1fr; }
-    .steps-container { grid-template-columns: 1fr; }
+    .steps-layout { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
     .nav-links { display: none; }
+    .nav-divider { display: none; }
     .hamburger { display: flex; }
     .nav-cta { display: none !important; }
-    .nav-brand-text { display: none; }
-    nav { padding: 14px 20px; }
+    nav { padding: 0 20px; }
   }
   @media (max-width: 600px) {
     .services-grid, .stats-grid, .testi-grid { grid-template-columns: 1fr; }
@@ -1055,20 +2172,27 @@
 <body>
 
 <!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo" style="text-decoration:none;display:flex;align-items:center;gap:10px;">
+<nav id="mainNav">
+  <a href="#home" class="nav-logo">
     <img src="images/logo.png" alt="AdsTube Logo" class="nav-logo-img">
-    <span class="nav-brand-text" style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;letter-spacing:1px;color:#fff;">ADS<span style="color:var(--red)">TUBE</span>.IN</span>
   </a>
-  <ul class="nav-links">
-    <li><a href="#home">Home</a></li>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home"     class="nav-active">Home</a></li>
     <li><a href="#about">About Us</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#reports">Portfolio</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="https://api.whatsapp.com/send?phone=918756655744" class="nav-cta" style="text-decoration:none;display:inline-block;">Get a Quote</a>
+
+  <div class="nav-divider"></div>
+
+  <a href="https://api.whatsapp.com/send?phone=918756655744" class="nav-cta">
+    Get a Quote
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+
   <button class="hamburger" id="hamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
@@ -1076,12 +2200,13 @@
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#home" onclick="closeMobileMenu()">Home</a>
-  <a href="#about" onclick="closeMobileMenu()">About Us</a>
+  <a href="#home"     onclick="closeMobileMenu()">Home</a>
+  <a href="#about"    onclick="closeMobileMenu()">About Us</a>
   <a href="#services" onclick="closeMobileMenu()">Services</a>
-  <a href="#pricing" onclick="closeMobileMenu()">Pricing</a>
-  <a href="#reports" onclick="closeMobileMenu()">Portfolio</a>
-  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  <a href="#pricing"  onclick="closeMobileMenu()">Pricing</a>
+  <a href="#reports"  onclick="closeMobileMenu()">Portfolio</a>
+  <a href="#contact"  onclick="closeMobileMenu()">Contact</a>
+  <a href="https://api.whatsapp.com/send?phone=918756655744" class="mobile-menu-cta" onclick="closeMobileMenu()">Get a Quote →</a>
 </div>
 
 <!-- FLOATING WHATSAPP — bottom left -->
@@ -1120,22 +2245,36 @@
 <section class="hero" id="home">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
+  <div class="hero-scan"></div>
+  <div class="hero-corner hero-corner-tl"></div>
+  <div class="hero-corner hero-corner-br"></div>
+
   <div class="hero-content fade-up">
-    <div class="hero-badge">🚀 YouTube Promotion Powered by Google Ads</div>
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      YouTube Promotion Powered by Google Ads
+    </div>
+
     <h1>
       YOUTUBE PROMOTION<br>
       <span class="accent">SERVICES</span> IN INDIA
     </h1>
+
     <p class="hero-sub">
       Supercharge your YouTube channel's growth with AdsTube.<br>
       <b>Genuine views, real subscribers</b>, expert strategies and dedicated support.
     </p>
+
     <div class="hero-btns">
-      <a href="#pricing" class="btn-primary">View All Plans</a>
+      <a href="#pricing" class="btn-primary">
+        View All Plans
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
       <a href="#contact" class="btn-ghost">Get a Free Consultation</a>
     </div>
+
     <div class="hero-trust">
-      <div class="trust-item"><span class="trust-dot"></span> Real Views & Real Subscribers</div>
+      <div class="trust-item"><span class="trust-dot"></span> Real Views &amp; Real Subscribers</div>
       <div class="trust-item"><span class="trust-dot"></span> Google Ads Powered</div>
       <div class="trust-item"><span class="trust-dot"></span> Transparent Reporting</div>
     </div>
@@ -1145,24 +2284,32 @@
 <!-- STATS -->
 <div class="stats">
   <div class="stats-grid fade-up">
-    <div>
-      <img src="images/icons/fact-workshop.png" alt="Videos Promoted" class="stat-icon">
-      <div class="stat-num">125<span>K</span></div>
+    <div class="stat-card">
+      <div class="stat-icon-wrap">
+        <img src="images/icons/fact-workshop.png" alt="Videos Promoted" class="stat-icon">
+      </div>
+      <div class="stat-num">125<span class="suf">K</span></div>
       <div class="stat-label">Videos Promoted</div>
     </div>
-    <div>
-      <img src="images/icons/fact-speaker.png" alt="Views Delivered" class="stat-icon">
-      <div class="stat-num">1300<span>M</span></div>
+    <div class="stat-card">
+      <div class="stat-icon-wrap">
+        <img src="images/icons/fact-speaker.png" alt="Views Delivered" class="stat-icon">
+      </div>
+      <div class="stat-num">1300<span class="suf">M</span></div>
       <div class="stat-label">Views Delivered</div>
     </div>
-    <div>
-      <img src="images/icons/fact-sponsor.png" alt="Subscribers Given" class="stat-icon">
-      <div class="stat-num">132<span>M</span></div>
+    <div class="stat-card">
+      <div class="stat-icon-wrap">
+        <img src="images/icons/fact-sponsor.png" alt="Subscribers Given" class="stat-icon">
+      </div>
+      <div class="stat-num">132<span class="suf">M</span></div>
       <div class="stat-label">Subscribers Given</div>
     </div>
-    <div>
-      <img src="images/icons/fact-country.png" alt="Watch Time" class="stat-icon">
-      <div class="stat-num">925<span>K</span></div>
+    <div class="stat-card">
+      <div class="stat-icon-wrap">
+        <img src="images/icons/fact-country.png" alt="Watch Time" class="stat-icon">
+      </div>
+      <div class="stat-num">925<span class="suf">K</span></div>
       <div class="stat-label">Watch Time Achieved</div>
     </div>
   </div>
@@ -1354,112 +2501,302 @@
   <div class="max-w">
     <div class="section-tag">How We Work</div>
     <h2 class="section-title">Our 5-Step Process For<br>YouTube Video Promotion</h2>
-    <p class="section-sub">AdsTube provides cheap and real YouTube views at an affordable price. We follow organic methods through these five steps to grow your channel.</p>
-    <div class="steps-container">
-      <div class="step-list fade-up">
-        <div class="step-item">
-          <div class="step-num">01</div>
-          <div class="step-text">
+    <p class="section-sub">We follow a proven, organic 5-step method powered by Google Ads to grow your channel with real viewers and lasting results.</p>
+
+    <div class="steps-layout">
+
+      <!-- LEFT: Timeline -->
+      <div class="steps-timeline fade-up">
+        <div class="timeline-track"></div>
+
+        <div class="step-card">
+          <div class="step-node sn-1">01</div>
+          <div class="step-content">
+            <div class="step-tag-label st-1">Step 01</div>
             <h3>Understand Your Audience</h3>
             <p>We begin by gaining a deep understanding of your target audience — their demographics, interests and preferences — to connect your channel with the right viewers.</p>
           </div>
         </div>
-        <div class="step-item">
-          <div class="step-num">02</div>
-          <div class="step-text">
+
+        <div class="step-card">
+          <div class="step-node sn-2">02</div>
+          <div class="step-content">
+            <div class="step-tag-label st-2">Step 02</div>
             <h3>Highly Targeted YouTube Ads</h3>
-            <p>We craft compelling, targeted ad campaigns using advanced targeting options like demographics, interests and keywords to maximize your reach and impact.</p>
+            <p>We craft compelling, targeted ad campaigns using advanced targeting options like demographics, interests and keywords to maximise your reach and impact.</p>
           </div>
         </div>
-        <div class="step-item">
-          <div class="step-num">03</div>
-          <div class="step-text">
-            <h3>Get Real Views & Real Subscribers</h3>
+
+        <div class="step-card">
+          <div class="step-node sn-3">03</div>
+          <div class="step-content">
+            <div class="step-tag-label st-3">Step 03</div>
+            <h3>Get Real Views &amp; Real Subscribers</h3>
             <p>We bring you genuine views and subscribers who are actually interested in your content — focused on long-term organic growth rather than temporary shortcuts.</p>
           </div>
         </div>
-        <div class="step-item">
-          <div class="step-num">04</div>
-          <div class="step-text">
+
+        <div class="step-card">
+          <div class="step-node sn-4">04</div>
+          <div class="step-content">
+            <div class="step-tag-label st-4">Step 04</div>
             <h3>Customized Solutions</h3>
-            <p>Every YouTube channel is unique. We tailor promotion strategies, keyword research and optimization techniques to your specific niche, content and goals.</p>
+            <p>Every YouTube channel is unique. We tailor promotion strategies, keyword research and optimisation techniques to your specific niche, content and goals.</p>
           </div>
         </div>
-        <div class="step-item">
-          <div class="step-num">05</div>
-          <div class="step-text">
+
+        <div class="step-card">
+          <div class="step-node sn-5">05</div>
+          <div class="step-content">
+            <div class="step-tag-label st-5">Step 05</div>
             <h3>Transparent Reporting</h3>
-            <p>We provide regular reports and analytics — view counts, subscriber growth, engagement metrics — so you can track progress and measure the success of every campaign.</p>
+            <p>We provide regular reports and analytics — view counts, subscriber growth, engagement metrics — so you can track progress and measure every campaign's success.</p>
           </div>
         </div>
+
       </div>
-      <div class="fade-up" style="display:flex;flex-direction:column;gap:18px;align-items:center;justify-content:center;">
-        <img src="images/indimg/audiance.png" alt="Understand Audience" class="step-img">
-        <img src="images/indimg/ads.png" alt="Targeted Ads" class="step-img">
-        <img src="images/indimg/tranparent.png" alt="Transparent Reporting" class="step-img">
+
+      <!-- RIGHT: Results Panel -->
+      <div class="steps-panel fade-up">
+
+        <!-- Campaign card with progress bars -->
+        <div class="panel-card">
+          <div class="panel-live">
+            <span class="panel-live-dot"></span>Campaign Live
+          </div>
+          <div class="panel-heading">Channel Growth Results</div>
+
+          <div class="prog-item">
+            <div class="prog-label">
+              <span>Views Delivered</span>
+              <span class="prog-pct prog-pct-r">92%</span>
+            </div>
+            <div class="prog-bar"><div class="prog-fill pf-r"></div></div>
+          </div>
+          <div class="prog-item">
+            <div class="prog-label">
+              <span>Subscriber Gain</span>
+              <span class="prog-pct prog-pct-b">85%</span>
+            </div>
+            <div class="prog-bar"><div class="prog-fill pf-b"></div></div>
+          </div>
+          <div class="prog-item">
+            <div class="prog-label">
+              <span>Watch Time Growth</span>
+              <span class="prog-pct prog-pct-g">78%</span>
+            </div>
+            <div class="prog-bar"><div class="prog-fill pf-g"></div></div>
+          </div>
+
+          <div class="panel-divider"></div>
+
+          <div class="panel-metrics">
+            <div class="panel-metric">
+              <div class="metric-val mv-r">125K</div>
+              <div class="metric-lbl">Videos Promoted</div>
+            </div>
+            <div class="panel-metric">
+              <div class="metric-val mv-b">1.3B</div>
+              <div class="metric-lbl">Views Delivered</div>
+            </div>
+            <div class="panel-metric">
+              <div class="metric-val mv-g">132M</div>
+              <div class="metric-lbl">Subscribers Given</div>
+            </div>
+            <div class="panel-metric">
+              <div class="metric-val mv-y">925K</div>
+              <div class="metric-lbl">Watch Hours</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mini bottom card -->
+        <div class="panel-mini">
+          <div class="panel-mini-left">
+            <h4>Proven 5-Step Framework</h4>
+            <p>Trusted by 125,000+ creators across India since 2018</p>
+          </div>
+          <div class="panel-mini-num">5</div>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
 
 <!-- ABOUT / VIDEO -->
-<section class="services" id="about" style="padding-top:80px;">
+<section class="about-section" id="about">
   <div class="max-w">
-    <div class="section-tag">About AdsTube</div>
-    <h2 class="section-title">Increase Subscribers And Views<br>With Our YouTube Promotion</h2>
-    <p class="section-sub">At AdsTube, we specialise in exceptional YouTube Promotion Services that help you expand your channel and boost visibility by reaching a wider audience.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;" class="fade-up">
-      <a href="https://www.youtube.com/embed/ZVqfF13lmeY" target="_blank" style="display:block;position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--border);">
-        <img src="images/shrista-maurya-video-thumbnail.jpg" alt="About AdsTube" style="width:100%;display:block;">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.35);">
-          <div style="width:72px;height:72px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;box-shadow:0 0 35px var(--red-glow);">▶</div>
+    <div class="about-grid fade-up">
+
+      <!-- Left: Video Thumbnail -->
+      <a href="https://www.youtube.com/embed/ZVqfF13lmeY" target="_blank" class="about-video">
+        <img src="images/shrista-maurya-video-thumbnail.jpg" alt="About AdsTube — Watch Our Story">
+        <div class="about-video-overlay">
+          <div class="about-play">▶</div>
+        </div>
+        <div class="about-watch-pill">
+          <span>●</span> Watch Our Story
         </div>
       </a>
-      <div>
-        <p style="color:#aaa;font-size:15px;line-height:1.8;margin-bottom:18px;">
-          Our team of experts will boost your channel visibility and employ effective techniques to increase your engagement and interactions, attract organic YouTube viewers, and engage with your target audience.
+
+      <!-- Right: Text Content -->
+      <div class="about-text">
+        <div class="about-tag-pill">🎯 About AdsTube</div>
+
+        <h2 class="about-title">
+          Increase <span class="abt-accent">Subscribers</span><br>&amp; Views With Us
+        </h2>
+        <div class="about-rule"></div>
+
+        <p class="about-desc">
+          Our team of experts will boost your channel visibility and employ effective techniques to increase your engagement and interactions, attract organic YouTube viewers, and connect with your target audience.
         </p>
-        <p style="color:#aaa;font-size:15px;line-height:1.8;margin-bottom:28px;">
-          From optimising your videos to targeting the right keywords, we'll implement customised strategies to ensure your YouTube channel experiences substantial growth.
+        <p class="about-desc">
+          From optimising your videos to targeting the right keywords, we'll implement customised strategies to ensure your YouTube channel experiences substantial, lasting growth.
         </p>
-        <a href="https://adstube.in/About-Adstube" class="btn-primary" style="display:inline-block;">Know More</a>
+
+        <div class="about-features">
+          <div class="about-feat">
+            <div class="about-feat-icon afi-red">📢</div>
+            <span><strong>Google Ads Powered</strong> — Real traffic from Google's ad network, zero bots</span>
+          </div>
+          <div class="about-feat">
+            <div class="about-feat-icon afi-blue">🎯</div>
+            <span><strong>Expert Campaign Management</strong> — Dedicated team handling every campaign</span>
+          </div>
+          <div class="about-feat">
+            <div class="about-feat-icon afi-grn">📊</div>
+            <span><strong>Transparent Reporting</strong> — Full analytics access with every order</span>
+          </div>
+        </div>
+
+        <div class="about-cta-row">
+          <a href="https://adstube.in/About-Adstube" class="btn-primary" style="text-decoration:none;display:inline-block;">Know More →</a>
+          <div class="about-stat-chip">
+            <div class="about-stat-dot"></div>
+            <b>125K+</b>&nbsp;Creators Served
+          </div>
+          <div class="about-stat-chip">
+            <div class="about-stat-dot"></div>
+            Since&nbsp;<b>2018</b>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- REPORT SAMPLES -->
-<section class="pricing" id="reports">
+<section class="reports-section" id="reports">
   <div class="max-w">
     <div class="section-tag">Portfolio</div>
     <h2 class="section-title">YouTube Promotion<br>Report Samples</h2>
-    <p class="section-sub">Real performance data from real campaigns. Here's what transparent reporting actually looks like.</p>
+    <p class="section-sub">Real performance data from real campaigns. Every order includes full analytics access — here's what transparent reporting actually looks like.</p>
+
     <div class="reports-grid fade-up">
-      <div class="report-card">
-        <img src="images/reports/skip-and-discovery-ad-visual.png" alt="Skip And Discovery Ad Visual">
-        <h4>Youtube Video Skip And Discovery Ad Visual</h4>
+
+      <!-- 01 Featured — Skip & Discovery (Red) -->
+      <div class="rpt-card rpt-red rpt-featured">
+        <div class="rpt-img-wrap">
+          <img src="images/reports/skip-and-discovery-ad-visual.png" alt="Skip And Discovery Ad Visual">
+          <div class="rpt-overlay"><div class="rpt-view-btn">View Report →</div></div>
+          <div class="rpt-num">01</div>
+        </div>
+        <div class="rpt-body">
+          <div class="rpt-tag">Ad Performance</div>
+          <h4 class="rpt-title">YouTube Video Skip &amp; Discovery Ad Visual</h4>
+          <div class="rpt-line"></div>
+        </div>
       </div>
-      <div class="report-card">
-        <img src="images/reports/youtube-gender-wise-views-statistic.png" alt="Gender Wise Views Statistic">
-        <h4>Youtube Gender Wise Views Statistic</h4>
+
+      <!-- 02 Gender Statistics (Blue) -->
+      <div class="rpt-card rpt-blue">
+        <div class="rpt-img-wrap">
+          <img src="images/reports/youtube-gender-wise-views-statistic.png" alt="Gender Wise Views Statistic">
+          <div class="rpt-overlay"><div class="rpt-view-btn">View Report →</div></div>
+          <div class="rpt-num">02</div>
+        </div>
+        <div class="rpt-body">
+          <div class="rpt-tag">Demographics</div>
+          <h4 class="rpt-title">Gender Wise Views Statistic</h4>
+          <div class="rpt-line"></div>
+        </div>
       </div>
-      <div class="report-card">
-        <img src="images/reports/youtube-video-ads-interaction-according-geographic-location.png" alt="Ads Interaction by Geographic Location">
-        <h4>Ads Interaction by Geographic Location</h4>
+
+      <!-- 03 Geographic (Green) -->
+      <div class="rpt-card rpt-green">
+        <div class="rpt-img-wrap">
+          <img src="images/reports/youtube-video-ads-interaction-according-geographic-location.png" alt="Ads Interaction by Geographic Location">
+          <div class="rpt-overlay"><div class="rpt-view-btn">View Report →</div></div>
+          <div class="rpt-num">03</div>
+        </div>
+        <div class="rpt-body">
+          <div class="rpt-tag">Geographic</div>
+          <h4 class="rpt-title">Ads Interaction by Geographic Location</h4>
+          <div class="rpt-line"></div>
+        </div>
       </div>
-      <div class="report-card">
-        <img src="images/reports/youtube-video-performance-report-according-devices.png" alt="Performance Report by Devices">
-        <h4>Performance Report by Devices</h4>
+
+      <!-- 04 Devices (Gold) -->
+      <div class="rpt-card rpt-gold">
+        <div class="rpt-img-wrap">
+          <img src="images/reports/youtube-video-performance-report-according-devices.png" alt="Performance Report by Devices">
+          <div class="rpt-overlay"><div class="rpt-view-btn">View Report →</div></div>
+          <div class="rpt-num">04</div>
+        </div>
+        <div class="rpt-body">
+          <div class="rpt-tag">Device Breakdown</div>
+          <h4 class="rpt-title">Performance Report by Devices</h4>
+          <div class="rpt-line"></div>
+        </div>
       </div>
-      <div class="report-card">
-        <img src="images/reports/youtube-analytics-graph-visual11.png" alt="Analytics Graph Visual">
-        <h4>Youtube Analytics Graph Visual</h4>
+
+      <!-- 05 Analytics Graph (Purple) -->
+      <div class="rpt-card rpt-purple">
+        <div class="rpt-img-wrap">
+          <img src="images/reports/youtube-analytics-graph-visual11.png" alt="Analytics Graph Visual">
+          <div class="rpt-overlay"><div class="rpt-view-btn">View Report →</div></div>
+          <div class="rpt-num">05</div>
+        </div>
+        <div class="rpt-body">
+          <div class="rpt-tag">Analytics</div>
+          <h4 class="rpt-title">YouTube Analytics Graph Visual</h4>
+          <div class="rpt-line"></div>
+        </div>
       </div>
-      <div class="report-card">
-        <img src="images/reports/youtube-video-performance-report-according-day-by-day.png" alt="Performance Report Day by Day">
-        <h4>Performance Report by Day or Hour</h4>
+
+      <!-- 06 Day by Day (Cyan) -->
+      <div class="rpt-card rpt-cyan">
+        <div class="rpt-img-wrap">
+          <img src="images/reports/youtube-video-performance-report-according-day-by-day.png" alt="Performance Report Day by Day">
+          <div class="rpt-overlay"><div class="rpt-view-btn">View Report →</div></div>
+          <div class="rpt-num">06</div>
+        </div>
+        <div class="rpt-body">
+          <div class="rpt-tag">Timeline</div>
+          <h4 class="rpt-title">Performance Report by Day or Hour</h4>
+          <div class="rpt-line"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom data strip -->
+    <div class="rpt-cta-strip fade-up">
+      <div class="rpt-cta-text">
+        <h4>Every Order Includes Full Report Access</h4>
+        <p>Track views, subscribers, watch time, demographics &amp; geographic data — all in one place.</p>
+      </div>
+      <div class="rpt-badges">
+        <div class="rpt-badge">📊 Real-Time Data</div>
+        <div class="rpt-badge">🌍 Geographic Insights</div>
+        <div class="rpt-badge">📱 Device Breakdown</div>
+        <div class="rpt-badge">👥 Demographics</div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -1469,51 +2806,117 @@
     <div class="section-tag">YouTube Client's Feedback</div>
     <h2 class="section-title">Real Results From<br>Real Creators</h2>
     <p class="section-sub">Hear from the creators we've worked with — real reviews from real YouTube channel owners.</p>
-    <div class="testi-grid fade-up" style="grid-template-columns:repeat(2,1fr);max-width:900px;margin:0 auto;">
-      <div class="testi-card">
-        <div class="stars">★★★★★</div>
+
+    <!-- Rating summary strip -->
+    <div class="testi-summary fade-up">
+      <div class="testi-sum-item">
+        <div class="testi-sum-val">4.9<em>★</em></div>
+        <div class="testi-sum-label">
+          <b>Average Rating</b>
+          <span>Across all campaigns</span>
+        </div>
+      </div>
+      <div class="testi-sum-sep"></div>
+      <div class="testi-sum-item">
+        <div class="testi-sum-val">125<em>K</em></div>
+        <div class="testi-sum-label">
+          <b>Happy Creators</b>
+          <span>Served since 2018</span>
+        </div>
+      </div>
+      <div class="testi-sum-sep"></div>
+      <div class="testi-sum-item">
+        <div class="testi-sum-val">100<em>%</em></div>
+        <div class="testi-sum-label">
+          <b>Verified Reviews</b>
+          <span>Real people, real results</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial cards -->
+    <div class="testi-grid fade-up">
+
+      <!-- Dr. DD — Red -->
+      <div class="testi-card tc-red">
+        <div class="testi-qmark">"</div>
+        <div class="testi-stars">
+          <span class="testi-star">★</span><span class="testi-star">★</span>
+          <span class="testi-star">★</span><span class="testi-star">★</span>
+          <span class="testi-star">★</span>
+        </div>
         <p class="testi-text">"Best employers I came across with — since it's our first project with Adstube, it was a pleasure to get an opportunity to work with the Adstube team."</p>
+        <div class="testi-divider"></div>
         <div class="testi-author">
           <div class="author-avatar has-img"><img src="images/clients/Dr.DD.jpg" alt="Dr.DD"></div>
-          <div>
+          <div class="author-info">
             <div class="author-name">Dr. DD</div>
             <div class="author-handle">YouTube Creator</div>
           </div>
+          <div class="author-verified">✓ Verified</div>
         </div>
       </div>
-      <div class="testi-card">
-        <div class="stars">★★★★★</div>
+
+      <!-- Dream Chaser — Blue -->
+      <div class="testi-card tc-blue">
+        <div class="testi-qmark">"</div>
+        <div class="testi-stars">
+          <span class="testi-star">★</span><span class="testi-star">★</span>
+          <span class="testi-star">★</span><span class="testi-star">★</span>
+          <span class="testi-star">★</span>
+        </div>
         <p class="testi-text">"The Adstube team is top notch — they are a full package. Not only in technical aspects, they also communicate better and guide you well enough."</p>
+        <div class="testi-divider"></div>
         <div class="testi-author">
           <div class="author-avatar has-img"><img src="images/clients/DREAM CHASER.jpg" alt="Dream Chaser"></div>
-          <div>
+          <div class="author-info">
             <div class="author-name">Dream Chaser</div>
             <div class="author-handle">YouTube Creator</div>
           </div>
+          <div class="author-verified">✓ Verified</div>
         </div>
       </div>
-      <div class="testi-card">
-        <div class="stars">★★★★★</div>
+
+      <!-- Nazim Sha — Green -->
+      <div class="testi-card tc-green">
+        <div class="testi-qmark">"</div>
+        <div class="testi-stars">
+          <span class="testi-star">★</span><span class="testi-star">★</span>
+          <span class="testi-star">★</span><span class="testi-star">★</span>
+          <span class="testi-star">★</span>
+        </div>
         <p class="testi-text">"The entire team of Adstube is so helpful — they have guided me on every step of promotion, starting from my video making to publishing. Best service providers ever!"</p>
+        <div class="testi-divider"></div>
         <div class="testi-author">
           <div class="author-avatar has-img"><img src="images/clients/Nazim Sha.jpg" alt="Nazim Sha"></div>
-          <div>
+          <div class="author-info">
             <div class="author-name">Nazim Sha</div>
             <div class="author-handle">YouTube Creator</div>
           </div>
+          <div class="author-verified">✓ Verified</div>
         </div>
       </div>
-      <div class="testi-card">
-        <div class="stars">★★★★★</div>
+
+      <!-- Shivam Sadana — Gold -->
+      <div class="testi-card tc-gold">
+        <div class="testi-qmark">"</div>
+        <div class="testi-stars">
+          <span class="testi-star">★</span><span class="testi-star">★</span>
+          <span class="testi-star">★</span><span class="testi-star">★</span>
+          <span class="testi-star">★</span>
+        </div>
         <p class="testi-text">"Their video promotion services are quite beneficial — they use smart and innovative advertising tactics, which is so important in today's world."</p>
+        <div class="testi-divider"></div>
         <div class="testi-author">
           <div class="author-avatar has-img"><img src="images/clients/Shivam Sadana.jpg" alt="Shivam Sadana"></div>
-          <div>
+          <div class="author-info">
             <div class="author-name">Shivam Sadana</div>
             <div class="author-handle">YouTube Creator</div>
           </div>
+          <div class="author-verified">✓ Verified</div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -1523,49 +2926,113 @@
   <div class="max-w">
     <div class="section-tag">FAQ</div>
     <h2 class="section-title">Frequently Asked Questions</h2>
-    <p class="section-sub">Got questions? We have answers. If you don't find what you're looking for, contact us directly.</p>
-    <div class="faq-list fade-up">
-      <div class="faq-item open">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          Are the views and subscribers real?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-a"><p>Yes! All views and subscribers we deliver are from real people driven through Google Ads targeting. We never use bots or fake accounts. Your channel remains completely safe with genuine engagement.</p></div>
+    <p class="section-sub">Got questions? We have answers. If you don't find what you're looking for, reach out to us directly.</p>
+
+    <div class="faq-layout fade-up">
+
+      <!-- LEFT: Accordion -->
+      <div class="faq-list">
+
+        <div class="faq-item fq-red open" onclick="this.classList.toggle('open')">
+          <button class="faq-q">
+            <div class="faq-num">01</div>
+            <span class="faq-q-text">Are the views and subscribers real?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Yes! All views and subscribers we deliver are from real people driven through Google Ads targeting. We never use bots or fake accounts. Your channel remains completely safe with genuine engagement.</div></div>
+        </div>
+
+        <div class="faq-item fq-blue" onclick="this.classList.toggle('open')">
+          <button class="faq-q">
+            <div class="faq-num">02</div>
+            <span class="faq-q-text">How quickly will my views start?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Typically within 12–24 hours after your order is confirmed and payment is processed. We run a gradual delivery to ensure natural growth patterns that won't trigger any platform flags.</div></div>
+        </div>
+
+        <div class="faq-item fq-green" onclick="this.classList.toggle('open')">
+          <button class="faq-q">
+            <div class="faq-num">03</div>
+            <span class="faq-q-text">What if my views or subscribers drop?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">We offer a 30-day refill guarantee. If your delivered views or subscribers drop within 30 days of delivery, we'll refill them completely free of charge. No questions asked.</div></div>
+        </div>
+
+        <div class="faq-item fq-gold" onclick="this.classList.toggle('open')">
+          <button class="faq-q">
+            <div class="faq-num">04</div>
+            <span class="faq-q-text">What are your main methods for growth?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">We use targeted Google Ads campaigns, YouTube advertising, and social media promotion to drive real viewers to your content. All methods comply with YouTube's Terms of Service.</div></div>
+        </div>
+
+        <div class="faq-item fq-purple" onclick="this.classList.toggle('open')">
+          <button class="faq-q">
+            <div class="faq-num">05</div>
+            <span class="faq-q-text">Is the multiple video feature available?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Yes! On Viral, Elite, and Legend plans, you can split your views across multiple videos. Just mention this when placing your order and our team will set it up for you.</div></div>
+        </div>
+
+        <div class="faq-item fq-cyan" onclick="this.classList.toggle('open')">
+          <button class="faq-q">
+            <div class="faq-num">06</div>
+            <span class="faq-q-text">What is your refund policy?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">If we are unable to deliver your order within the promised timeframe, we offer a full refund. For partial deliveries, we offer a proportional refund or credit. Customer satisfaction is our top priority.</div></div>
+        </div>
+
       </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          How quickly will my views start?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-a"><p>Typically within 12–24 hours after your order is confirmed and payment is processed. We run a gradual delivery to ensure natural growth patterns that won't trigger any platform flags.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          What if my views or subscribers drop?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-a"><p>We offer a 30-day refill guarantee. If your delivered views or subscribers drop within 30 days of delivery, we'll refill them completely free of charge. No questions asked.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          What are your main methods for growth?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-a"><p>We use targeted Google Ads campaigns, YouTube advertising, and social media promotion to drive real viewers to your content. All methods comply with YouTube's Terms of Service.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          Is the multiple video feature available?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-a"><p>Yes! On Viral, Elite, and Legend plans, you can split your views across multiple videos. Just mention this when placing your order and our team will set it up for you.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          What is your refund policy?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-a"><p>If we are unable to deliver your order within the promised timeframe, we offer a full refund. For partial deliveries, we offer a proportional refund or credit. Customer satisfaction is our top priority.</p></div>
+
+      <!-- RIGHT: Contact Panel -->
+      <div class="faq-panel">
+
+        <div class="faq-panel-card">
+          <div class="faq-panel-top">
+            <h4>Still Have Questions?</h4>
+            <p>Our team replies within minutes — reach out anytime.</p>
+          </div>
+          <div class="faq-panel-body">
+            <a href="https://api.whatsapp.com/send?phone=919120647421" class="faq-cbtn fcb-wa">
+              <div class="faq-cbtn-icon">💬</div>
+              <div class="faq-cbtn-txt">
+                <b>WhatsApp Support</b>
+                <span>+91-9120647421</span>
+              </div>
+              <span class="faq-cbtn-arr">→</span>
+            </a>
+            <a href="tel:+919026232414" class="faq-cbtn fcb-call">
+              <div class="faq-cbtn-icon">📞</div>
+              <div class="faq-cbtn-txt">
+                <b>Call Us Now</b>
+                <span>+91-9026232414</span>
+              </div>
+              <span class="faq-cbtn-arr">→</span>
+            </a>
+            <a href="mailto:contact@adstube.in" class="faq-cbtn fcb-mail">
+              <div class="faq-cbtn-icon">✉️</div>
+              <div class="faq-cbtn-txt">
+                <b>Email Support</b>
+                <span>contact@adstube.in</span>
+              </div>
+              <span class="faq-cbtn-arr">→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="faq-guarantee">
+          <div class="faq-gicon">🛡️</div>
+          <div class="faq-gtxt">
+            <h5>30-Day Refill Guarantee</h5>
+            <p>Views drop? We refill them free — no questions asked.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -1573,112 +3040,233 @@
 
 <!-- GUARANTEE -->
 <section class="guarantee">
-  <div class="guarantee-content fade-up">
-    <div class="guarantee-icon">🛡</div>
-    <h2>The AdsTube Guarantee</h2>
-    <p>We stand behind every order with our iron-clad guarantee. Real views, real growth, real results — or your money back. No questions asked.</p>
-    <div class="guarantee-badges">
-      <div class="g-badge"><span class="g-dot"></span> Real Views Only</div>
-      <div class="g-badge"><span class="g-dot"></span> 30-Day Refill</div>
-      <div class="g-badge"><span class="g-dot"></span> Safe & Secure</div>
-      <div class="g-badge"><span class="g-dot"></span> Money Back Guarantee</div>
+  <div class="guarantee-inner">
+
+    <div class="guar-hero fade-up">
+      <div class="section-tag">Our Promise</div>
+      <div class="guar-shield">
+        <img src="images/logo.png" alt="AdsTube">
+      </div>
+      <h2>The AdsTube Guarantee</h2>
+      <p>We stand behind every order with our iron-clad guarantee. Real views, real growth, real results — or your money back. No questions asked.</p>
     </div>
-    <a href="#" class="btn-primary">Get Started — Risk Free</a>
+
+    <div class="guar-grid fade-up">
+      <div class="guar-card">
+        <div class="guar-card-header gc-red">
+          <img src="images/logo.png" alt="">
+        </div>
+        <div class="guar-card-body">
+          <h3>Real Views Only</h3>
+          <p>100% authentic views from real users. No bots, no fake traffic — only genuine engagement YouTube counts.</p>
+        </div>
+      </div>
+      <div class="guar-card">
+        <div class="guar-card-header gc-blue">
+          <img src="images/logo.png" alt="">
+        </div>
+        <div class="guar-card-body">
+          <h3>30-Day Refill</h3>
+          <p>If delivered views or subscribers drop within 30 days, we refill them completely free — no questions, no delays.</p>
+        </div>
+      </div>
+      <div class="guar-card">
+        <div class="guar-card-header gc-grn">
+          <img src="images/logo.png" alt="">
+        </div>
+        <div class="guar-card-body">
+          <h3>Safe & Secure</h3>
+          <p>100% ToS-compliant methods. Your channel is never at risk — only safe, algorithm-friendly delivery.</p>
+        </div>
+      </div>
+      <div class="guar-card">
+        <div class="guar-card-header gc-gold">
+          <img src="images/logo.png" alt="">
+        </div>
+        <div class="guar-card-body">
+          <h3>Money Back Guarantee</h3>
+          <p>Not satisfied? We'll refund you fully, no questions asked. Your investment is 100% protected with us.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="guar-trust fade-up">
+      <div class="guar-trust-item">
+        <div class="guar-trust-num gtn-red">50K+</div>
+        <div class="guar-trust-label">Happy Clients</div>
+      </div>
+      <div class="guar-trust-item">
+        <div class="guar-trust-num gtn-blue">100%</div>
+        <div class="guar-trust-label">Real Views</div>
+      </div>
+      <div class="guar-trust-item">
+        <div class="guar-trust-num gtn-grn">30-Day</div>
+        <div class="guar-trust-label">Refill Protection</div>
+      </div>
+      <div class="guar-trust-item">
+        <div class="guar-trust-num gtn-gold">24/7</div>
+        <div class="guar-trust-label">Live Support</div>
+      </div>
+    </div>
+
+    <div class="guar-cta fade-up">
+      <a href="#" class="btn-primary">Get Started — Risk Free</a>
+    </div>
+
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta-section">
-  <div style="position:relative;z-index:2;max-width:700px;margin:0 auto">
-    <div class="section-tag">Stop Waiting</div>
-    <h2>
-      YOUR CHANNEL WON'T
-      <span class="red-line">GROW ITSELF.</span>
+  <div class="cta-bg-grid"></div>
+  <div class="cta-bg-glow"></div>
+  <div class="cta-streak cta-streak-1"></div>
+  <div class="cta-streak cta-streak-2"></div>
+
+  <div class="cta-inner">
+    <div class="cta-badge">
+      <span class="cta-badge-dot"></span>
+      Stop Waiting
+    </div>
+
+    <h2 class="cta-heading">
+      <span class="cta-heading-line1">YOUR CHANNEL WON'T</span>
+      <span class="cta-heading-accent">GROW ITSELF.</span>
     </h2>
-    <p>Drop the "wait and see" mentality. The best time to start growing was yesterday. The second best time is right now.</p>
-    <a href="#" class="btn-primary">Find Your Campaign</a>
+
+    <div class="cta-divider">
+      <span class="cta-divider-line left"></span>
+      <span class="cta-divider-icon">&#9654;</span>
+      <span class="cta-divider-line right"></span>
+    </div>
+
+    <p class="cta-desc">
+      Drop the <strong>"wait and see"</strong> mentality. The best time to start growing was yesterday. The second best time is <em>right now.</em>
+    </p>
+
+    <div class="cta-buttons">
+      <a href="#pricing" class="cta-btn-main">
+        Find Your Campaign
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#contact" class="cta-btn-ghost">Talk to an Expert</a>
+    </div>
+
+    <div class="cta-proof">
+      <div class="cta-proof-item">
+        <span class="cta-proof-num">10,000+</span>
+        <span class="cta-proof-label">Channels Grown</span>
+      </div>
+      <div class="cta-proof-sep"></div>
+      <div class="cta-proof-item">
+        <span class="cta-proof-num">4.9&#9733;</span>
+        <span class="cta-proof-label">Average Rating</span>
+      </div>
+      <div class="cta-proof-sep"></div>
+      <div class="cta-proof-item">
+        <span class="cta-proof-num">No Risk</span>
+        <span class="cta-proof-label">30-Day Guarantee</span>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
-  <div class="max-w">
-    <div class="section-tag">Enquiry Now</div>
+  <div class="contact-wrap">
+
+    <div class="contact-header fade-up">
+      <div class="section-tag">Enquiry Now</div>
+      <h2>LET'S TALK ABOUT YOUR <span>YOUTUBE GROWTH</span></h2>
+      <p>Have questions? Our team of YouTube growth experts is ready to help you craft the perfect promotion strategy for your channel.</p>
+    </div>
+
     <div class="contact-grid">
-      <div class="contact-left fade-up">
-        <h2>LET'S TALK ABOUT YOUR YOUTUBE GROWTH</h2>
-        <p style="color:#777;font-size:15px;line-height:1.7;margin-bottom:36px;">Have questions? Our team of YouTube growth experts is ready to help you craft the perfect promotion strategy for your channel.</p>
+
+      <!-- Left: Info -->
+      <div class="contact-info-card fade-up">
         <div class="contact-methods">
-          <div class="contact-method">
-            <div class="c-icon">📞</div>
-            <div>
-              <div class="c-label">Call Us</div>
-              <a href="tel:+919026232414" class="c-val" style="text-decoration:none;color:#ccc;">+91-9026232414</a>
+          <a href="tel:+919026232414" class="contact-method">
+            <div class="cm-icon red">📞</div>
+            <div class="cm-text">
+              <div class="cm-label">Call Us</div>
+              <div class="cm-val">+91-9026232414</div>
             </div>
-          </div>
-          <div class="contact-method">
-            <div class="c-icon">💬</div>
-            <div>
-              <div class="c-label">WhatsApp Support</div>
-              <a href="https://api.whatsapp.com/send?phone=919120647421" class="c-val" style="text-decoration:none;color:#ccc;">+91-9120647421</a>
+            <span class="cm-arrow">›</span>
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=919120647421" class="contact-method">
+            <div class="cm-icon green">💬</div>
+            <div class="cm-text">
+              <div class="cm-label">WhatsApp Support</div>
+              <div class="cm-val">+91-9120647421</div>
             </div>
-          </div>
-          <div class="contact-method">
-            <div class="c-icon">✉</div>
-            <div>
-              <div class="c-label">Email Us</div>
-              <a href="mailto:contact@adstube.in" class="c-val" style="text-decoration:none;color:#ccc;">contact@adstube.in</a>
+            <span class="cm-arrow">›</span>
+          </a>
+          <a href="mailto:contact@adstube.in" class="contact-method">
+            <div class="cm-icon amber">✉</div>
+            <div class="cm-text">
+              <div class="cm-label">Email Us</div>
+              <div class="cm-val">contact@adstube.in</div>
             </div>
-          </div>
-          <div class="contact-method">
-            <div class="c-icon">🏢</div>
-            <div>
-              <div class="c-label">Company</div>
-              <div class="c-val">Inonego Services Pvt. Ltd. — India</div>
+            <span class="cm-arrow">›</span>
+          </a>
+          <div class="contact-method" style="cursor:default;">
+            <div class="cm-icon indigo">🏢</div>
+            <div class="cm-text">
+              <div class="cm-label">Company</div>
+              <div class="cm-val">Inonego Services Pvt. Ltd. — India</div>
             </div>
           </div>
         </div>
+
+        <div class="contact-pay-label">Accepted Payments</div>
         <div class="pay-row">
-          <img src="images/payment/visa.svg" alt="Visa">
-          <img src="images/payment/mastercard.svg" alt="Mastercard">
-          <img src="images/payment/rupay.svg" alt="RuPay">
-          <img src="images/payment/upi.svg" alt="UPI">
-          <img src="images/payment/net-banking.svg" alt="Net Banking">
+          <div class="pay-pill"><img src="images/payment/visa.svg" alt="Visa"></div>
+          <div class="pay-pill"><img src="images/payment/mastercard.svg" alt="Mastercard"></div>
+          <div class="pay-pill"><img src="images/payment/rupay.svg" alt="RuPay"></div>
+          <div class="pay-pill"><img src="images/payment/upi.svg" alt="UPI"></div>
+          <div class="pay-pill"><img src="images/payment/net-banking.svg" alt="Net Banking"></div>
         </div>
       </div>
-      <div class="fade-up">
+
+      <!-- Right: Form -->
+      <div class="contact-form-card fade-up">
         <div class="contact-form">
           <div class="form-row">
             <div class="form-group">
-              <label>Your Name</label>
+              <label class="form-label">Your Name</label>
               <input type="text" placeholder="John Doe">
             </div>
             <div class="form-group">
-              <label>Email Address</label>
+              <label class="form-label">Email Address</label>
               <input type="email" placeholder="john@email.com">
             </div>
           </div>
           <div class="form-group">
-            <label>YouTube Channel URL</label>
+            <label class="form-label">YouTube Channel URL</label>
             <input type="url" placeholder="https://youtube.com/@yourchannel">
           </div>
           <div class="form-group">
-            <label>Select a Service</label>
+            <label class="form-label">Select a Service</label>
             <select>
               <option value="">Select a service...</option>
               <option>YouTube Views</option>
               <option>YouTube Subscribers</option>
-              <option>Likes & Comments</option>
+              <option>Likes &amp; Comments</option>
               <option>Custom Package</option>
             </select>
           </div>
           <div class="form-group">
-            <label>Message</label>
+            <label class="form-label">Message</label>
             <textarea placeholder="Tell us about your channel and goals..."></textarea>
           </div>
-          <button class="submit-btn">Send Message →</button>
+          <button class="submit-btn">
+            Send Message
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -1687,9 +3275,8 @@
 <footer>
   <div class="footer-top">
     <div>
-      <a href="#" style="display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:16px;">
+      <a href="#" style="display:flex;align-items:center;text-decoration:none;margin-bottom:16px;">
         <img src="images/logo.png" alt="AdsTube" style="height:36px;width:auto;">
-        <span class="footer-logo" style="margin:0;">ADS<span>TUBE</span>.IN</span>
       </a>
       <p class="footer-desc">AdsTube is the easiest way to get your YouTube video seen by real viewers. We help you achieve watch time and subscribers for YouTube monetization.</p>
       <div class="footer-social">
@@ -1762,7 +3349,7 @@
         <div class="popup-form-row">
           <div class="popup-field">
             <label>Your Name</label>
-            <input type="text" placeholder="Rahul Sharma" required>
+            <input type="text" placeholder="Your Name" required>
           </div>
           <div class="popup-field">
             <label>Phone / WhatsApp</label>
@@ -1772,7 +3359,7 @@
 
         <div class="popup-field">
           <label>Email Address</label>
-          <input type="email" placeholder="rahul@email.com" required>
+          <input type="email" placeholder="john@email.com" required>
         </div>
 
         <div class="popup-field">
@@ -1840,6 +3427,20 @@
   </div>
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lb-overlay" id="lbOverlay">
+  <button class="lb-close" id="lbClose" aria-label="Close">&#x2715;</button>
+  <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Previous">&#8249;</button>
+  <button class="lb-arrow lb-next" id="lbNext" aria-label="Next">&#8250;</button>
+  <div class="lb-content">
+    <img id="lbImg" src="" alt="">
+    <div class="lb-meta">
+      <div class="lb-caption" id="lbCaption"></div>
+      <div class="lb-counter" id="lbCounter"></div>
+    </div>
+  </div>
+</div>
+
 <script>
   // Hamburger menu
   const hamburger = document.getElementById('hamburger');
@@ -1852,6 +3453,29 @@
     hamburger && hamburger.classList.remove('open');
     mobileMenu && mobileMenu.classList.remove('open');
   }
+
+  // Nav: scrolled state
+  const mainNav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    mainNav && mainNav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Nav: active link on scroll
+  const navSections = ['home','about','services','pricing','reports','contact'];
+  const navLinkEls  = document.querySelectorAll('#navLinks a');
+  function updateActiveLink() {
+    let current = 'home';
+    navSections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 100) current = id;
+    });
+    navLinkEls.forEach(a => {
+      const href = a.getAttribute('href').replace('#','');
+      a.classList.toggle('nav-active', href === current);
+    });
+  }
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+  updateActiveLink();
 
   // Scroll animations
   const observer = new IntersectionObserver((entries) => {
@@ -1883,7 +3507,7 @@
       }
     });
   });
-  document.querySelector('.steps-visual') && pbObserver.observe(document.querySelector('.steps-visual'));
+  document.querySelector('.prog-bar') && pbObserver.observe(document.querySelector('.panel-card'));
 
   // ===== POPUP MODAL =====
   const popupBackdrop = document.getElementById('popupBackdrop');
@@ -1963,6 +3587,55 @@
     popupFormWrap.style.display = 'none';
     popupSuccess.classList.add('show');
   }
+
+  // ===== LIGHTBOX =====
+  const lbReports = [
+    { img: 'images/reports/skip-and-discovery-ad-visual.png',                                    caption: 'YouTube Video Skip & Discovery Ad Visual' },
+    { img: 'images/reports/youtube-gender-wise-views-statistic.png',                             caption: 'Gender Wise Views Statistic' },
+    { img: 'images/reports/youtube-video-ads-interaction-according-geographic-location.png',     caption: 'Ads Interaction by Geographic Location' },
+    { img: 'images/reports/youtube-video-performance-report-according-devices.png',              caption: 'Performance Report by Devices' },
+    { img: 'images/reports/youtube-analytics-graph-visual11.png',                                caption: 'YouTube Analytics Graph Visual' },
+    { img: 'images/reports/youtube-video-performance-report-according-day-by-day.png',           caption: 'Performance Report by Day or Hour' },
+  ];
+  let lbIdx = 0;
+  const lbOverlay  = document.getElementById('lbOverlay');
+  const lbImg      = document.getElementById('lbImg');
+  const lbCaptEl   = document.getElementById('lbCaption');
+  const lbCountEl  = document.getElementById('lbCounter');
+
+  function lbShow(idx) {
+    lbIdx = (idx + lbReports.length) % lbReports.length;
+    lbImg.style.opacity = '0';
+    setTimeout(() => {
+      lbImg.src = lbReports[lbIdx].img;
+      lbImg.alt = lbReports[lbIdx].caption;
+      lbCaptEl.textContent = lbReports[lbIdx].caption;
+      lbCountEl.textContent = (lbIdx + 1) + ' / ' + lbReports.length;
+      lbImg.style.opacity = '1';
+    }, lbOverlay.classList.contains('lb-active') ? 160 : 0);
+    lbOverlay.classList.add('lb-active');
+    document.body.style.overflow = 'hidden';
+  }
+  function lbClose() {
+    lbOverlay.classList.remove('lb-active');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('lbClose').addEventListener('click', lbClose);
+  document.getElementById('lbPrev').addEventListener('click', () => lbShow(lbIdx - 1));
+  document.getElementById('lbNext').addEventListener('click', () => lbShow(lbIdx + 1));
+  lbOverlay.addEventListener('click', e => { if (e.target === lbOverlay) lbClose(); });
+
+  document.addEventListener('keydown', e => {
+    if (!lbOverlay.classList.contains('lb-active')) return;
+    if (e.key === 'Escape')      lbClose();
+    if (e.key === 'ArrowLeft')   lbShow(lbIdx - 1);
+    if (e.key === 'ArrowRight')  lbShow(lbIdx + 1);
+  });
+
+  document.querySelectorAll('.rpt-overlay').forEach((el, i) => {
+    el.addEventListener('click', e => { e.stopPropagation(); lbShow(i); });
+  });
 </script>
 </body>
 </html>
