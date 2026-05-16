@@ -217,94 +217,247 @@
   /* SERVICES */
   .services { background: var(--bg); }
   .services-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;
   }
+
+  /* ---- Service Card Base ---- */
   .service-card {
     background: var(--card); border: 1px solid var(--border);
-    border-radius: 8px; padding: 32px 28px;
-    transition: border-color .3s, transform .3s;
+    border-radius: 14px; padding: 0 0 24px;
+    transition: border-color .35s, box-shadow .35s, transform .3s;
     position: relative; overflow: hidden;
   }
-  .service-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: var(--red); transform: scaleX(0); transition: transform .3s;
-    transform-origin: left;
+  .service-card:hover { transform: translateY(-6px); }
+
+  /* ---- Service Card Header (gradient banner) ---- */
+  .sc-header {
+    height: 110px;
+    border-radius: 14px 14px 0 0; margin-bottom: 20px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 8px; position: relative; overflow: hidden;
   }
-  .service-card:hover::before { transform: scaleX(1); }
-  .service-card:hover { border-color: rgba(232,0,28,.3); transform: translateY(-4px); }
-  .service-icon {
-    width: 48px; height: 48px; background: rgba(232,0,28,.12);
-    border: 1px solid rgba(232,0,28,.25); border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 20px; font-size: 22px;
+  .sc-header::before {
+    content: ''; position: absolute;
+    width: 120px; height: 120px; border-radius: 50%;
+    background: rgba(255,255,255,.07);
+    top: -30px; right: -30px;
   }
-  .service-card h3 { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 600; margin-bottom: 12px; }
-  .service-card p { color: #777; font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
-  .service-link { color: var(--red); font-size: 13px; font-weight: 600; text-decoration: none; letter-spacing: .5px; }
+  .sc-header::after {
+    content: ''; position: absolute;
+    width: 70px; height: 70px; border-radius: 50%;
+    background: rgba(255,255,255,.05);
+    bottom: -20px; left: -10px;
+  }
+
+  /* Logo + type label inside header */
+  .sc-logo {
+    width: 36px; height: 36px; object-fit: contain;
+    filter: brightness(0) invert(1) drop-shadow(0 2px 6px rgba(0,0,0,.3));
+    position: relative; z-index: 1;
+  }
+  .sc-type {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 3px; color: rgba(255,255,255,.8);
+    text-transform: uppercase; position: relative; z-index: 1;
+  }
+
+  /* Per-card gradient colors */
+  .sc-promo  { background: linear-gradient(135deg, #e8001c 0%, #7a0010 100%); }
+  .sc-seo    { background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%); }
+  .sc-mono   { background: linear-gradient(135deg, #f59e0b 0%, #92400e 100%); }
+  .sc-prod   { background: linear-gradient(135deg, #8b5cf6 0%, #4c1d95 100%); }
+
+  /* Per-card hover glow */
+  .sc-card-promo:hover { border-color: rgba(232,0,28,.5);  box-shadow: 0 12px 40px rgba(232,0,28,.16); }
+  .sc-card-seo:hover   { border-color: rgba(59,130,246,.5); box-shadow: 0 12px 40px rgba(59,130,246,.16); }
+  .sc-card-mono:hover  { border-color: rgba(245,158,11,.5); box-shadow: 0 12px 40px rgba(245,158,11,.16); }
+  .sc-card-prod:hover  { border-color: rgba(139,92,246,.5); box-shadow: 0 12px 40px rgba(139,92,246,.16); }
+
+  /* ---- Card Body ---- */
+  .sc-body { padding: 0 20px; }
+
+  .sc-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: #555; margin-bottom: 4px;
+  }
+  .sc-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--white); line-height: 1.2; margin-bottom: 14px;
+  }
+  /* Colored underline accent */
+  .sc-title span {
+    display: block; width: 32px; height: 3px;
+    border-radius: 2px; margin-top: 8px;
+  }
+  .sc-line-promo { background: #e8001c; }
+  .sc-line-seo   { background: #3b82f6; }
+  .sc-line-mono  { background: #f59e0b; }
+  .sc-line-prod  { background: #8b5cf6; }
+
+  .service-card p { color: #666; font-size: 13px; line-height: 1.7; margin-bottom: 20px; }
+
+  /* ---- Learn More link — styled per card ---- */
+  .service-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 700; letter-spacing: 1px;
+    text-decoration: none; text-transform: uppercase;
+    padding: 9px 16px; border-radius: 6px; border: 1px solid;
+    transition: all .25s;
+  }
+  .sc-card-promo .service-link { color: #e8001c; border-color: rgba(232,0,28,.3); background: rgba(232,0,28,.06); }
+  .sc-card-promo .service-link:hover { background: rgba(232,0,28,.15); border-color: #e8001c; }
+  .sc-card-seo   .service-link { color: #3b82f6; border-color: rgba(59,130,246,.3);  background: rgba(59,130,246,.06); }
+  .sc-card-seo   .service-link:hover { background: rgba(59,130,246,.15); border-color: #3b82f6; }
+  .sc-card-mono  .service-link { color: #f59e0b; border-color: rgba(245,158,11,.3);  background: rgba(245,158,11,.06); }
+  .sc-card-mono  .service-link:hover { background: rgba(245,158,11,.15); border-color: #f59e0b; }
+  .sc-card-prod  .service-link { color: #8b5cf6; border-color: rgba(139,92,246,.3);  background: rgba(139,92,246,.06); }
+  .sc-card-prod  .service-link:hover { background: rgba(139,92,246,.15); border-color: #8b5cf6; }
 
   /* PRICING */
   .pricing { background: var(--bg2); }
-  .plan-toggle {
-    display: flex; justify-content: center; gap: 0; margin-bottom: 50px;
-  }
-  .plan-toggle button {
-    padding: 10px 24px; border: 1px solid var(--border); background: transparent;
-    color: #888; font-size: 13px; font-weight: 600; cursor: pointer;
-    font-family: 'Barlow', sans-serif; transition: all .2s;
-  }
-  .plan-toggle button:first-child { border-radius: 4px 0 0 4px; }
-  .plan-toggle button:last-child { border-radius: 0 4px 4px 0; }
-  .plan-toggle button.active { background: var(--red); border-color: var(--red); color: #fff; }
   .pricing-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; align-items: start;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: start;
   }
+
+  /* ---- Price Card Base ---- */
   .price-card {
     background: var(--card); border: 1px solid var(--border);
-    border-radius: 8px; padding: 18px 16px;
-    transition: border-color .3s; position: relative;
+    border-radius: 14px; padding: 0 0 22px;
+    transition: border-color .35s, box-shadow .35s, transform .3s;
+    position: relative; overflow: hidden;
   }
+  .price-card:hover { transform: translateY(-6px); }
+
+  /* ---- Card Header (gradient banner) ---- */
   .price-card-header {
-    height: 70px;
-    background: linear-gradient(135deg, rgba(232,0,28,.18) 0%, rgba(232,0,28,.05) 100%);
-    border-radius: 6px; margin-bottom: 14px;
-    display: flex; align-items: center; justify-content: center; font-size: 28px;
+    height: 110px;
+    border-radius: 14px 14px 0 0; margin-bottom: 20px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 8px; position: relative; overflow: hidden;
   }
+  /* decorative circles inside header */
+  .price-card-header::before {
+    content: ''; position: absolute;
+    width: 120px; height: 120px; border-radius: 50%;
+    background: rgba(255,255,255,.07);
+    top: -30px; right: -30px;
+  }
+  .price-card-header::after {
+    content: ''; position: absolute;
+    width: 70px; height: 70px; border-radius: 50%;
+    background: rgba(255,255,255,.05);
+    bottom: -20px; left: -10px;
+  }
+
+  /* Logo inside header */
+  .pc-logo {
+    width: 36px; height: 36px; object-fit: contain;
+    filter: brightness(0) invert(1) drop-shadow(0 2px 6px rgba(0,0,0,.3));
+    position: relative; z-index: 1;
+  }
+  /* Type label under logo */
+  .pc-type {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 3px; color: rgba(255,255,255,.8);
+    text-transform: uppercase; position: relative; z-index: 1;
+  }
+
+  /* Per-card gradient colors */
+  .pc-views { background: linear-gradient(135deg, #e8001c 0%, #7a0010 100%); }
+  .pc-subs  { background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%); }
+  .pc-mono  { background: linear-gradient(135deg, #f59e0b 0%, #92400e 100%); }
+  .pc-rev   { background: linear-gradient(135deg, #22c55e 0%, #14532d 100%); }
+
+  /* Per-card hover glow + border */
+  .price-card:has(.pc-views):hover { border-color: rgba(232,0,28,.5); box-shadow: 0 12px 40px rgba(232,0,28,.18); }
+  .price-card:has(.pc-subs):hover  { border-color: rgba(59,130,246,.5); box-shadow: 0 12px 40px rgba(59,130,246,.18); }
+  .price-card:has(.pc-mono):hover  { border-color: rgba(245,158,11,.5); box-shadow: 0 12px 40px rgba(245,158,11,.18); }
+  .price-card:has(.pc-rev):hover   { border-color: rgba(34,197,94,.5);  box-shadow: 0 12px 40px rgba(34,197,94,.18); }
+
+  /* Popular card always glows red */
   .price-card.popular {
     border-color: var(--red);
-    box-shadow: 0 0 40px rgba(232,0,28,.15);
+    box-shadow: 0 0 45px rgba(232,0,28,.2);
   }
   .popular-badge {
-    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-    background: var(--red); color: #fff; font-size: 11px; font-weight: 700;
-    padding: 4px 14px; border-radius: 20px; letter-spacing: 1px; text-transform: uppercase;
+    position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+    background: linear-gradient(90deg, #e8001c, #ff4d63);
+    color: #fff; font-family: 'Oswald', sans-serif;
+    font-size: 10px; font-weight: 700;
+    padding: 5px 18px; border-radius: 0 0 10px 10px;
+    letter-spacing: 2px; text-transform: uppercase;
+    box-shadow: 0 4px 14px rgba(232,0,28,.4);
   }
-  .plan-name { font-size: 11px; color: #666; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
-  .plan-views {
-    font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700;
-    color: var(--white); margin-bottom: 4px;
+
+  /* ---- Card Body Text ---- */
+  .pc-body { padding: 0 18px; }
+
+  .pc-plan-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: #555; margin-bottom: 4px;
   }
-  .plan-views small { font-size: 12px; font-family: 'Barlow', sans-serif; color: #888; font-weight: 400; }
-  .plan-price {
-    font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700;
-    color: var(--red); margin: 12px 0 4px;
+  .pc-plan-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 21px; font-weight: 700;
+    color: var(--white); line-height: 1.15; margin-bottom: 12px;
   }
-  .plan-desc { color: #777; font-size: 12px; margin-bottom: 12px; line-height: 1.4; }
-  .plan-features { list-style: none; margin-bottom: 16px; }
+  /* Accent underline: colour matches card */
+  .pc-plan-title span {
+    display: block; width: 32px; height: 3px; border-radius: 2px; margin-top: 8px;
+  }
+  .pc-views-line { background: #e8001c; }
+  .pc-subs-line  { background: #3b82f6; }
+  .pc-mono-line  { background: #f59e0b; }
+  .pc-rev-line   { background: #22c55e; }
+
+  .plan-desc { color: #666; font-size: 13px; margin-bottom: 16px; line-height: 1.55; }
+
+  .plan-features { list-style: none; margin-bottom: 20px; }
   .plan-features li {
-    font-size: 12px; color: #aaa; padding: 6px 0;
+    font-size: 13px; color: #aaa; padding: 7px 0;
     border-bottom: 1px solid rgba(255,255,255,.05);
-    display: flex; align-items: center; gap: 8px;
+    display: flex; align-items: center; gap: 10px;
   }
-  .plan-features li::before { content: '✓'; color: var(--red); font-weight: 700; flex-shrink: 0; }
+  .plan-features li:last-child { border-bottom: none; }
+  .plan-features li::before { content: '✓'; font-weight: 800; flex-shrink: 0; }
+
+  /* Check-mark colours per card */
+  .pc-card-views .plan-features li::before { color: #e8001c; }
+  .pc-card-subs  .plan-features li::before { color: #3b82f6; }
+  .pc-card-mono  .plan-features li::before { color: #f59e0b; }
+  .pc-card-rev   .plan-features li::before { color: #22c55e; }
+
+  /* ---- Plan Buttons ---- */
   .plan-btn {
-    width: 100%; padding: 12px; border: 1px solid rgba(255,255,255,.15);
-    background: transparent; color: #fff; border-radius: 4px;
-    font-size: 14px; font-weight: 600; cursor: pointer;
-    font-family: 'Barlow', sans-serif; transition: all .2s;
+    display: block; width: 100%; padding: 13px;
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.04); color: #ccc;
+    border-radius: 8px; font-size: 13px; font-weight: 700;
+    cursor: pointer; font-family: 'Barlow', sans-serif;
+    letter-spacing: .5px; text-align: center; text-decoration: none;
+    transition: all .25s;
   }
-  .plan-btn:hover { border-color: var(--red); color: var(--red); }
-  .plan-btn.primary-btn { background: var(--red); border-color: var(--red); }
-  .plan-btn.primary-btn:hover { background: var(--red-dark); }
+  /* Per-card ghost hover colours */
+  .pc-card-views .plan-btn:not(.primary-btn):hover { border-color: #e8001c; color: #e8001c; background: rgba(232,0,28,.06); }
+  .pc-card-subs  .plan-btn:hover { border-color: #3b82f6; color: #3b82f6; background: rgba(59,130,246,.06); }
+  .pc-card-mono  .plan-btn:hover { border-color: #f59e0b; color: #f59e0b; background: rgba(245,158,11,.06); }
+  .pc-card-rev   .plan-btn:hover { border-color: #22c55e; color: #22c55e; background: rgba(34,197,94,.06); }
+
+  .plan-btn.primary-btn {
+    background: linear-gradient(135deg, #e8001c, #b50016);
+    border-color: transparent; color: #fff;
+    box-shadow: 0 4px 18px rgba(232,0,28,.4);
+  }
+  .plan-btn.primary-btn:hover {
+    background: linear-gradient(135deg, #ff1a33, #e8001c);
+    box-shadow: 0 6px 26px rgba(232,0,28,.6);
+    transform: translateY(-1px);
+  }
 
   /* STEPS */
   .steps { background: var(--bg); }
@@ -501,7 +654,6 @@
 
   /* IMAGE HELPERS (additive — keeps existing color combo) */
   .nav-logo-img { height: 34px; width: auto; display: block; }
-  .service-illu { width: 100%; height: 140px; object-fit: contain; border-radius: 6px; margin-bottom: 18px; background: rgba(255,255,255,.03); padding: 10px; }
   .stat-icon { width: 42px; height: 42px; object-fit: contain; margin: 0 auto 12px; display: block; filter: brightness(0) invert(1); opacity: .85; }
   .price-tile-img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; margin-bottom: 18px; }
   .step-img { width: 100%; max-width: 360px; border-radius: 8px; display: block; margin: 0 auto; }
@@ -1023,30 +1175,75 @@
     <h2 class="section-title">YouTube Video Marketing<br>Services We Provide</h2>
     <p class="section-sub">We serve our clients with an extensive range of YouTube video marketing services — from promotion and SEO to monetization and production.</p>
     <div class="services-grid fade-up">
-      <div class="service-card">
-        <img src="images/indimg/VideoPromotion.png" alt="YouTube Video Promotion" class="service-illu">
-        <h3>YouTube Video Promotion</h3>
-        <p>Genuine, organic YouTube video promotion through highly targeted YouTube ad campaigns. Real viewers, real engagement, real growth.</p>
-        <a href="https://adstube.in/Youtube-Video-Promotion-Services" class="service-link">LEARN MORE →</a>
+
+      <!-- Video Promotion — Red -->
+      <div class="service-card sc-card-promo">
+        <div class="sc-header sc-promo">
+          <img src="images/logo.png" alt="Video Promotion" class="sc-logo">
+          <span class="sc-type">Promotion</span>
+        </div>
+        <div class="sc-body">
+          <div class="sc-label">Our Services</div>
+          <div class="sc-title">
+            YouTube Video Promotion
+            <span class="sc-line-promo"></span>
+          </div>
+          <p>Genuine, organic YouTube video promotion through highly targeted YouTube ad campaigns. Real viewers, real engagement, real growth.</p>
+          <a href="https://adstube.in/Youtube-Video-Promotion-Services" class="service-link">Learn More →</a>
+        </div>
       </div>
-      <div class="service-card">
-        <img src="images/indimg/RealYouTubePromotion.png" alt="YouTube Video SEO" class="service-illu">
-        <h3>YouTube Video SEO</h3>
-        <p>Boost your video discoverability with expert keyword research, metadata optimization and tag strategies that put you in front of the right audience.</p>
-        <a href="https://adstube.in/Youtube-Video-SEO-Services" class="service-link">LEARN MORE →</a>
+
+      <!-- Video SEO — Blue -->
+      <div class="service-card sc-card-seo">
+        <div class="sc-header sc-seo">
+          <img src="images/logo.png" alt="Video SEO" class="sc-logo">
+          <span class="sc-type">SEO</span>
+        </div>
+        <div class="sc-body">
+          <div class="sc-label">Our Services</div>
+          <div class="sc-title">
+            YouTube Video SEO
+            <span class="sc-line-seo"></span>
+          </div>
+          <p>Boost your video discoverability with expert keyword research, metadata optimization and tag strategies that put you in front of the right audience.</p>
+          <a href="https://adstube.in/Youtube-Video-SEO-Services" class="service-link">Learn More →</a>
+        </div>
       </div>
-      <div class="service-card">
-        <img src="images/indimg/youtubegrowth.png" alt="YouTube Monetization" class="service-illu">
-        <h3>YouTube Monetization</h3>
-        <p>Hit your monetization milestones faster. We help you achieve the 4,000 hours of watch time and 1,000 subscribers required for YouTube Partner Program.</p>
-        <a href="https://adstube.in/Youtube-Video-Monetization-Services" class="service-link">LEARN MORE →</a>
+
+      <!-- Monetization — Gold -->
+      <div class="service-card sc-card-mono">
+        <div class="sc-header sc-mono">
+          <img src="images/logo.png" alt="Monetization" class="sc-logo">
+          <span class="sc-type">Monetization</span>
+        </div>
+        <div class="sc-body">
+          <div class="sc-label">Our Services</div>
+          <div class="sc-title">
+            YouTube Monetization
+            <span class="sc-line-mono"></span>
+          </div>
+          <p>Hit your monetization milestones faster. We help you achieve the 4,000 hours of watch time and 1,000 subscribers required for YouTube Partner Program.</p>
+          <a href="https://adstube.in/Youtube-Video-Monetization-Services" class="service-link">Learn More →</a>
+        </div>
       </div>
-      <div class="service-card">
-        <img src="images/indimg/customize.png" alt="YouTube Video Production" class="service-illu">
-        <h3>YouTube Video Production</h3>
-        <p>End-to-end YouTube video production — from concept and scripting to shoot, editing and thumbnail design. High-quality content that performs.</p>
-        <a href="https://adstube.in/Youtube-Video-Production" class="service-link">LEARN MORE →</a>
+
+      <!-- Video Production — Purple -->
+      <div class="service-card sc-card-prod">
+        <div class="sc-header sc-prod">
+          <img src="images/logo.png" alt="Video Production" class="sc-logo">
+          <span class="sc-type">Production</span>
+        </div>
+        <div class="sc-body">
+          <div class="sc-label">Our Services</div>
+          <div class="sc-title">
+            YouTube Video Production
+            <span class="sc-line-prod"></span>
+          </div>
+          <p>End-to-end YouTube video production — from concept and scripting to shoot, editing and thumbnail design. High-quality content that performs.</p>
+          <a href="https://adstube.in/Youtube-Video-Production" class="service-link">Learn More →</a>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -1058,55 +1255,96 @@
     <h2 class="section-title">Affordable YouTube<br>Promotion Packages</h2>
     <p class="section-sub">Flexible plans built around your goals — views, subscribers, monetization or full channel revenue.</p>
     <div class="pricing-grid fade-up">
-      <div class="price-card popular">
-        <div class="popular-badge">POPULAR</div>
-        <div class="price-card-header">👁️</div>
-        <div class="plan-name">Views</div>
-        <div class="plan-views">YouTube <small>Views Plans</small></div>
-        <p class="plan-desc">Real, high-retention views via targeted YouTube ad campaigns.</p>
-        <ul class="plan-features">
-          <li>Genuine Google Ads Traffic</li>
-          <li>Worldwide & Geo-Targeted</li>
-          <li>Analytics Report</li>
-        </ul>
-        <a href="https://adstube.in/buy-youtube-views" class="plan-btn primary-btn" style="text-decoration:none;display:block;text-align:center;">View Details</a>
+
+      <!-- VIEWS — Red (Popular) -->
+      <div class="price-card popular pc-card-views">
+        <div class="popular-badge">★ MOST POPULAR</div>
+        <div class="price-card-header pc-views">
+          <img src="images/logo.png" alt="Views" class="pc-logo">
+          <span class="pc-type">Views</span>
+        </div>
+        <div class="pc-body">
+          <div class="pc-plan-label">YouTube Plans</div>
+          <div class="pc-plan-title">
+            YouTube Views
+            <span class="pc-views-line"></span>
+          </div>
+          <p class="plan-desc">Real, high-retention views via targeted YouTube ad campaigns.</p>
+          <ul class="plan-features">
+            <li>Genuine Google Ads Traffic</li>
+            <li>Worldwide &amp; Geo-Targeted</li>
+            <li>Analytics Report</li>
+          </ul>
+          <a href="https://adstube.in/buy-youtube-views" class="plan-btn primary-btn">View Details →</a>
+        </div>
       </div>
-      <div class="price-card">
-        <div class="price-card-header">📈</div>
-        <div class="plan-name">Subscribers</div>
-        <div class="plan-views">YouTube <small>Subscribers Plans</small></div>
-        <p class="plan-desc">Real subscribers interested in your niche and content.</p>
-        <ul class="plan-features">
-          <li>Organic Growth</li>
-          <li>Niche-Targeted Audience</li>
-          <li>Lifetime Retention Focus</li>
-        </ul>
-        <a href="https://adstube.in/buy-youtube-subscribers" class="plan-btn" style="text-decoration:none;display:block;text-align:center;">View Details</a>
+
+      <!-- SUBSCRIBERS — Blue -->
+      <div class="price-card pc-card-subs">
+        <div class="price-card-header pc-subs">
+          <img src="images/logo.png" alt="Subscribers" class="pc-logo">
+          <span class="pc-type">Subscribers</span>
+        </div>
+        <div class="pc-body">
+          <div class="pc-plan-label">YouTube Plans</div>
+          <div class="pc-plan-title">
+            YouTube Subscribers
+            <span class="pc-subs-line"></span>
+          </div>
+          <p class="plan-desc">Real subscribers interested in your niche and content.</p>
+          <ul class="plan-features">
+            <li>Organic Growth</li>
+            <li>Niche-Targeted Audience</li>
+            <li>Lifetime Retention Focus</li>
+          </ul>
+          <a href="https://adstube.in/buy-youtube-subscribers" class="plan-btn">View Details →</a>
+        </div>
       </div>
-      <div class="price-card">
-        <div class="price-card-header">💰</div>
-        <div class="plan-name">Monetization</div>
-        <div class="plan-views">YouTube <small>Monetization Plans</small></div>
-        <p class="plan-desc">Hit 4K watch hours &amp; 1K subs for YouTube Partner Program.</p>
-        <ul class="plan-features">
-          <li>4K Watch Hours</li>
-          <li>1K Subscriber Milestone</li>
-          <li>Monetization Ready</li>
-        </ul>
-        <a href="https://adstube.in/youtube-monetization-plans" class="plan-btn" style="text-decoration:none;display:block;text-align:center;">View Details</a>
+
+      <!-- MONETIZATION — Gold -->
+      <div class="price-card pc-card-mono">
+        <div class="price-card-header pc-mono">
+          <img src="images/logo.png" alt="Monetization" class="pc-logo">
+          <span class="pc-type">Monetization</span>
+        </div>
+        <div class="pc-body">
+          <div class="pc-plan-label">YouTube Plans</div>
+          <div class="pc-plan-title">
+            YouTube Monetization
+            <span class="pc-mono-line"></span>
+          </div>
+          <p class="plan-desc">Hit 4K watch hours &amp; 1K subs for YouTube Partner Program.</p>
+          <ul class="plan-features">
+            <li>4K Watch Hours</li>
+            <li>1K Subscriber Milestone</li>
+            <li>Monetization Ready</li>
+          </ul>
+          <a href="https://adstube.in/youtube-monetization-plans" class="plan-btn">View Details →</a>
+        </div>
       </div>
-      <div class="price-card">
-        <div class="price-card-header">🏆</div>
-        <div class="plan-name">Revenue</div>
-        <div class="plan-views">YouTube <small>Revenue Plans</small></div>
-        <p class="plan-desc">Maximize ad revenue with high-CPM geo &amp; viewer targeting.</p>
-        <ul class="plan-features">
-          <li>High-CPM Audience</li>
-          <li>Tier-1 Country Targeting</li>
-          <li>Revenue-Focused Strategy</li>
-        </ul>
-        <a href="https://adstube.in/youtube-revenue-plans" class="plan-btn" style="text-decoration:none;display:block;text-align:center;">View Details</a>
+
+      <!-- REVENUE — Green -->
+      <div class="price-card pc-card-rev">
+        <div class="price-card-header pc-rev">
+          <img src="images/logo.png" alt="Revenue" class="pc-logo">
+          <span class="pc-type">Revenue</span>
+        </div>
+        <div class="pc-body">
+          <div class="pc-plan-label">YouTube Plans</div>
+          <div class="pc-plan-title">
+            YouTube Revenue
+            <span class="pc-rev-line"></span>
+          </div>
+          <p class="plan-desc">Maximize ad revenue with high-CPM geo &amp; viewer targeting.</p>
+          <ul class="plan-features">
+            <li>High-CPM Audience</li>
+            <li>Tier-1 Country Targeting</li>
+            <li>Revenue-Focused Strategy</li>
+          </ul>
+          <a href="https://adstube.in/youtube-revenue-plans" class="plan-btn">View Details →</a>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
