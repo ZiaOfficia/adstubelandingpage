@@ -57,7 +57,55 @@
     border-bottom-color: rgba(255,255,255,.09);
   }
   .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
-  .nav-logo-img { height: 130px; width: auto; display: block; }
+  .nav-logo-img { height: 160px; width: auto; display: block; }
+
+  /* ===== ELITE BRAND LOGO ===== */
+  .brand-logo { display: flex; align-items: center; gap: 11px; text-decoration: none; flex-shrink: 0; }
+  .brand-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: linear-gradient(135deg, #e8001c 0%, #7a0010 100%);
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 16px rgba(232,0,28,.45), inset 0 1px 0 rgba(255,255,255,.18);
+    position: relative; overflow: hidden;
+  }
+  .brand-icon::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,.15) 0%, transparent 55%);
+  }
+  .brand-icon-play {
+    width: 0; height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 13px solid #fff;
+    margin-left: 2px; position: relative; z-index: 1;
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,.35));
+  }
+  .brand-wordmark { display: flex; flex-direction: column; line-height: 1; }
+  .brand-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 23px; font-weight: 700;
+    letter-spacing: 1.5px; line-height: 1;
+  }
+  .brand-name .w-ads { color: #fff; }
+  .brand-name .w-tube {
+    background: linear-gradient(90deg, #e8001c 0%, #ff4d4d 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .brand-tagline {
+    font-size: 8.5px; color: #555; letter-spacing: 3px;
+    text-transform: uppercase; margin-top: 4px; font-weight: 600;
+  }
+  .brand-divider {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, #e8001c 0%, transparent 100%);
+    margin: 3px 0 2px;
+  }
+  /* Footer variant */
+  .brand-logo-footer .brand-icon { width: 44px; height: 44px; border-radius: 10px; }
+  .brand-logo-footer .brand-name { font-size: 26px; }
+  .brand-logo-footer .brand-tagline { color: #444; }
 
   .nav-links { display: flex; gap: 2px; list-style: none; align-items: center; }
   .nav-links a {
@@ -1435,6 +1483,11 @@
     position: relative; overflow: hidden;
   }
   .guar-card-header img { width: 56px; height: 56px; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,.3)); position: relative; z-index: 1; }
+  .guar-icon { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; background: rgba(255,255,255,.12); border-radius: 16px; border: 1px solid rgba(255,255,255,.2); backdrop-filter: blur(4px); }
+  .guar-icon svg { width: 30px; height: 30px; stroke: #fff; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 2px 6px rgba(0,0,0,.25)); }
+  .faq-cbtn-icon svg, .cm-icon svg { width: 19px; height: 19px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .about-feat-icon svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .soc-btn svg { width: 16px; height: 16px; fill: currentColor; }
   .guar-card-header::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.22) 100%); }
   .gc-red  { background: linear-gradient(135deg, #e8001c 0%, #7a0010 100%); }
   .gc-blue { background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%); }
@@ -1612,7 +1665,7 @@
   }
   .cta-proof-num {
     font-family: 'Oswald', sans-serif;
-    font-size: 26px; font-weight: 700; color: #fff;
+    font-size: 20px; font-weight: 700; color: #fff;
   }
   .cta-proof-label {
     font-size: 11px; color: #555; font-weight: 600;
@@ -2109,7 +2162,7 @@
   }
 
   /* IMAGE HELPERS (additive - keeps existing color combo) */
-  .nav-logo-img { height: 120px; width: auto; display: block; }
+  .nav-logo-img { height: 150px; width: auto; display: block; }
   .stat-icon { width: 42px; height: 42px; object-fit: contain; margin: 0 auto 12px; display: block; filter: brightness(0) invert(1); opacity: .85; }
   .price-tile-img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; margin-bottom: 18px; }
   .author-avatar.has-img { background: transparent; padding: 0; overflow: hidden; }
@@ -2342,7 +2395,7 @@
     background: #111;
     border: 1px solid rgba(232,0,28,.35);
     border-radius: 16px;
-    width: 100%; max-width: 520px;
+    width: 100%; max-width: 400px;
     position: relative;
     overflow: hidden;
     transform: translateY(40px) scale(.97);
@@ -2352,24 +2405,27 @@
   .popup-backdrop.show .popup-modal { transform: translateY(0) scale(1); }
 
   .popup-header {
-    background: linear-gradient(135deg, #e8001c 0%, #8b0010 100%);
-    padding: 28px 32px 24px;
+    background: linear-gradient(135deg, #1a0a00 0%, #e8001c 45%, #8b0010 100%);
+    padding: 16px 24px 14px;
     position: relative;
     overflow: hidden;
+    border-bottom: 1px solid rgba(255,255,255,.08);
   }
   .popup-header::before {
     content: '';
-    position: absolute; top: -40px; right: -40px;
-    width: 130px; height: 130px;
+    position: absolute; top: -28px; right: -28px;
+    width: 110px; height: 110px;
     border-radius: 50%;
-    background: rgba(255,255,255,.08);
+    background: radial-gradient(circle, rgba(255,255,255,.13) 0%, transparent 70%);
+    pointer-events: none;
   }
   .popup-header::after {
     content: '';
-    position: absolute; bottom: -30px; left: -20px;
-    width: 90px; height: 90px;
-    border-radius: 50%;
-    background: rgba(255,255,255,.05);
+    position: absolute; bottom: 0; left: 0; right: 0; top: 0;
+    background:
+      radial-gradient(ellipse at 0% 100%, rgba(255,180,0,.10) 0%, transparent 55%),
+      radial-gradient(ellipse at 100% 0%, rgba(255,255,255,.06) 0%, transparent 50%);
+    pointer-events: none;
   }
   .popup-header-tag {
     display: inline-flex; align-items: center; gap: 6px;
@@ -2380,7 +2436,7 @@
   }
   .popup-header h3 {
     font-family: 'Oswald', sans-serif;
-    font-size: 26px; font-weight: 700;
+    font-size: 20px; font-weight: 700;
     text-transform: uppercase; color: #fff;
     line-height: 1.1; margin-bottom: 6px;
     position: relative; z-index: 1;
@@ -2402,7 +2458,7 @@
   }
   .popup-close:hover { background: rgba(255,255,255,.3); }
 
-  .popup-body { padding: 28px 32px 32px; }
+  .popup-body { padding: 20px 24px 22px; }
 
   .popup-steps {
     display: flex; gap: 8px; margin-bottom: 24px;
@@ -2414,7 +2470,7 @@
   }
   .popup-step-dot.active { background: var(--red); }
 
-  .popup-form { display: flex; flex-direction: column; gap: 14px; }
+  .popup-form { display: flex; flex-direction: column; gap: 10px; }
 
   .popup-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
@@ -2428,8 +2484,8 @@
   .popup-field textarea {
     background: rgba(255,255,255,.05);
     border: 1px solid rgba(255,255,255,.1);
-    border-radius: 8px; padding: 12px 14px;
-    color: #fff; font-size: 14px;
+    border-radius: 8px; padding: 9px 12px;
+    color: #fff; font-size: 13px;
     font-family: 'Barlow', sans-serif;
     transition: border-color .2s, background .2s;
     outline: none; width: 100%;
@@ -2447,7 +2503,7 @@
   .popup-field textarea { resize: none; height: 80px; }
 
   .popup-submit {
-    width: 100%; padding: 14px;
+    width: 100%; padding: 11px;
     background: linear-gradient(135deg, #e8001c, #b50016);
     border: none; border-radius: 8px;
     color: #fff; font-size: 15px; font-weight: 700;
@@ -2642,7 +2698,7 @@
     .hamburger { display: flex; }
     .nav-cta { display: none !important; }
     nav { padding: 0 20px; overflow: hidden; }
-    .nav-logo-img { height: 100px; }
+    .nav-logo-img { height: 120px; }
   }
   @media (max-width: 600px) {
     .services-grid, .stats-grid, .testi-grid { grid-template-columns: 1fr; }
@@ -2651,7 +2707,7 @@
     .footer-top { grid-template-columns: 1fr; gap: 30px; }
     section { padding: 70px 16px; }
     /* Nav logo - shrink on small screens so it never crowds the hamburger */
-    .nav-logo-img { height: 84px; max-width: calc(100vw - 90px); object-fit: contain; }
+    .nav-logo-img { height: 100px; max-width: calc(100vw - 90px); object-fit: contain; }
     /* Plan toggle - stack vertically so neither tab overflows */
     .plan-toggle { flex-direction: column; width: min(300px, 90vw); }
     .plan-tab { width: 100%; padding: 13px 20px; font-size: 15px; text-align: center; border-radius: 8px; }
@@ -2873,7 +2929,6 @@
           <div class="vp-head">
             <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
             <span class="vp-plan-name">Get Plan</span>
-            <img src="logo2.png" alt="" class="vp-logo">
           </div>
           <div class="vp-count">5K<sup>+</sup></div>
           <div class="vp-type-label">YouTube Views</div>
@@ -2889,7 +2944,6 @@
           <div class="vp-head">
             <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
             <span class="vp-plan-name">Set Plan</span>
-            <img src="logo2.png" alt="" class="vp-logo">
           </div>
           <div class="vp-count">10K<sup>+</sup></div>
           <div class="vp-type-label">YouTube Views</div>
@@ -2905,7 +2959,6 @@
           <div class="vp-head">
             <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
             <span class="vp-plan-name">Go Plan</span>
-            <img src="logo2.png" alt="" class="vp-logo">
           </div>
           <div class="vp-count">20K<sup>+</sup></div>
           <div class="vp-type-label">YouTube Views</div>
@@ -2921,7 +2974,6 @@
           <div class="vp-head">
             <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
             <span class="vp-plan-name">Walk Plan</span>
-            <img src="logo2.png" alt="" class="vp-logo">
           </div>
           <div class="vp-count">50K<sup>+</sup></div>
           <div class="vp-type-label">YouTube Views</div>
@@ -2938,7 +2990,6 @@
           <div class="vp-head">
             <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
             <span class="vp-plan-name">Run Plan</span>
-            <img src="logo2.png" alt="" class="vp-logo">
           </div>
           <div class="vp-count">1 Lac<sup>+</sup></div>
           <div class="vp-type-label">YouTube Views</div>
@@ -2954,7 +3005,6 @@
           <div class="vp-head">
             <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
             <span class="vp-plan-name">Fly Plan</span>
-            <img src="logo2.png" alt="" class="vp-logo">
           </div>
           <div class="vp-count">10 Lac<sup>+</sup></div>
           <div class="vp-type-label">YouTube Views</div>
@@ -2977,7 +3027,6 @@
           <div class="vp-head">
             <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
             <span class="vp-plan-name">Tiny Plan</span>
-            <img src="logo2.png" alt="" class="vp-logo">
           </div>
           <div class="vp-count">100</div>
           <div class="vp-type-label">YouTube Subscribers</div>
@@ -2993,7 +3042,6 @@
           <div class="vp-head">
             <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
             <span class="vp-plan-name">Compact Plan</span>
-            <img src="logo2.png" alt="" class="vp-logo">
           </div>
           <div class="vp-count">200</div>
           <div class="vp-type-label">YouTube Subscribers</div>
@@ -3009,7 +3057,6 @@
           <div class="vp-head">
             <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
             <span class="vp-plan-name">Moderate Plan</span>
-            <img src="logo2.png" alt="" class="vp-logo">
           </div>
           <div class="vp-count">500</div>
           <div class="vp-type-label">YouTube Subscribers</div>
@@ -3025,7 +3072,6 @@
           <div class="vp-head">
             <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
             <span class="vp-plan-name">Ample Plan</span>
-            <img src="logo2.png" alt="" class="vp-logo">
           </div>
           <div class="vp-count">1,000</div>
           <div class="vp-type-label">YouTube Subscribers</div>
@@ -3042,7 +3088,6 @@
           <div class="vp-head">
             <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
             <span class="vp-plan-name">Huge Plan</span>
-            <img src="logo2.png" alt="" class="vp-logo">
           </div>
           <div class="vp-count">5,000</div>
           <div class="vp-type-label">YouTube Subscribers</div>
@@ -3058,7 +3103,6 @@
           <div class="vp-head">
             <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
             <span class="vp-plan-name">Giant Plan</span>
-            <img src="logo2.png" alt="" class="vp-logo">
           </div>
           <div class="vp-count">10,000</div>
           <div class="vp-type-label">YouTube Subscribers</div>
@@ -3389,15 +3433,15 @@
 
         <div class="about-features">
           <div class="about-feat">
-            <div class="about-feat-icon afi-red">&#128226;</div>
+            <div class="about-feat-icon afi-red"><svg viewBox="0 0 24 24"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
             <span><strong>Google Ads Powered</strong> - Real traffic from Google's ad network, zero bots</span>
           </div>
           <div class="about-feat">
-            <div class="about-feat-icon afi-blue">&#127919;</div>
+            <div class="about-feat-icon afi-blue"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
             <span><strong>Expert Campaign Management</strong> - Dedicated team handling every campaign</span>
           </div>
           <div class="about-feat">
-            <div class="about-feat-icon afi-grn">&#128202;</div>
+            <div class="about-feat-icon afi-grn"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
             <span><strong>Transparent Reporting</strong> - Full analytics access with every order</span>
           </div>
         </div>
@@ -3685,10 +3729,10 @@
         <div class="faq-item fq-green" onclick="this.classList.toggle('open')">
           <button class="faq-q">
             <div class="faq-num">03</div>
-            <span class="faq-q-text">What if my views or subscribers drop?</span>
+            <span class="faq-q-text">What support do I get after my order?</span>
             <div class="faq-icon">+</div>
           </button>
-          <div class="faq-a"><div class="faq-a-inner">We offer a 30-day refill guarantee. If your delivered views or subscribers drop within 30 days of delivery, we'll refill them completely free of charge. No questions asked.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">We offer a 30-day free consultation after every order. Our expert team is available to guide you on strategy, content, and growth — completely free for 30 days post-delivery. No questions asked.</div></div>
         </div>
 
         <div class="faq-item fq-gold" onclick="this.classList.toggle('open')">
@@ -3730,7 +3774,7 @@
           </div>
           <div class="faq-panel-body">
             <a href="https://api.whatsapp.com/send?phone=919120647421" class="faq-cbtn fcb-wa">
-              <div class="faq-cbtn-icon">&#128172;</div>
+              <div class="faq-cbtn-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
               <div class="faq-cbtn-txt">
                 <b>WhatsApp Support</b>
                 <span>+91-9120647421</span>
@@ -3738,7 +3782,7 @@
               <span class="faq-cbtn-arr">&#8594;</span>
             </a>
             <a href="tel:+919026232414" class="faq-cbtn fcb-call">
-              <div class="faq-cbtn-icon">&#128222;</div>
+              <div class="faq-cbtn-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16v.92z"/></svg></div>
               <div class="faq-cbtn-txt">
                 <b>Call Us Now</b>
                 <span>+91-9026232414</span>
@@ -3746,7 +3790,7 @@
               <span class="faq-cbtn-arr">&#8594;</span>
             </a>
             <a href="mailto:contact@adstube.in" class="faq-cbtn fcb-mail">
-              <div class="faq-cbtn-icon">&#9993;</div>
+              <div class="faq-cbtn-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg></div>
               <div class="faq-cbtn-txt">
                 <b>Email Support</b>
                 <span>contact@adstube.in</span>
@@ -3759,8 +3803,8 @@
         <div class="faq-guarantee">
           <div class="faq-gicon">&#128737;</div>
           <div class="faq-gtxt">
-            <h5>30-Day Refill Guarantee</h5>
-            <p>Views drop? We refill them free - no questions asked.</p>
+            <h5>30-Day Free Consultation</h5>
+            <p>Get expert growth guidance free for 30 days after every order.</p>
           </div>
         </div>
 
@@ -3797,8 +3841,8 @@
           <img src="logo2.png" alt="">
         </div>
         <div class="guar-card-body">
-          <h3>30-Day Refill</h3>
-          <p>If delivered views or subscribers drop within 30 days, we refill them completely free - no questions, no delays.</p>
+          <h3>30-Day Free Consultation</h3>
+          <p>Get expert growth guidance completely free for 30 days after every order - no questions, no delays.</p>
         </div>
       </div>
       <div class="guar-card">
@@ -3832,7 +3876,7 @@
       </div>
       <div class="guar-trust-item">
         <div class="guar-trust-num gtn-grn">30-Day</div>
-        <div class="guar-trust-label">Refill Protection</div>
+        <div class="guar-trust-label">Free Consultation</div>
       </div>
       <div class="guar-trust-item">
         <div class="guar-trust-num gtn-gold">24/7</div>
@@ -3918,7 +3962,7 @@
       <div class="contact-info-card fade-up">
         <div class="contact-methods">
           <a href="tel:+919026232414" class="contact-method">
-            <div class="cm-icon red">&#128222;</div>
+            <div class="cm-icon red"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16v.92z"/></svg></div>
             <div class="cm-text">
               <div class="cm-label">Call Us</div>
               <div class="cm-val">+91-9026232414</div>
@@ -3926,7 +3970,7 @@
             <span class="cm-arrow">&#8250;</span>
           </a>
           <a href="https://api.whatsapp.com/send?phone=919120647421" class="contact-method">
-            <div class="cm-icon green">&#128172;</div>
+            <div class="cm-icon green"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
             <div class="cm-text">
               <div class="cm-label">WhatsApp Support</div>
               <div class="cm-val">+91-9120647421</div>
@@ -3934,7 +3978,7 @@
             <span class="cm-arrow">&#8250;</span>
           </a>
           <a href="mailto:contact@adstube.in" class="contact-method">
-            <div class="cm-icon amber">&#9993;</div>
+            <div class="cm-icon amber"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg></div>
             <div class="cm-text">
               <div class="cm-label">Email Us</div>
               <div class="cm-val">contact@adstube.in</div>
@@ -3942,7 +3986,7 @@
             <span class="cm-arrow">&#8250;</span>
           </a>
           <div class="contact-method" style="cursor:default;">
-            <div class="cm-icon indigo">&#127970;</div>
+            <div class="cm-icon indigo"><svg viewBox="0 0 24 24"><path d="M3 21h18M3 7l9-4 9 4M4 7v14M20 7v14M9 21V12h6v9"/></svg></div>
             <div class="cm-text">
               <div class="cm-label">Company</div>
               <div class="cm-val">Inonego Services Pvt. Ltd. - India</div>
@@ -4013,11 +4057,11 @@
       </a>
       <p class="footer-desc">AdsTube is the easiest way to get your YouTube video seen by real viewers. We help you achieve watch time and subscribers for YouTube monetization.</p>
       <div class="footer-social">
-        <a href="https://www.youtube.com/c/AdsTube-India" target="_blank" class="soc-btn" title="YouTube">&#9654;</a>
-        <a href="https://www.facebook.com/AdsTube-1059588454225853/" target="_blank" class="soc-btn" title="Facebook">f</a>
-        <a href="https://www.instagram.com/adstube.in" target="_blank" class="soc-btn" title="Instagram">&#128248;</a>
-        <a href="https://twitter.com/Adstube1" target="_blank" class="soc-btn" title="Twitter / X">ð•</a>
-        <a href="https://www.linkedin.com/company/adstube/" target="_blank" class="soc-btn" title="LinkedIn">in</a>
+        <a href="https://www.youtube.com/c/AdsTube-India" target="_blank" class="soc-btn" title="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#111" stroke="none"/></svg></a>
+        <a href="https://www.facebook.com/AdsTube-1059588454225853/" target="_blank" class="soc-btn" title="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="https://www.instagram.com/adstube.in" target="_blank" class="soc-btn" title="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="https://twitter.com/Adstube1" target="_blank" class="soc-btn" title="Twitter / X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.631z" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.linkedin.com/company/adstube/" target="_blank" class="soc-btn" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
       </div>
     </div>
     <div class="footer-col">
@@ -4069,88 +4113,42 @@
     <!-- Header -->
     <div class="popup-header">
       <button class="popup-close" id="popupClose" aria-label="Close">&times;</button>
-      <div class="popup-header-tag">&#128640; Limited Offer - Free Consultation</div>
+      <div class="popup-header-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3" fill="rgba(255,255,255,0.85)" stroke="none"/></svg> Limited Offer - Free Consultation</div>
       <h3>Grow Your Channel<br>Today</h3>
       <p>Fill in your details &amp; get a custom YouTube promotion strategy in 24 hrs.</p>
     </div>
 
     <!-- Form Body -->
     <div class="popup-body" id="popupFormWrap">
-      <div class="popup-steps">
-        <div class="popup-step-dot active"></div>
-        <div class="popup-step-dot active"></div>
-        <div class="popup-step-dot active"></div>
-      </div>
-
       <form class="popup-form" id="popupForm" onsubmit="handlePopupSubmit(event)">
         <input type="hidden" name="form" value="Popup Form">
         <input type="hidden" name="triggeredBy" id="popupTriggerSource" value="Unknown">
         <div class="popup-form-row">
           <div class="popup-field">
-            <label>Your Name</label>
-            <input type="text" name="name" placeholder="Your Name" required>
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Your name" required>
           </div>
           <div class="popup-field">
-            <label>Phone / WhatsApp</label>
+            <label>WhatsApp No.</label>
             <input type="tel" name="phone" placeholder="+91 9000000000" required>
           </div>
         </div>
-
         <div class="popup-field">
-          <label>Email Address</label>
-          <input type="email" name="email" placeholder="john@email.com" required>
+          <label>Service Needed</label>
+          <select name="service" required>
+            <option value="" disabled selected>Select a service...</option>
+            <option>YouTube Views</option>
+            <option>YouTube Subscribers</option>
+            <option>YouTube Monetization</option>
+            <option>YouTube Revenue Boost</option>
+            <option>Video SEO</option>
+            <option>Full Channel Growth</option>
+          </select>
         </div>
-
-        <div class="popup-field">
-          <label>YouTube Channel URL</label>
-          <input type="url" name="channelUrl" placeholder="https://youtube.com/@yourchannel">
-        </div>
-
-        <div class="popup-form-row">
-          <div class="popup-field">
-            <label>Service Needed</label>
-            <select name="service" required>
-              <option value="" disabled selected>Select...</option>
-              <option>YouTube Views</option>
-              <option>YouTube Subscribers</option>
-              <option>YouTube Monetization</option>
-              <option>YouTube Revenue Boost</option>
-              <option>Video SEO</option>
-              <option>Full Channel Growth</option>
-            </select>
-          </div>
-          <div class="popup-field">
-            <label>Your Budget</label>
-            <select name="budget">
-              <option value="" disabled selected>Select...</option>
-              <option>Under ₹2,000</option>
-              <option>₹2,000 - ₹5,000</option>
-              <option>₹5,000 - ₹15,000</option>
-              <option>₹15,000+</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="popup-field">
-          <label>Your Goal (Optional)</label>
-          <textarea name="message" placeholder="E.g. I want 10K views on my latest video and reach 1000 subscribers for monetization..."></textarea>
-        </div>
-
-        <button type="submit" class="popup-submit">
-          <span>Get My Free Strategy</span>
-          <span>&#8594;</span>
-        </button>
+        <button type="submit" class="popup-submit"><span>Get Free Consultation</span> <span>&#8594;</span></button>
       </form>
-
-      <div class="popup-footer-note">
-        <span>&#10003;</span> No spam &#183; 100% free consultation &#183; Reply within 24 hrs
-      </div>
-
-      <div class="popup-trust">
-        <div class="popup-trust-item">&#128274; <b>Secure &amp; Private</b></div>
-        <div class="popup-trust-item">! <b>125K+ Videos Promoted</b></div>
-        <div class="popup-trust-item">&#127775; <b>5-Star Rated</b></div>
-      </div>
+      <div class="popup-footer-note">&#10003; No spam &nbsp;&#183;&nbsp; Free &nbsp;&#183;&nbsp; Reply in 24 hrs</div>
+    </div>
     </div>
 
     <!-- Success State -->
