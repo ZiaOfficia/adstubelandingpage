@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -7,10 +7,10 @@
 <meta name="description" content="Adstube is the Best Youtube Promotion Service Provider. We Provide YouTube channel Advertising and YouTube video marketing Services at an affordable Price.">
 <meta name="keywords" content="YouTube promotion, get YouTube video views, YouTube advertising, Increase YouTube subscribers, YouTube video promotion, YouTube Monetization, Youtube Promotions Service in India, Best Youtube Paid Promotion Services">
 <meta name="author" content="AdsTube India">
-<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="icon" type="image/png" href="images/favicon.png">
 <meta property="og:title" content="Online YouTube Video promotion | Get More YouTube Video Views &amp; YouTube advertising| AdsTube">
 <meta property="og:description" content="Get YouTube Video Promotion services like YouTube video advertising and YouTube video views and many more with AdsTube.">
-<meta property="og:image" content="images/logo.png">
+<meta property="og:image" content="logo2.png">
 <meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -57,11 +57,11 @@
     border-bottom-color: rgba(255,255,255,.09);
   }
   .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
-  .nav-logo-img { height: 38px; width: auto; display: block; }
+  .nav-logo-img { height: 130px; width: auto; display: block; }
 
   .nav-links { display: flex; gap: 2px; list-style: none; align-items: center; }
   .nav-links a {
-    position: relative; color: #777;
+    position: relative; color: #c0c0c0;
     font-size: 13.5px; text-decoration: none;
     font-weight: 500; letter-spacing: .25px;
     padding: 7px 14px; border-radius: 7px;
@@ -123,7 +123,7 @@
   }
   .mobile-menu.open { max-height: 500px; }
   .mobile-menu a {
-    color: #666; font-size: 15px; text-decoration: none; font-weight: 500;
+    color: #bbb; font-size: 15px; text-decoration: none; font-weight: 500;
     padding: 14px 28px;
     border-left: 2px solid transparent;
     transition: color .2s, border-color .2s, background .2s, padding-left .22s;
@@ -140,7 +140,8 @@
     text-decoration: none; display: block;
     box-shadow: 0 4px 20px rgba(232,0,28,.28);
     transition: background .22s, transform .22s;
-    letter-spacing: .4px;
+    letter-spacing: .4px; border: none; cursor: pointer;
+    font-family: 'Barlow', sans-serif; width: calc(100% - 48px);
   }
   .mobile-menu-cta:hover { background: #ff1a35; transform: translateY(-1px); }
 
@@ -297,6 +298,61 @@
   .trust-item:hover { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.15); color: #aaa; }
   .trust-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; box-shadow: 0 0 6px var(--green); flex-shrink: 0; }
 
+  /* GOOGLE ADS PARTNER BADGE */
+  .gads-partner { display: flex; justify-content: center; margin-bottom: 36px; }
+  .gads-badge {
+    display: flex; align-items: center; gap: 22px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 18px; padding: 20px 28px;
+    max-width: 680px; width: 100%;
+    text-align: left; position: relative; overflow: hidden;
+  }
+  .gads-badge::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2.5px;
+    background: linear-gradient(90deg, #4285F4 0%, #EA4335 33%, #FBBC05 66%, #34A853 100%);
+  }
+  .gads-logo-col {
+    display: flex; flex-direction: column; align-items: center; gap: 8px; flex-shrink: 0;
+  }
+  .gads-icon svg { display: block; }
+  .gads-google-text {
+    font-size: 13px; font-weight: 700; letter-spacing: .3px; line-height: 1; white-space: nowrap;
+  }
+  .gads-google-text .gc-b { color: #4285F4; }
+  .gads-google-text .gc-r { color: #EA4335; }
+  .gads-google-text .gc-y { color: #FBBC05; }
+  .gads-google-text .gc-g { color: #34A853; }
+  .gads-google-text .gc-w { color: #fff; }
+  .gads-ads-pill {
+    background: #4285F4; color: #fff;
+    font-size: 10px; font-weight: 800; letter-spacing: 2px;
+    padding: 3px 10px; border-radius: 6px; text-transform: uppercase;
+  }
+  .gads-sep { width: 1px; background: rgba(255,255,255,.1); align-self: stretch; flex-shrink: 0; }
+  .gads-content { flex: 1; }
+  .gads-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .gads-verified-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(52,168,83,.15); border: 1px solid rgba(52,168,83,.4);
+    color: #34A853; font-size: 11px; font-weight: 700;
+    letter-spacing: 1.2px; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 100px;
+  }
+  .gads-verified-dot { width: 6px; height: 6px; border-radius: 50%; background: #34A853; box-shadow: 0 0 6px #34A853; flex-shrink: 0; }
+  .gads-title {
+    font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 700;
+    color: #fff; text-transform: uppercase; letter-spacing: .5px;
+  }
+  .gads-desc {
+    font-size: 13.5px; color: #aaa; line-height: 1.65;
+  }
+  @media (max-width: 600px) {
+    .gads-badge { flex-direction: column; gap: 14px; padding: 18px 18px; }
+    .gads-logo-col { flex-direction: row; gap: 12px; }
+    .gads-sep { display: none; }
+  }
+
   @media (max-width: 600px) {
     .hero-corner { display: none; }
   }
@@ -390,8 +446,8 @@
     line-height: 1.1; margin-bottom: 16px;
   }
   .section-sub {
-    text-align: center; color: #888; max-width: 550px;
-    margin: 0 auto 60px; font-size: 16px; line-height: 1.6;
+    text-align: center; color: #bbb; max-width: 550px;
+    margin: 0 auto 60px; font-size: 18px; line-height: 1.6;
   }
   .max-w { max-width: 1200px; margin: 0 auto; }
 
@@ -480,7 +536,7 @@
 
   .service-card p { color: #666; font-size: 13px; line-height: 1.7; margin-bottom: 20px; }
 
-  /* ---- Learn More link — styled per card ---- */
+  /* ---- Learn More link - styled per card ---- */
   .service-link {
     display: inline-flex; align-items: center; gap: 6px;
     font-size: 12px; font-weight: 700; letter-spacing: 1px;
@@ -499,6 +555,176 @@
 
   /* PRICING */
   .pricing { background: var(--bg2); }
+
+  /* Toggle */
+  .plan-toggle-wrap { display: flex; justify-content: center; margin-bottom: 52px; }
+  .plan-toggle {
+    display: flex; gap: 0;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 14px; padding: 6px;
+  }
+  .plan-tab {
+    padding: 16px 48px; border-radius: 10px;
+    font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 600;
+    cursor: pointer; border: none; background: none; color: #666;
+    transition: all .28s ease; letter-spacing: 1px; white-space: nowrap;
+    text-transform: uppercase;
+  }
+  .plan-tab.active {
+    background: var(--red); color: #fff;
+    box-shadow: 0 6px 28px rgba(232,0,28,.45);
+    letter-spacing: 1.5px;
+  }
+  .plan-tab:not(.active):hover { color: #fff; background: rgba(255,255,255,.07); }
+
+  /* Panels */
+  .plan-panel { display: none; justify-content: center; width: 100%; }
+  .plan-panel.active { display: flex; }
+
+  /* Single card centered */
+  .plan-panel .price-card {
+    max-width: 420px; width: 100%;
+  }
+
+  /* ===== PLAN CARDS - Professional Redesign ===== */
+  .vp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px; width: 100%;
+  }
+
+  .vp-card {
+    background: #111;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 18px;
+    padding: 30px 26px 26px;
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: transform .3s ease, border-color .3s, box-shadow .3s;
+  }
+  /* top accent line - expands from left on hover */
+  .vp-card::after {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, #e8001c 0%, #ff4040 60%, #ff8c00 100%);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .35s ease;
+  }
+  .vp-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(232,0,28,.3);
+    box-shadow: 0 20px 60px rgba(0,0,0,.6), 0 0 0 1px rgba(232,0,28,.15);
+  }
+  .vp-card:hover::after { transform: scaleX(1); }
+
+  /* Popular card - always glowing */
+  .vp-card.vp-hot {
+    background: linear-gradient(160deg, #1c0808 0%, #111 60%);
+    border-color: rgba(232,0,28,.4);
+    box-shadow: 0 0 50px rgba(232,0,28,.2);
+  }
+  .vp-card.vp-hot::after { transform: scaleX(1); }
+  .vp-hot-tag {
+    position: absolute; top: 0; right: 22px;
+    background: linear-gradient(135deg, #e8001c, #ff4040);
+    color: #fff; font-size: 9px; font-weight: 800;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 14px rgba(232,0,28,.45);
+  }
+
+  /* Card header - icon + plan name + logo */
+  .vp-head {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px;
+  }
+  .vp-icon {
+    width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0;
+    background: rgba(232,0,28,.1); border: 1px solid rgba(232,0,28,.2);
+    display: flex; align-items: center; justify-content: center;
+    transition: background .3s, border-color .3s;
+  }
+  .vp-card:hover .vp-icon, .vp-card.vp-hot .vp-icon {
+    background: rgba(232,0,28,.18); border-color: rgba(232,0,28,.4);
+  }
+  .vp-icon svg { width: 18px; height: 18px; stroke: #e8001c; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .vp-plan-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px; font-weight: 700; color: #fff;
+    letter-spacing: 1px; text-transform: uppercase; flex: 1;
+  }
+  .vp-logo {
+    display: none;
+  }
+
+  /* Count */
+  .vp-count {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(36px, 4.5vw, 50px); font-weight: 700;
+    color: #fff; line-height: 1; margin-bottom: 6px; letter-spacing: -1px;
+  }
+  .vp-count sup { color: var(--red); font-size: .45em; vertical-align: super; }
+  .vp-type-label {
+    font-size: 11px; color: #555; letter-spacing: 2px;
+    text-transform: uppercase; font-weight: 600; margin-bottom: 22px;
+  }
+
+  /* Divider */
+  .vp-sep {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 22px;
+  }
+  .vp-sep-line { flex: 1; height: 1px; background: rgba(255,255,255,.07); }
+  .vp-sep-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--red); opacity: .5; flex-shrink: 0; }
+
+  /* Price */
+  .vp-price-wrap { margin-bottom: 24px; }
+  .vp-price {
+    font-family: 'Oswald', sans-serif;
+    font-size: 36px; font-weight: 700; color: #fff;
+    line-height: 1; letter-spacing: -1px;
+  }
+  .vp-period {
+    font-size: 11px; color: #555; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-top: 5px; font-weight: 600;
+  }
+
+  /* CTA button */
+  .vp-btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 13px 20px;
+    background: rgba(232,0,28,.08);
+    border: 1px solid rgba(232,0,28,.25);
+    color: #e8001c; border-radius: 10px;
+    font-size: 13.5px; font-weight: 700; font-family: 'Barlow', sans-serif;
+    letter-spacing: .5px; text-decoration: none;
+    transition: all .25s ease; margin-top: auto;
+    position: relative; overflow: hidden;
+  }
+  .vp-btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,.1) 0%, transparent 55%);
+    opacity: 0; transition: opacity .25s;
+  }
+  .vp-btn:hover {
+    background: var(--red); color: #fff; border-color: transparent;
+    box-shadow: 0 6px 22px rgba(232,0,28,.45); transform: translateY(-1px);
+  }
+  .vp-btn:hover::before { opacity: 1; }
+  .vp-btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s; }
+  .vp-btn:hover svg { transform: translateX(4px); }
+
+  /* Popular card button - always filled */
+  .vp-card.vp-hot .vp-btn {
+    background: linear-gradient(135deg, #e8001c, #b50016);
+    border-color: transparent; color: #fff;
+    box-shadow: 0 6px 22px rgba(232,0,28,.4);
+  }
+  .vp-card.vp-hot .vp-btn:hover { box-shadow: 0 10px 32px rgba(232,0,28,.6); }
+
+  @media (max-width: 960px) { .vp-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px)  { .vp-grid { grid-template-columns: 1fr; } }
+
   .pricing-grid {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: start;
   }
@@ -605,7 +831,7 @@
     display: flex; align-items: center; gap: 10px;
   }
   .plan-features li:last-child { border-bottom: none; }
-  .plan-features li::before { content: '✓'; font-weight: 800; flex-shrink: 0; }
+  .plan-features li::before { content: '&#10003;'; font-weight: 800; flex-shrink: 0; }
 
   /* Check-mark colours per card */
   .pc-card-views .plan-features li::before { color: #e8001c; }
@@ -640,7 +866,7 @@
     transform: translateY(-1px);
   }
 
-  /* ===== STEPS — REDESIGNED ===== */
+  /* ===== STEPS - REDESIGNED ===== */
   .steps { background: var(--bg); }
 
   .steps-layout {
@@ -881,7 +1107,7 @@
     .about-grid { grid-template-columns: 1fr; gap: 36px; }
   }
 
-  /* ===== TESTIMONIALS — REDESIGNED ===== */
+  /* ===== TESTIMONIALS - REDESIGNED ===== */
   .testimonials { background: var(--bg2); }
 
   /* Rating summary strip */
@@ -903,7 +1129,7 @@
   .testi-sum-label span { font-size: 11px; color: #555; }
   .testi-sum-sep { width: 1px; height: 40px; background: rgba(255,255,255,.08); }
 
-  /* 2×2 grid */
+  /* 2Ã&#8212;2 grid */
   .testi-grid {
     display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
     max-width: 960px; margin: 0 auto;
@@ -1000,7 +1226,7 @@
     .testi-summary { gap: 18px; padding: 16px 20px; }
   }
 
-  /* ===== FAQ — REDESIGNED ===== */
+  /* ===== FAQ - REDESIGNED ===== */
   .faq { background: var(--bg); }
 
   /* Two-column layout */
@@ -1057,7 +1283,7 @@
   }
   .faq-item.open .faq-icon { transform: rotate(45deg); color: #fff; }
 
-  /* Open state — border + icon color per card */
+  /* Open state - border + icon color per card */
   .fq-red.faq-item.open    { border-color: rgba(232,0,28,.45);  box-shadow: 0 6px 24px rgba(232,0,28,.1); }
   .fq-blue.faq-item.open   { border-color: rgba(59,130,246,.45); box-shadow: 0 6px 24px rgba(59,130,246,.1); }
   .fq-green.faq-item.open  { border-color: rgba(34,197,94,.45);  box-shadow: 0 6px 24px rgba(34,197,94,.1); }
@@ -1190,7 +1416,7 @@
     50%  { box-shadow: 0 0 0 14px rgba(232,0,28,.12), 0 0 0 26px rgba(232,0,28,.06), 0 20px 60px rgba(232,0,28,.4); }
     100% { box-shadow: 0 0 0 8px rgba(232,0,28,.08), 0 0 0 16px rgba(232,0,28,.04), 0 20px 60px rgba(232,0,28,.3); }
   }
-  .guar-shield img { width: 44px; height: 44px; object-fit: contain; filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(0,0,0,.4)); }
+  .guar-shield img { width: 62px; height: 62px; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,.4)); }
   .guar-hero h2 {
     font-family: 'Oswald', sans-serif; font-size: 52px; font-weight: 700; text-transform: uppercase;
     line-height: 1.1; margin-bottom: 14px;
@@ -1208,7 +1434,7 @@
     height: 100px; display: flex; align-items: center; justify-content: center;
     position: relative; overflow: hidden;
   }
-  .guar-card-header img { width: 38px; height: 38px; object-fit: contain; filter: brightness(0) invert(1) drop-shadow(0 2px 6px rgba(0,0,0,.3)); position: relative; z-index: 1; }
+  .guar-card-header img { width: 56px; height: 56px; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,.3)); position: relative; z-index: 1; }
   .guar-card-header::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.22) 100%); }
   .gc-red  { background: linear-gradient(135deg, #e8001c 0%, #7a0010 100%); }
   .gc-blue { background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%); }
@@ -1605,14 +1831,23 @@
 
   /* FOOTER */
   footer {
-    background: var(--bg); border-top: 1px solid var(--border);
-    padding: 60px 20px 30px;
+    background: #080808;
+    border-top: 1px solid rgba(255,255,255,.07);
+    padding: 70px 20px 0;
+    position: relative; overflow: hidden;
+  }
+  footer::before {
+    content: ''; position: absolute;
+    top: -200px; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 400px;
+    background: radial-gradient(ellipse, rgba(232,0,28,.06) 0%, transparent 70%);
+    pointer-events: none;
   }
   .footer-top {
     max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px;
-    padding-bottom: 50px; border-bottom: 1px solid var(--border);
-    margin-bottom: 30px;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px;
+    padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,.07);
+    margin-bottom: 0; position: relative; z-index: 1;
   }
   .footer-logo {
     font-family: 'Barlow Condensed', sans-serif;
@@ -1620,27 +1855,261 @@
     margin-bottom: 16px;
   }
   .footer-logo span { color: var(--red); }
-  .footer-desc { color: #666; font-size: 14px; line-height: 1.7; margin-bottom: 24px; max-width: 260px; }
-  .footer-social { display: flex; gap: 12px; }
-  .soc-btn {
-    width: 36px; height: 36px; border: 1px solid var(--border);
-    border-radius: 6px; display: flex; align-items: center; justify-content: center;
-    font-size: 15px; text-decoration: none; color: #888;
-    transition: all .2s;
+  .footer-desc {
+    color: #bbb; font-size: 14px; line-height: 1.8;
+    margin-bottom: 28px; max-width: 270px;
   }
-  .soc-btn:hover { border-color: var(--red); color: var(--red); }
-  .footer-col h4 { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 600; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .footer-col ul a { color: #666; font-size: 14px; text-decoration: none; transition: color .2s; }
-  .footer-col ul a:hover { color: var(--white); }
+  .footer-social { display: flex; gap: 10px; }
+  .soc-btn {
+    width: 38px; height: 38px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 14px; text-decoration: none; color: #ccc;
+    background: rgba(255,255,255,.04);
+    transition: all .22s;
+  }
+  .soc-btn:hover {
+    border-color: var(--red); color: #fff;
+    background: rgba(232,0,28,.12);
+    transform: translateY(-2px);
+  }
+
+  .footer-col h4 {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 700;
+    color: #fff; margin-bottom: 22px; text-transform: uppercase; letter-spacing: 2px;
+    position: relative; padding-bottom: 12px;
+  }
+  .footer-col h4::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 24px; height: 2px; background: var(--red); border-radius: 2px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+  .footer-col ul li a {
+    color: #b0b0b0; font-size: 14px; text-decoration: none;
+    transition: color .2s, padding-left .2s;
+    display: inline-block;
+  }
+  .footer-col ul li a:hover { color: #fff; padding-left: 4px; }
+
   .footer-bottom {
     max-width: 1200px; margin: 0 auto;
     display: flex; justify-content: space-between; align-items: center;
-    color: #555; font-size: 13px;
+    color: #999; font-size: 13px; padding: 24px 0;
+    border-top: 1px solid rgba(255,255,255,.05);
+    position: relative; z-index: 1;
+  }
+  .footer-bottom a { color: #999; text-decoration: none; transition: color .2s; }
+  .footer-bottom a:hover { color: #fff; }
+
+  /* ===== AD PLACEMENTS SECTION ===== */
+  .adplacements { background: var(--bg2); padding: 100px 20px; position: relative; overflow: hidden; }
+  .adplacements::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(232,0,28,.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 0% 60%, rgba(232,0,28,.04) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 40% at 100% 60%, rgba(232,0,28,.04) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .adp-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+
+  /* Heading block */
+  .adp-head { text-align: center; margin-bottom: 64px; }
+  .adp-head h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(30px, 5vw, 56px); font-weight: 700;
+    text-transform: uppercase; line-height: 1.1;
+    color: var(--white); margin-bottom: 18px; letter-spacing: -0.5px;
+  }
+  .adp-head h2 .adp-accent { color: var(--red); }
+  .adp-head p {
+    font-size: 17px; color: #999; max-width: 540px;
+    margin: 0 auto; line-height: 1.7; font-weight: 400;
+  }
+  .adp-head p strong { color: #ccc; font-weight: 600; }
+
+  /* Arrow + mockup layout */
+  .adp-layout {
+    display: grid; grid-template-columns: 140px 1fr 140px;
+    align-items: center; gap: 0;
+  }
+  .adp-arrow { display: flex; align-items: center; justify-content: center; }
+  .adp-arrow svg { width: 90px; height: 90px; opacity: .55; }
+  .adp-arrow-left svg { transform: scaleX(-1); }
+
+  /* Mockup cards grid */
+  .adp-mockups { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+
+  /* Single mockup card */
+  .adp-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+    transition: border-color .35s, box-shadow .35s, transform .3s;
+  }
+  .adp-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(232,0,28,.35);
+    box-shadow: 0 20px 60px rgba(0,0,0,.6), 0 0 0 1px rgba(232,0,28,.12);
   }
 
-  /* IMAGE HELPERS (additive — keeps existing color combo) */
-  .nav-logo-img { height: 34px; width: auto; display: block; }
+  /* Browser chrome bar */
+  .adp-browser-bar {
+    background: #1e1e1e; border-bottom: 1px solid rgba(255,255,255,.07);
+    padding: 10px 14px; display: flex; align-items: center; gap: 10px;
+  }
+  .adp-dots { display: flex; gap: 5px; }
+  .adp-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .adp-dot:nth-child(1) { background: #e8001c; opacity: .6; }
+  .adp-dot:nth-child(2) { background: #f59e0b; opacity: .6; }
+  .adp-dot:nth-child(3) { background: #22c55e; opacity: .6; }
+  .adp-url-bar {
+    flex: 1; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
+    border-radius: 5px; height: 20px; display: flex; align-items: center; padding: 0 10px;
+  }
+  .adp-url-text { font-size: 9px; color: #555; letter-spacing: .3px; }
+  .adp-yt-logo {
+    display: flex; align-items: center; gap: 5px; flex-shrink: 0;
+  }
+  .adp-yt-icon { color: var(--red); font-size: 12px; }
+  .adp-yt-text { font-size: 10px; font-weight: 700; color: #fff; letter-spacing: -.3px; }
+
+  /* Card inner body */
+  .adp-card-body { padding: 14px; display: flex; gap: 10px; }
+
+  /* -- LEFT card: in-stream layout -- */
+  .adp-card-left .adp-card-body { flex-direction: row; gap: 10px; }
+
+  .adp-main-ad {
+    flex: 1.2; background: var(--red);
+    border-radius: 8px; min-height: 140px; padding: 14px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    position: relative; overflow: hidden;
+  }
+  .adp-main-ad::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, transparent 60%);
+  }
+  .adp-ad-tag {
+    display: inline-flex; align-items: center;
+    background: #f59e0b; color: #000;
+    font-size: 8px; font-weight: 800; letter-spacing: .5px;
+    padding: 2px 6px; border-radius: 3px; margin-bottom: 6px;
+    width: fit-content; position: relative; z-index: 1;
+  }
+  .adp-main-ad-text {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 700;
+    color: #fff; line-height: 1.25; position: relative; z-index: 1;
+  }
+  .adp-main-ad-sub {
+    font-size: 9px; color: rgba(255,255,255,.7); margin-top: 4px;
+    position: relative; z-index: 1;
+  }
+  .adp-progress-bar {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: rgba(255,255,255,.2);
+  }
+  .adp-progress-bar::after {
+    content: ''; position: absolute; left: 0; top: 0; height: 100%;
+    width: 35%; background: #fff; border-radius: 2px;
+  }
+
+  .adp-side-ads { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+
+  .adp-side-ad {
+    background: rgba(232,0,28,.12); border: 1px solid rgba(232,0,28,.25);
+    border-radius: 7px; padding: 9px 10px; display: flex; align-items: center; gap: 8px;
+  }
+  .adp-side-thumb {
+    width: 34px; height: 26px; border-radius: 4px; flex-shrink: 0;
+    background: var(--red); opacity: .8;
+  }
+  .adp-side-info { flex: 1; min-width: 0; }
+  .adp-side-label {
+    font-size: 8px; color: rgba(255,255,255,.7); line-height: 1.3; margin-bottom: 3px;
+  }
+  .adp-side-badge {
+    display: inline-flex; align-items: center;
+    background: #f59e0b; color: #000;
+    font-size: 7px; font-weight: 800; letter-spacing: .3px;
+    padding: 1px 5px; border-radius: 2px;
+  }
+
+  .adp-skeleton-rows { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
+  .adp-skel {
+    height: 7px; border-radius: 4px;
+    background: rgba(255,255,255,.07);
+  }
+  .adp-skel.w80 { width: 80%; }
+  .adp-skel.w60 { width: 60%; }
+  .adp-skel.w90 { width: 90%; }
+
+  /* -- RIGHT card: in-feed + search layout -- */
+  .adp-card-right .adp-card-body { flex-direction: row; gap: 10px; }
+
+  .adp-feed-ad {
+    flex: 1; background: var(--red);
+    border-radius: 8px; min-height: 140px; padding: 14px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    position: relative; overflow: hidden;
+  }
+  .adp-feed-ad::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(160deg, rgba(255,255,255,.06) 0%, transparent 60%);
+  }
+  .adp-feed-ad-text {
+    font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 700;
+    color: #fff; line-height: 1.25; position: relative; z-index: 1;
+  }
+
+  .adp-search-col { flex: 1.1; display: flex; flex-direction: column; gap: 7px; }
+  .adp-search-result {
+    display: flex; gap: 9px; align-items: flex-start;
+    padding: 9px; background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.07); border-radius: 8px;
+  }
+  .adp-search-thumb {
+    width: 70px; height: 48px; border-radius: 5px; flex-shrink: 0;
+    background: var(--red); opacity: .85;
+  }
+  .adp-search-info { flex: 1; min-width: 0; }
+  .adp-search-title { font-size: 9px; color: #bbb; line-height: 1.35; margin-bottom: 5px; }
+  .adp-search-meta { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+  .adp-search-badge {
+    display: inline-flex; align-items: center;
+    background: #f59e0b; color: #000;
+    font-size: 7px; font-weight: 800; letter-spacing: .3px;
+    padding: 1px 5px; border-radius: 2px;
+  }
+  .adp-search-channel { font-size: 8px; color: #555; }
+  .adp-search-views { font-size: 8px; color: #555; }
+
+  .adp-search-skels { display: flex; flex-direction: column; gap: 5px; margin-top: 2px; }
+
+  /* Bottom pill tags */
+  .adp-tags { display: flex; justify-content: center; gap: 10px; margin-top: 48px; flex-wrap: wrap; }
+  .adp-tag-pill {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(232,0,28,.07); border: 1px solid rgba(232,0,28,.22);
+    padding: 8px 18px; border-radius: 100px;
+    font-size: 12px; font-weight: 600; color: #ccc; letter-spacing: .3px;
+    transition: all .2s;
+  }
+  .adp-tag-pill:hover { background: rgba(232,0,28,.14); border-color: rgba(232,0,28,.45); color: #fff; }
+  .adp-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); box-shadow: 0 0 6px var(--red); flex-shrink: 0; }
+
+  @media (max-width: 1000px) {
+    .adp-layout { grid-template-columns: 1fr; }
+    .adp-arrow { display: none; }
+  }
+  @media (max-width: 640px) {
+    .adp-mockups { grid-template-columns: 1fr; }
+    .adp-card-body { flex-direction: column !important; }
+    .adp-search-col { flex-direction: row; gap: 8px; }
+    .adp-search-result:last-child { display: none; }
+  }
+
+  /* IMAGE HELPERS (additive - keeps existing color combo) */
+  .nav-logo-img { height: 120px; width: auto; display: block; }
   .stat-icon { width: 42px; height: 42px; object-fit: contain; margin: 0 auto 12px; display: block; filter: brightness(0) invert(1); opacity: .85; }
   .price-tile-img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; margin-bottom: 18px; }
   .author-avatar.has-img { background: transparent; padding: 0; overflow: hidden; }
@@ -1800,11 +2269,7 @@
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
-  .float-btn-icon img {
-    width: 26px; height: 26px; object-fit: contain;
-    filter: brightness(0) invert(1);
-    display: block;
-  }
+  .float-btn-icon svg { display: block; }
   .float-btn-label {
     font-family: 'Barlow', sans-serif;
     font-size: 13px; font-weight: 700;
@@ -1818,7 +2283,7 @@
   }
   .float-btn:hover { transform: translateY(-3px); }
 
-  /* WhatsApp — bottom LEFT, green */
+  /* WhatsApp - bottom LEFT, green */
   .float-wa {
     left: 22px;
     background: #25D366;
@@ -1827,7 +2292,7 @@
   .float-wa:hover { box-shadow: 0 10px 32px rgba(37,211,102,.65); }
   .float-wa .float-btn-icon { background: rgba(0,0,0,.15); }
 
-  /* Phone — bottom RIGHT, brand red */
+  /* Phone - bottom RIGHT, brand red */
   .float-call {
     right: 22px;
     background: var(--red);
@@ -1836,6 +2301,12 @@
   }
   .float-call:hover { box-shadow: 0 10px 32px rgba(232,0,28,.65); }
   .float-call .float-btn-icon { background: rgba(0,0,0,.15); }
+
+  /* Touch devices - never expand label on tap */
+  @media (hover: none) {
+    .float-btn-label { display: none !important; }
+    .float-btn:hover { transform: none; }
+  }
 
   /* Pulse ring animation */
   @keyframes floatPulse {
@@ -2029,101 +2500,122 @@
   }
   .popup-success p { color: #888; font-size: 14px; line-height: 1.6; max-width: 320px; }
 
-  /* --- Popup: tablet (≤ 600px) --- */
+  /* --- Popup: mobile (&le; 600px) - full-width bottom sheet --- */
   @media (max-width: 600px) {
-    /* Slide up as a bottom sheet */
     .popup-backdrop {
       align-items: flex-end;
       padding: 0;
     }
     .popup-modal {
+      width: 100%;
       max-width: 100%;
       border-radius: 20px 20px 0 0;
       border-bottom: none;
-      /* slide in from below instead of scaling */
       transform: translateY(100%);
       transition: transform .4s cubic-bezier(.22,1,.36,1);
-      /* limit height so it's scrollable on small phones */
-      max-height: 92dvh;
+      max-height: 90dvh;
       display: flex;
       flex-direction: column;
+      box-sizing: border-box;
     }
-    .popup-backdrop.show .popup-modal {
-      transform: translateY(0);
-    }
+    .popup-backdrop.show .popup-modal { transform: translateY(0); }
 
-    /* Drag handle pill at top of sheet */
+    /* Drag handle pill */
     .popup-modal::before {
       content: '';
       display: block;
       width: 40px; height: 4px;
-      background: rgba(255,255,255,.18);
+      background: rgba(255,255,255,.2);
       border-radius: 2px;
-      margin: 10px auto 0;
+      margin: 10px auto 4px;
       flex-shrink: 0;
     }
 
-    /* Header compact */
-    .popup-header {
-      padding: 16px 20px 16px;
-      flex-shrink: 0;
-    }
-    .popup-header h3 { font-size: 22px; }
-    .popup-header p { font-size: 12px; }
-    .popup-header-tag { font-size: 10px; padding: 3px 10px; margin-bottom: 8px; }
+    /* Header - right padding keeps text clear of close button */
+    .popup-header { padding: 14px 52px 14px 18px; flex-shrink: 0; }
+    .popup-header-tag { font-size: 10px; padding: 3px 10px; margin-bottom: 8px; letter-spacing: 1px; }
+    .popup-header h3 { font-size: 20px; line-height: 1.2; margin-bottom: 5px; }
+    .popup-header p { font-size: 12px; line-height: 1.5; }
 
-    /* Close button — bigger tap target on mobile */
-    .popup-close {
-      width: 34px; height: 34px; font-size: 18px;
-      top: 12px; right: 14px;
-    }
+    /* Close button - generous tap target */
+    .popup-close { width: 34px; height: 34px; font-size: 18px; top: 12px; right: 14px; }
 
-    /* Scrollable body */
+    /* Scrollable body - min-height:0 fixes Safari flex-scroll bug */
     .popup-body {
-      padding: 18px 18px 28px;
+      padding: 16px 18px 24px;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
       flex: 1;
+      min-height: 0;
     }
 
-    /* Stack all field rows */
-    .popup-form-row { grid-template-columns: 1fr; gap: 14px; }
+    /* Form layout */
+    .popup-form { gap: 12px; }
+    .popup-form-row { grid-template-columns: 1fr; gap: 12px; }
 
-    /* 16px font prevents iOS auto-zoom on focus */
+    /* Labels - readable, not microscopic */
+    .popup-field { gap: 5px; }
+    .popup-field label { font-size: 12px; color: #999; letter-spacing: .5px; }
+
+    /* Inputs - 16px prevents iOS auto-zoom; box-sizing stops width overflow */
     .popup-field input,
     .popup-field select,
     .popup-field textarea {
       font-size: 16px;
-      padding: 13px 14px;
+      padding: 12px 14px;
+      border-radius: 9px;
+      box-sizing: border-box;
+      width: 100%;
     }
+    .popup-field textarea { height: 60px; }
 
-    /* Shorter textarea on mobile */
-    .popup-field textarea { height: 70px; }
+    /* Submit */
+    .popup-submit { padding: 14px; font-size: 15px; border-radius: 9px; }
 
-    /* Bigger submit tap target */
-    .popup-submit { padding: 15px; font-size: 15px; }
+    /* Steps progress bar */
+    .popup-steps { margin-bottom: 14px; }
 
-    /* Trust bar — center & wrap */
+    /* Trust badges - centered, wrapping */
     .popup-trust {
       justify-content: center;
       gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      padding-top: 14px;
+    }
+    .popup-trust-item { font-size: 11px; }
+
+    /* Footer note - wrap so long text never overflows */
+    .popup-footer-note {
+      font-size: 12px;
+      flex-wrap: wrap;
+      gap: 4px;
+      text-align: center;
+      margin-top: 12px;
     }
 
-    /* Steps bar closer together */
-    .popup-steps { margin-bottom: 18px; }
-
-    /* Success screen compact */
-    .popup-success { padding: 30px 20px 24px; }
+    /* Success screen */
+    .popup-success { padding: 28px 20px 24px; }
     .popup-success-icon { width: 60px; height: 60px; font-size: 26px; }
     .popup-success h4 { font-size: 20px; }
+    .popup-success p { font-size: 13px; }
   }
 
-  /* --- Popup: very small phones (≤ 380px) --- */
-  @media (max-width: 380px) {
-    .popup-modal { max-height: 95dvh; }
-    .popup-header h3 { font-size: 19px; }
-    .popup-body { padding: 14px 14px 24px; }
-    .popup-trust-item { font-size: 10px; }
+  /* --- Popup: very small phones (&le; 390px) --- */
+  @media (max-width: 390px) {
+    .popup-modal { max-height: 93dvh; }
+    .popup-header { padding: 12px 48px 12px 16px; }
+    .popup-header-tag { font-size: 9px; letter-spacing: .8px; }
+    .popup-header h3 { font-size: 18px; }
+    .popup-header p { font-size: 11px; }
+    .popup-body { padding: 14px 16px 20px; }
+    .popup-field input,
+    .popup-field select,
+    .popup-field textarea { padding: 11px 12px; }
+    .popup-field textarea { height: 52px; }
+    .popup-footer-note { font-size: 11px; }
+    .popup-trust { display: none; }
   }
 
   /* FADE IN ANIMATION */
@@ -2149,7 +2641,8 @@
     .nav-divider { display: none; }
     .hamburger { display: flex; }
     .nav-cta { display: none !important; }
-    nav { padding: 0 20px; }
+    nav { padding: 0 20px; overflow: hidden; }
+    .nav-logo-img { height: 100px; }
   }
   @media (max-width: 600px) {
     .services-grid, .stats-grid, .testi-grid { grid-template-columns: 1fr; }
@@ -2157,12 +2650,18 @@
     .form-row { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr; gap: 30px; }
     section { padding: 70px 16px; }
-    .float-btn { bottom: 14px; padding: 8px; }
-    .float-wa  { left: 14px; }
-    .float-call { right: 14px; }
-    .float-btn-icon { width: 38px; height: 38px; }
-    .float-btn-icon img { width: 22px; height: 22px; }
-    .float-btn-label { display: none; }
+    /* Nav logo - shrink on small screens so it never crowds the hamburger */
+    .nav-logo-img { height: 84px; max-width: calc(100vw - 90px); object-fit: contain; }
+    /* Plan toggle - stack vertically so neither tab overflows */
+    .plan-toggle { flex-direction: column; width: min(300px, 90vw); }
+    .plan-tab { width: 100%; padding: 13px 20px; font-size: 15px; text-align: center; border-radius: 8px; }
+    .float-btn { bottom: calc(14px + env(safe-area-inset-bottom, 0px)); padding: 7px; max-width: calc(50vw - 20px); }
+    .float-wa  { left: 12px; }
+    .float-call { right: 12px; }
+    .float-btn-icon { width: 36px; height: 36px; }
+    .float-btn-icon svg { width: 20px; height: 20px; }
+    .float-btn-label { display: none !important; }
+    .float-btn:hover .float-btn-label { display: none !important; max-width: 0 !important; opacity: 0 !important; }
     .hero { padding: 60px 16px 50px; }
     .hero-trust { gap: 14px; }
     .trust-item { font-size: 12px; }
@@ -2174,13 +2673,12 @@
 <!-- NAV -->
 <nav id="mainNav">
   <a href="#home" class="nav-logo">
-    <img src="images/logo.png" alt="AdsTube Logo" class="nav-logo-img">
+    <img src="logo2.png" alt="AdsTube Logo" class="nav-logo-img">
   </a>
 
   <ul class="nav-links" id="navLinks">
     <li><a href="#home"     class="nav-active">Home</a></li>
     <li><a href="#about">About Us</a></li>
-    <li><a href="#services">Services</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#reports">Portfolio</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -2188,10 +2686,10 @@
 
   <div class="nav-divider"></div>
 
-  <a href="https://api.whatsapp.com/send?phone=918756655744" class="nav-cta">
+  <button class="nav-cta" onclick="openPopup('Nav Bar - Get a Quote Button')">
     Get a Quote
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  </a>
+  </button>
 
   <button class="hamburger" id="hamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -2202,42 +2700,49 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="#home"     onclick="closeMobileMenu()">Home</a>
   <a href="#about"    onclick="closeMobileMenu()">About Us</a>
-  <a href="#services" onclick="closeMobileMenu()">Services</a>
   <a href="#pricing"  onclick="closeMobileMenu()">Pricing</a>
   <a href="#reports"  onclick="closeMobileMenu()">Portfolio</a>
   <a href="#contact"  onclick="closeMobileMenu()">Contact</a>
-  <a href="https://api.whatsapp.com/send?phone=918756655744" class="mobile-menu-cta" onclick="closeMobileMenu()">Get a Quote →</a>
+  <button class="mobile-menu-cta" onclick="closeMobileMenu(); openPopup('Mobile Menu - Get a Quote Button');">Get a Quote &#8594;</button>
 </div>
 
-<!-- FLOATING WHATSAPP — bottom left -->
+<!-- FLOATING WHATSAPP - bottom left -->
 <a href="https://api.whatsapp.com/send?phone=917266024422" class="float-btn float-wa" title="WhatsApp Now">
-  <div class="float-btn-icon"><img src="images/logo.png" alt="AdsTube WhatsApp"></div>
+  <div class="float-btn-icon">
+    <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#fff" d="M16 2.667A13.307 13.307 0 0 0 2.667 16c0 2.347.613 4.64 1.773 6.653L2.667 29.333l6.88-1.746A13.267 13.267 0 0 0 16 29.333 13.307 13.307 0 0 0 29.333 16 13.307 13.307 0 0 0 16 2.667Zm0 2.666A10.64 10.64 0 0 1 26.667 16 10.64 10.64 0 0 1 16 26.667a10.6 10.6 0 0 1-5.547-1.574l-.386-.24-4.08 1.04 1.067-3.974-.267-.413A10.6 10.6 0 0 1 5.333 16 10.64 10.64 0 0 1 16 5.333Zm-3.6 4.934c-.24 0-.627.093-.947.44-.32.347-1.2 1.16-1.2 2.826 0 1.667 1.227 3.28 1.4 3.507.174.226 2.374 3.76 5.84 5.12 2.894 1.147 3.467.92 4.094.866.626-.053 2-.8 2.28-1.587.28-.786.28-1.466.2-1.6-.08-.133-.307-.213-.64-.373-.334-.16-2-.987-2.307-1.093-.307-.107-.534-.16-.76.16-.227.32-.867 1.093-1.067 1.32-.2.226-.4.253-.734.093-.333-.16-1.413-.52-2.693-1.653-1-.893-1.68-2-1.88-2.333-.2-.334-.02-.52.147-.68.16-.16.333-.4.507-.6.16-.2.213-.347.32-.573.107-.227.053-.427-.027-.587-.08-.16-.747-1.84-1.04-2.52-.267-.64-.547-.56-.747-.56l-.64-.013Z"/>
+    </svg>
+  </div>
   <span class="float-btn-label">WhatsApp Us</span>
 </a>
 
-<!-- FLOATING CALL — bottom right -->
+<!-- FLOATING CALL - bottom right -->
 <a href="tel:+917007821741" class="float-btn float-call" title="Call Now">
-  <div class="float-btn-icon"><img src="images/logo.png" alt="AdsTube Call"></div>
+  <div class="float-btn-icon">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#fff" d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/>
+    </svg>
+  </div>
   <span class="float-btn-label">Call Us Now</span>
 </a>
 
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-inner">
-    <span class="ticker-item">★ 125K+ VIDEOS PROMOTED</span>
-    <span class="ticker-item">★ 1300M+ VIEWS DELIVERED</span>
-    <span class="ticker-item">★ 132M+ SUBSCRIBERS GIVEN</span>
-    <span class="ticker-item">★ REAL ORGANIC GROWTH</span>
-    <span class="ticker-item">★ GOOGLE ADS POWERED</span>
-    <span class="ticker-item">★ INDIA'S #1 YOUTUBE PROMOTION AGENCY</span>
-    <span class="ticker-item">★ TRANSPARENT REPORTING</span>
-    <span class="ticker-item">★ 125K+ VIDEOS PROMOTED</span>
-    <span class="ticker-item">★ 1300M+ VIEWS DELIVERED</span>
-    <span class="ticker-item">★ 132M+ SUBSCRIBERS GIVEN</span>
-    <span class="ticker-item">★ REAL ORGANIC GROWTH</span>
-    <span class="ticker-item">★ GOOGLE ADS POWERED</span>
-    <span class="ticker-item">★ INDIA'S #1 YOUTUBE PROMOTION AGENCY</span>
-    <span class="ticker-item">★ TRANSPARENT REPORTING</span>
+    <span class="ticker-item">&#9733; 125K+ VIDEOS PROMOTED</span>
+    <span class="ticker-item">&#9733; 1300M+ VIEWS DELIVERED</span>
+    <span class="ticker-item">&#9733; 132M+ SUBSCRIBERS GIVEN</span>
+    <span class="ticker-item">&#9733; REAL ORGANIC GROWTH</span>
+    <span class="ticker-item">&#9733; GOOGLE ADS POWERED</span>
+    <span class="ticker-item">&#9733; INDIA'S #1 YOUTUBE PROMOTION AGENCY</span>
+    <span class="ticker-item">&#9733; TRANSPARENT REPORTING</span>
+    <span class="ticker-item">&#9733; 125K+ VIDEOS PROMOTED</span>
+    <span class="ticker-item">&#9733; 1300M+ VIEWS DELIVERED</span>
+    <span class="ticker-item">&#9733; 132M+ SUBSCRIBERS GIVEN</span>
+    <span class="ticker-item">&#9733; REAL ORGANIC GROWTH</span>
+    <span class="ticker-item">&#9733; GOOGLE ADS POWERED</span>
+    <span class="ticker-item">&#9733; INDIA'S #1 YOUTUBE PROMOTION AGENCY</span>
+    <span class="ticker-item">&#9733; TRANSPARENT REPORTING</span>
   </div>
 </div>
 
@@ -2270,7 +2775,36 @@
         View All Plans
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="#contact" class="btn-ghost">Get a Free Consultation</a>
+      <button class="btn-ghost" onclick="openPopup('Hero Section - Get a Free Consultation Button')">Get a Free Consultation</button>
+    </div>
+
+    <!-- Google Ads Partner Badge -->
+    <div class="gads-partner">
+      <div class="gads-badge">
+        <div class="gads-logo-col">
+          <div class="gads-icon">
+            <svg width="44" height="44" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="20" width="10" height="18" rx="2.5" fill="#FBBC05"/>
+              <rect x="15" y="10" width="10" height="28" rx="2.5" fill="#34A853"/>
+              <rect x="28" y="2" width="10" height="36" rx="2.5" fill="#4285F4"/>
+            </svg>
+          </div>
+          <div class="gads-google-text">
+            <span class="gc-b">G</span><span class="gc-r">o</span><span class="gc-y">o</span><span class="gc-b">g</span><span class="gc-g">l</span><span class="gc-r">e</span><span class="gc-w"> Ads</span>
+          </div>
+          <div class="gads-ads-pill">Partner</div>
+        </div>
+        <div class="gads-sep"></div>
+        <div class="gads-content">
+          <div class="gads-top">
+            <div class="gads-verified-chip">
+              <span class="gads-verified-dot"></span> Verified Partner
+            </div>
+          </div>
+          <div class="gads-title">Google Ads Verified Partner</div>
+          <div class="gads-desc">Traffic powered by Google Ads - 100% genuine, bot-free views and subscribers delivered through verified Google Ads campaigns.</div>
+        </div>
+      </div>
     </div>
 
     <div class="hero-trust">
@@ -2315,184 +2849,230 @@
   </div>
 </div>
 
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="max-w">
-    <div class="section-tag">What We Offer</div>
-    <h2 class="section-title">YouTube Video Marketing<br>Services We Provide</h2>
-    <p class="section-sub">We serve our clients with an extensive range of YouTube video marketing services — from promotion and SEO to monetization and production.</p>
-    <div class="services-grid fade-up">
-
-      <!-- Video Promotion — Red -->
-      <div class="service-card sc-card-promo">
-        <div class="sc-header sc-promo">
-          <img src="images/logo.png" alt="Video Promotion" class="sc-logo">
-          <span class="sc-type">Promotion</span>
-        </div>
-        <div class="sc-body">
-          <div class="sc-label">Our Services</div>
-          <div class="sc-title">
-            YouTube Video Promotion
-            <span class="sc-line-promo"></span>
-          </div>
-          <p>Genuine, organic YouTube video promotion through highly targeted YouTube ad campaigns. Real viewers, real engagement, real growth.</p>
-          <a href="https://adstube.in/Youtube-Video-Promotion-Services" class="service-link">Learn More →</a>
-        </div>
-      </div>
-
-      <!-- Video SEO — Blue -->
-      <div class="service-card sc-card-seo">
-        <div class="sc-header sc-seo">
-          <img src="images/logo.png" alt="Video SEO" class="sc-logo">
-          <span class="sc-type">SEO</span>
-        </div>
-        <div class="sc-body">
-          <div class="sc-label">Our Services</div>
-          <div class="sc-title">
-            YouTube Video SEO
-            <span class="sc-line-seo"></span>
-          </div>
-          <p>Boost your video discoverability with expert keyword research, metadata optimization and tag strategies that put you in front of the right audience.</p>
-          <a href="https://adstube.in/Youtube-Video-SEO-Services" class="service-link">Learn More →</a>
-        </div>
-      </div>
-
-      <!-- Monetization — Gold -->
-      <div class="service-card sc-card-mono">
-        <div class="sc-header sc-mono">
-          <img src="images/logo.png" alt="Monetization" class="sc-logo">
-          <span class="sc-type">Monetization</span>
-        </div>
-        <div class="sc-body">
-          <div class="sc-label">Our Services</div>
-          <div class="sc-title">
-            YouTube Monetization
-            <span class="sc-line-mono"></span>
-          </div>
-          <p>Hit your monetization milestones faster. We help you achieve the 4,000 hours of watch time and 1,000 subscribers required for YouTube Partner Program.</p>
-          <a href="https://adstube.in/Youtube-Video-Monetization-Services" class="service-link">Learn More →</a>
-        </div>
-      </div>
-
-      <!-- Video Production — Purple -->
-      <div class="service-card sc-card-prod">
-        <div class="sc-header sc-prod">
-          <img src="images/logo.png" alt="Video Production" class="sc-logo">
-          <span class="sc-type">Production</span>
-        </div>
-        <div class="sc-body">
-          <div class="sc-label">Our Services</div>
-          <div class="sc-title">
-            YouTube Video Production
-            <span class="sc-line-prod"></span>
-          </div>
-          <p>End-to-end YouTube video production — from concept and scripting to shoot, editing and thumbnail design. High-quality content that performs.</p>
-          <a href="https://adstube.in/Youtube-Video-Production" class="service-link">Learn More →</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 <!-- PRICING -->
 <section class="pricing" id="pricing">
   <div class="max-w">
     <div class="section-tag">Affordable Packages</div>
     <h2 class="section-title">Affordable YouTube<br>Promotion Packages</h2>
-    <p class="section-sub">Flexible plans built around your goals — views, subscribers, monetization or full channel revenue.</p>
-    <div class="pricing-grid fade-up">
+    <p class="section-sub">Flexible plans built around your goals - choose between views or subscribers.</p>
 
-      <!-- VIEWS — Red (Popular) -->
-      <div class="price-card popular pc-card-views">
-        <div class="popular-badge">★ MOST POPULAR</div>
-        <div class="price-card-header pc-views">
-          <img src="images/logo.png" alt="Views" class="pc-logo">
-          <span class="pc-type">Views</span>
-        </div>
-        <div class="pc-body">
-          <div class="pc-plan-label">YouTube Plans</div>
-          <div class="pc-plan-title">
-            YouTube Views
-            <span class="pc-views-line"></span>
-          </div>
-          <p class="plan-desc">Real, high-retention views via targeted YouTube ad campaigns.</p>
-          <ul class="plan-features">
-            <li>Genuine Google Ads Traffic</li>
-            <li>Worldwide &amp; Geo-Targeted</li>
-            <li>Analytics Report</li>
-          </ul>
-          <a href="https://adstube.in/buy-youtube-views" class="plan-btn primary-btn">View Details →</a>
-        </div>
+    <!-- Toggle -->
+    <div class="plan-toggle-wrap fade-up">
+      <div class="plan-toggle">
+        <button class="plan-tab active" onclick="switchPlan('views')">YouTube Views</button>
+        <button class="plan-tab" onclick="switchPlan('subs')">YouTube Subscribers</button>
       </div>
-
-      <!-- SUBSCRIBERS — Blue -->
-      <div class="price-card pc-card-subs">
-        <div class="price-card-header pc-subs">
-          <img src="images/logo.png" alt="Subscribers" class="pc-logo">
-          <span class="pc-type">Subscribers</span>
-        </div>
-        <div class="pc-body">
-          <div class="pc-plan-label">YouTube Plans</div>
-          <div class="pc-plan-title">
-            YouTube Subscribers
-            <span class="pc-subs-line"></span>
-          </div>
-          <p class="plan-desc">Real subscribers interested in your niche and content.</p>
-          <ul class="plan-features">
-            <li>Organic Growth</li>
-            <li>Niche-Targeted Audience</li>
-            <li>Lifetime Retention Focus</li>
-          </ul>
-          <a href="https://adstube.in/buy-youtube-subscribers" class="plan-btn">View Details →</a>
-        </div>
-      </div>
-
-      <!-- MONETIZATION — Gold -->
-      <div class="price-card pc-card-mono">
-        <div class="price-card-header pc-mono">
-          <img src="images/logo.png" alt="Monetization" class="pc-logo">
-          <span class="pc-type">Monetization</span>
-        </div>
-        <div class="pc-body">
-          <div class="pc-plan-label">YouTube Plans</div>
-          <div class="pc-plan-title">
-            YouTube Monetization
-            <span class="pc-mono-line"></span>
-          </div>
-          <p class="plan-desc">Hit 4K watch hours &amp; 1K subs for YouTube Partner Program.</p>
-          <ul class="plan-features">
-            <li>4K Watch Hours</li>
-            <li>1K Subscriber Milestone</li>
-            <li>Monetization Ready</li>
-          </ul>
-          <a href="https://adstube.in/youtube-monetization-plans" class="plan-btn">View Details →</a>
-        </div>
-      </div>
-
-      <!-- REVENUE — Green -->
-      <div class="price-card pc-card-rev">
-        <div class="price-card-header pc-rev">
-          <img src="images/logo.png" alt="Revenue" class="pc-logo">
-          <span class="pc-type">Revenue</span>
-        </div>
-        <div class="pc-body">
-          <div class="pc-plan-label">YouTube Plans</div>
-          <div class="pc-plan-title">
-            YouTube Revenue
-            <span class="pc-rev-line"></span>
-          </div>
-          <p class="plan-desc">Maximize ad revenue with high-CPM geo &amp; viewer targeting.</p>
-          <ul class="plan-features">
-            <li>High-CPM Audience</li>
-            <li>Tier-1 Country Targeting</li>
-            <li>Revenue-Focused Strategy</li>
-          </ul>
-          <a href="https://adstube.in/youtube-revenue-plans" class="plan-btn">View Details →</a>
-        </div>
-      </div>
-
     </div>
+
+    <!-- Views Panel -->
+    <div class="plan-panel active fade-up" id="panelViews">
+      <div class="vp-grid">
+
+        <div class="vp-card">
+          <div class="vp-head">
+            <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <span class="vp-plan-name">Get Plan</span>
+            <img src="logo2.png" alt="" class="vp-logo">
+          </div>
+          <div class="vp-count">5K<sup>+</sup></div>
+          <div class="vp-type-label">YouTube Views</div>
+          <div class="vp-sep"><span class="vp-sep-line"></span><span class="vp-sep-dot"></span><span class="vp-sep-line"></span></div>
+          <div class="vp-price-wrap">
+            <div class="vp-price">₹750</div>
+            <div class="vp-period">One-Time Payment</div>
+          </div>
+          <a href="https://payu.in/invoice/E633A2A3FBB429EED89935B9F829D64F7E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+
+        <div class="vp-card">
+          <div class="vp-head">
+            <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <span class="vp-plan-name">Set Plan</span>
+            <img src="logo2.png" alt="" class="vp-logo">
+          </div>
+          <div class="vp-count">10K<sup>+</sup></div>
+          <div class="vp-type-label">YouTube Views</div>
+          <div class="vp-sep"><span class="vp-sep-line"></span><span class="vp-sep-dot"></span><span class="vp-sep-line"></span></div>
+          <div class="vp-price-wrap">
+            <div class="vp-price">₹1,500</div>
+            <div class="vp-period">One-Time Payment</div>
+          </div>
+          <a href="https://payu.in/invoice/B86FDF53EEF2DCF49543350CDDF792C97E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+
+        <div class="vp-card">
+          <div class="vp-head">
+            <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <span class="vp-plan-name">Go Plan</span>
+            <img src="logo2.png" alt="" class="vp-logo">
+          </div>
+          <div class="vp-count">20K<sup>+</sup></div>
+          <div class="vp-type-label">YouTube Views</div>
+          <div class="vp-sep"><span class="vp-sep-line"></span><span class="vp-sep-dot"></span><span class="vp-sep-line"></span></div>
+          <div class="vp-price-wrap">
+            <div class="vp-price">₹2,600</div>
+            <div class="vp-period">One-Time Payment</div>
+          </div>
+          <a href="https://payu.in/invoice/75F9E1DE59F22A69A78F82CE8D825F517E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+
+        <div class="vp-card">
+          <div class="vp-head">
+            <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <span class="vp-plan-name">Walk Plan</span>
+            <img src="logo2.png" alt="" class="vp-logo">
+          </div>
+          <div class="vp-count">50K<sup>+</sup></div>
+          <div class="vp-type-label">YouTube Views</div>
+          <div class="vp-sep"><span class="vp-sep-line"></span><span class="vp-sep-dot"></span><span class="vp-sep-line"></span></div>
+          <div class="vp-price-wrap">
+            <div class="vp-price">₹5,500</div>
+            <div class="vp-period">One-Time Payment</div>
+          </div>
+          <a href="https://payu.in/invoice/6203AE67FEE61BABB37D393EDD7F785F7E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+
+        <div class="vp-card vp-hot">
+          <div class="vp-hot-tag">&#9733; Most Popular</div>
+          <div class="vp-head">
+            <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <span class="vp-plan-name">Run Plan</span>
+            <img src="logo2.png" alt="" class="vp-logo">
+          </div>
+          <div class="vp-count">1 Lac<sup>+</sup></div>
+          <div class="vp-type-label">YouTube Views</div>
+          <div class="vp-sep"><span class="vp-sep-line"></span><span class="vp-sep-dot"></span><span class="vp-sep-line"></span></div>
+          <div class="vp-price-wrap">
+            <div class="vp-price">₹10,000</div>
+            <div class="vp-period">One-Time Payment</div>
+          </div>
+          <a href="https://payu.in/invoice/8D6FB5590456B2FEFDAC7B824E111ACA7E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+
+        <div class="vp-card">
+          <div class="vp-head">
+            <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <span class="vp-plan-name">Fly Plan</span>
+            <img src="logo2.png" alt="" class="vp-logo">
+          </div>
+          <div class="vp-count">10 Lac<sup>+</sup></div>
+          <div class="vp-type-label">YouTube Views</div>
+          <div class="vp-sep"><span class="vp-sep-line"></span><span class="vp-sep-dot"></span><span class="vp-sep-line"></span></div>
+          <div class="vp-price-wrap">
+            <div class="vp-price">₹80,000</div>
+            <div class="vp-period">One-Time Payment</div>
+          </div>
+          <a href="https://payu.in/invoice/0751E3C20D71E7FC7578B31AC6E2C0167E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Subscribers Panel -->
+    <div class="plan-panel" id="panelSubs">
+      <div class="vp-grid">
+
+        <div class="vp-card">
+          <div class="vp-head">
+            <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <span class="vp-plan-name">Tiny Plan</span>
+            <img src="logo2.png" alt="" class="vp-logo">
+          </div>
+          <div class="vp-count">100</div>
+          <div class="vp-type-label">YouTube Subscribers</div>
+          <div class="vp-sep"><span class="vp-sep-line"></span><span class="vp-sep-dot"></span><span class="vp-sep-line"></span></div>
+          <div class="vp-price-wrap">
+            <div class="vp-price">₹500</div>
+            <div class="vp-period">One-Time Payment</div>
+          </div>
+          <a href="https://payu.in/invoice/EC78447DEDD1C12BDBA0A85779B140DD7E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+
+        <div class="vp-card">
+          <div class="vp-head">
+            <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <span class="vp-plan-name">Compact Plan</span>
+            <img src="logo2.png" alt="" class="vp-logo">
+          </div>
+          <div class="vp-count">200</div>
+          <div class="vp-type-label">YouTube Subscribers</div>
+          <div class="vp-sep"><span class="vp-sep-line"></span><span class="vp-sep-dot"></span><span class="vp-sep-line"></span></div>
+          <div class="vp-price-wrap">
+            <div class="vp-price">₹1,000</div>
+            <div class="vp-period">One-Time Payment</div>
+          </div>
+          <a href="https://payu.in/invoice/8D87EDC5AA126976421E03AC8403F7E47E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+
+        <div class="vp-card">
+          <div class="vp-head">
+            <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <span class="vp-plan-name">Moderate Plan</span>
+            <img src="logo2.png" alt="" class="vp-logo">
+          </div>
+          <div class="vp-count">500</div>
+          <div class="vp-type-label">YouTube Subscribers</div>
+          <div class="vp-sep"><span class="vp-sep-line"></span><span class="vp-sep-dot"></span><span class="vp-sep-line"></span></div>
+          <div class="vp-price-wrap">
+            <div class="vp-price">₹2,000</div>
+            <div class="vp-period">One-Time Payment</div>
+          </div>
+          <a href="https://payu.in/invoice/E3A7B6987138EC2FAC3E85C3E68ACFCB7E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+
+        <div class="vp-card">
+          <div class="vp-head">
+            <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <span class="vp-plan-name">Ample Plan</span>
+            <img src="logo2.png" alt="" class="vp-logo">
+          </div>
+          <div class="vp-count">1,000</div>
+          <div class="vp-type-label">YouTube Subscribers</div>
+          <div class="vp-sep"><span class="vp-sep-line"></span><span class="vp-sep-dot"></span><span class="vp-sep-line"></span></div>
+          <div class="vp-price-wrap">
+            <div class="vp-price">₹4,000</div>
+            <div class="vp-period">One-Time Payment</div>
+          </div>
+          <a href="https://payu.in/invoice/C72221C07D04FB6A3EF038C5A2B9FDB47E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+
+        <div class="vp-card vp-hot">
+          <div class="vp-hot-tag">&#9733; Most Popular</div>
+          <div class="vp-head">
+            <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <span class="vp-plan-name">Huge Plan</span>
+            <img src="logo2.png" alt="" class="vp-logo">
+          </div>
+          <div class="vp-count">5,000</div>
+          <div class="vp-type-label">YouTube Subscribers</div>
+          <div class="vp-sep"><span class="vp-sep-line"></span><span class="vp-sep-dot"></span><span class="vp-sep-line"></span></div>
+          <div class="vp-price-wrap">
+            <div class="vp-price">₹18,000</div>
+            <div class="vp-period">One-Time Payment</div>
+          </div>
+          <a href="https://payu.in/invoice/0EBAC007D0C9C7726958B0D116545C137E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+
+        <div class="vp-card">
+          <div class="vp-head">
+            <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <span class="vp-plan-name">Giant Plan</span>
+            <img src="logo2.png" alt="" class="vp-logo">
+          </div>
+          <div class="vp-count">10,000</div>
+          <div class="vp-type-label">YouTube Subscribers</div>
+          <div class="vp-sep"><span class="vp-sep-line"></span><span class="vp-sep-dot"></span><span class="vp-sep-line"></span></div>
+          <div class="vp-price-wrap">
+            <div class="vp-price">₹35,000</div>
+            <div class="vp-period">One-Time Payment</div>
+          </div>
+          <a href="https://payu.in/invoice/C9D7890A83190960F65E50F557054AD67E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -2514,7 +3094,7 @@
           <div class="step-content">
             <div class="step-tag-label st-1">Step 01</div>
             <h3>Understand Your Audience</h3>
-            <p>We begin by gaining a deep understanding of your target audience — their demographics, interests and preferences — to connect your channel with the right viewers.</p>
+            <p>We begin by gaining a deep understanding of your target audience - their demographics, interests and preferences - to connect your channel with the right viewers.</p>
           </div>
         </div>
 
@@ -2532,7 +3112,7 @@
           <div class="step-content">
             <div class="step-tag-label st-3">Step 03</div>
             <h3>Get Real Views &amp; Real Subscribers</h3>
-            <p>We bring you genuine views and subscribers who are actually interested in your content — focused on long-term organic growth rather than temporary shortcuts.</p>
+            <p>We bring you genuine views and subscribers who are actually interested in your content - focused on long-term organic growth rather than temporary shortcuts.</p>
           </div>
         </div>
 
@@ -2550,7 +3130,7 @@
           <div class="step-content">
             <div class="step-tag-label st-5">Step 05</div>
             <h3>Transparent Reporting</h3>
-            <p>We provide regular reports and analytics — view counts, subscriber growth, engagement metrics — so you can track progress and measure every campaign's success.</p>
+            <p>We provide regular reports and analytics - view counts, subscriber growth, engagement metrics - so you can track progress and measure every campaign's success.</p>
           </div>
         </div>
 
@@ -2624,6 +3204,157 @@
   </div>
 </section>
 
+<!-- AD PLACEMENTS -->
+<section class="adplacements" id="ad-placements">
+  <div class="adp-inner">
+
+    <!-- Heading -->
+    <div class="adp-head fade-up">
+      <div class="section-tag">YouTube Ad Placements</div>
+      <h2>Get Your <span class="adp-accent">Video</span> Promoted Across<br><span class="adp-accent">YouTube's</span> Top Ad Placements</h2>
+      <p>We'll build your ads and promote them where they matter most - <strong>in-feed, in-stream, YouTube Shorts,</strong> and <strong>search results</strong>. Connect with real YouTubers watching videos just like yours.</p>
+    </div>
+
+    <!-- Arrows + Mockups -->
+    <div class="adp-layout fade-up">
+
+      <!-- Left arrow -->
+      <div class="adp-arrow adp-arrow-left">
+        <svg viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M72 18 C72 18 30 16 20 48 C14 70 30 80 44 78" stroke="rgba(232,0,28,0.55)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M38 72 L44 78 L36 84" stroke="rgba(232,0,28,0.55)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+
+      <!-- Two Mockup Cards -->
+      <div class="adp-mockups">
+
+        <!-- LEFT card: In-stream Ad -->
+        <div class="adp-card adp-card-left">
+          <!-- Browser bar -->
+          <div class="adp-browser-bar">
+            <div class="adp-dots">
+              <div class="adp-dot"></div>
+              <div class="adp-dot"></div>
+              <div class="adp-dot"></div>
+            </div>
+            <div class="adp-url-bar">
+              <span class="adp-url-text">youtube.com/watch</span>
+            </div>
+            <div class="adp-yt-logo">
+              <span class="adp-yt-icon">&#9654;</span>
+              <span class="adp-yt-text">YouTube</span>
+            </div>
+          </div>
+          <!-- Body -->
+          <div class="adp-card-body">
+            <!-- Main in-stream ad block -->
+            <div class="adp-main-ad">
+              <div class="adp-ad-tag">Ad</div>
+              <div class="adp-main-ad-text">Your Video is Shown Here Before Similar Videos</div>
+              <div class="adp-main-ad-sub">In-Stream Ad Placement</div>
+              <div class="adp-progress-bar"></div>
+            </div>
+            <!-- Side recommended ads -->
+            <div class="adp-side-ads">
+              <div class="adp-side-ad">
+                <div class="adp-side-thumb"></div>
+                <div class="adp-side-info">
+                  <div class="adp-side-label">Your promoted video shown as recommended</div>
+                  <div class="adp-side-badge">Ad</div>
+                </div>
+              </div>
+              <div class="adp-skeleton-rows">
+                <div class="adp-skel w90"></div>
+                <div class="adp-skel w80"></div>
+                <div class="adp-skel w60"></div>
+                <div class="adp-skel w90"></div>
+                <div class="adp-skel w70" style="width:70%"></div>
+              </div>
+            </div>
+          </div>
+          <!-- Card footer label -->
+          <div style="padding: 0 14px 14px; display:flex; gap:8px; align-items:center;">
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 6px var(--red);flex-shrink:0;"></div>
+            <span style="font-size:11px;color:#666;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;">In-Stream &amp; In-Feed Ads</span>
+          </div>
+        </div>
+
+        <!-- RIGHT card: Search + Feed Ad -->
+        <div class="adp-card adp-card-right">
+          <!-- Browser bar -->
+          <div class="adp-browser-bar">
+            <div class="adp-dots">
+              <div class="adp-dot"></div>
+              <div class="adp-dot"></div>
+              <div class="adp-dot"></div>
+            </div>
+            <div class="adp-url-bar">
+              <span class="adp-url-text">youtube.com/results?search</span>
+            </div>
+            <div class="adp-yt-logo">
+              <span class="adp-yt-icon">&#9654;</span>
+              <span class="adp-yt-text">YouTube</span>
+            </div>
+          </div>
+          <!-- Body -->
+          <div class="adp-card-body">
+            <!-- Feed ad block -->
+            <div class="adp-feed-ad">
+              <div class="adp-ad-tag">Ad</div>
+              <div class="adp-feed-ad-text">In-Feed Ads Will Be Shown Here</div>
+            </div>
+            <!-- Search results col -->
+            <div class="adp-search-col">
+              <div class="adp-search-result">
+                <div class="adp-search-thumb"></div>
+                <div class="adp-search-info">
+                  <div class="adp-search-title">Your promoted video shown at the top of search results for relevant keywords</div>
+                  <div class="adp-search-meta">
+                    <div class="adp-search-badge">Ad</div>
+                    <span class="adp-search-channel">Your channel</span>
+                    <span class="adp-search-views">140k views</span>
+                  </div>
+                </div>
+              </div>
+              <div class="adp-search-skels">
+                <div class="adp-skel w90"></div>
+                <div class="adp-skel w80"></div>
+                <div class="adp-skel w60"></div>
+              </div>
+            </div>
+          </div>
+          <!-- Card footer label -->
+          <div style="padding: 0 14px 14px; display:flex; gap:8px; align-items:center;">
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 6px var(--red);flex-shrink:0;"></div>
+            <span style="font-size:11px;color:#666;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;">Search &amp; Discovery Ads</span>
+          </div>
+        </div>
+
+      </div><!-- /.adp-mockups -->
+
+      <!-- Right arrow -->
+      <div class="adp-arrow adp-arrow-right">
+        <svg viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 18 C18 18 60 16 70 48 C76 70 60 80 46 78" stroke="rgba(232,0,28,0.55)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M52 72 L46 78 L54 84" stroke="rgba(232,0,28,0.55)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+
+    </div><!-- /.adp-layout -->
+
+    <!-- Bottom placement tags -->
+    <div class="adp-tags fade-up">
+      <div class="adp-tag-pill"><div class="adp-tag-dot"></div> In-Stream Ads</div>
+      <div class="adp-tag-pill"><div class="adp-tag-dot"></div> In-Feed Ads</div>
+      <div class="adp-tag-pill"><div class="adp-tag-dot"></div> YouTube Shorts</div>
+      <div class="adp-tag-pill"><div class="adp-tag-dot"></div> Search Results</div>
+      <div class="adp-tag-pill"><div class="adp-tag-dot"></div> YouTube Homepage</div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ABOUT / VIDEO -->
 <section class="about-section" id="about">
   <div class="max-w">
@@ -2631,18 +3362,18 @@
 
       <!-- Left: Video Thumbnail -->
       <a href="https://www.youtube.com/embed/ZVqfF13lmeY" target="_blank" class="about-video">
-        <img src="images/shrista-maurya-video-thumbnail.jpg" alt="About AdsTube — Watch Our Story">
+        <img src="images/shrista-maurya-video-thumbnail.jpg" alt="About AdsTube - Watch Our Story">
         <div class="about-video-overlay">
-          <div class="about-play">▶</div>
+          <div class="about-play">&#9654;</div>
         </div>
         <div class="about-watch-pill">
-          <span>●</span> Watch Our Story
+          <span>&#9679;</span> Watch Our Story
         </div>
       </a>
 
       <!-- Right: Text Content -->
       <div class="about-text">
-        <div class="about-tag-pill">🎯 About AdsTube</div>
+        <div class="about-tag-pill">&#127919; About AdsTube</div>
 
         <h2 class="about-title">
           Increase <span class="abt-accent">Subscribers</span><br>&amp; Views With Us
@@ -2658,21 +3389,21 @@
 
         <div class="about-features">
           <div class="about-feat">
-            <div class="about-feat-icon afi-red">📢</div>
-            <span><strong>Google Ads Powered</strong> — Real traffic from Google's ad network, zero bots</span>
+            <div class="about-feat-icon afi-red">&#128226;</div>
+            <span><strong>Google Ads Powered</strong> - Real traffic from Google's ad network, zero bots</span>
           </div>
           <div class="about-feat">
-            <div class="about-feat-icon afi-blue">🎯</div>
-            <span><strong>Expert Campaign Management</strong> — Dedicated team handling every campaign</span>
+            <div class="about-feat-icon afi-blue">&#127919;</div>
+            <span><strong>Expert Campaign Management</strong> - Dedicated team handling every campaign</span>
           </div>
           <div class="about-feat">
-            <div class="about-feat-icon afi-grn">📊</div>
-            <span><strong>Transparent Reporting</strong> — Full analytics access with every order</span>
+            <div class="about-feat-icon afi-grn">&#128202;</div>
+            <span><strong>Transparent Reporting</strong> - Full analytics access with every order</span>
           </div>
         </div>
 
         <div class="about-cta-row">
-          <a href="https://adstube.in/About-Adstube" class="btn-primary" style="text-decoration:none;display:inline-block;">Know More →</a>
+          <a href="https://adstube.in/About-Adstube" class="btn-primary" style="text-decoration:none;display:inline-block;">Know More &#8594;</a>
           <div class="about-stat-chip">
             <div class="about-stat-dot"></div>
             <b>125K+</b>&nbsp;Creators Served
@@ -2693,15 +3424,15 @@
   <div class="max-w">
     <div class="section-tag">Portfolio</div>
     <h2 class="section-title">YouTube Promotion<br>Report Samples</h2>
-    <p class="section-sub">Real performance data from real campaigns. Every order includes full analytics access — here's what transparent reporting actually looks like.</p>
+    <p class="section-sub">Real performance data from real campaigns. Every order includes full analytics access - here's what transparent reporting actually looks like.</p>
 
     <div class="reports-grid fade-up">
 
-      <!-- 01 Featured — Skip & Discovery (Red) -->
+      <!-- 01 Featured - Skip & Discovery (Red) -->
       <div class="rpt-card rpt-red rpt-featured">
         <div class="rpt-img-wrap">
           <img src="images/reports/skip-and-discovery-ad-visual.png" alt="Skip And Discovery Ad Visual">
-          <div class="rpt-overlay"><div class="rpt-view-btn">View Report →</div></div>
+          <div class="rpt-overlay"><div class="rpt-view-btn">View Report &#8594;</div></div>
           <div class="rpt-num">01</div>
         </div>
         <div class="rpt-body">
@@ -2715,7 +3446,7 @@
       <div class="rpt-card rpt-blue">
         <div class="rpt-img-wrap">
           <img src="images/reports/youtube-gender-wise-views-statistic.png" alt="Gender Wise Views Statistic">
-          <div class="rpt-overlay"><div class="rpt-view-btn">View Report →</div></div>
+          <div class="rpt-overlay"><div class="rpt-view-btn">View Report &#8594;</div></div>
           <div class="rpt-num">02</div>
         </div>
         <div class="rpt-body">
@@ -2729,7 +3460,7 @@
       <div class="rpt-card rpt-green">
         <div class="rpt-img-wrap">
           <img src="images/reports/youtube-video-ads-interaction-according-geographic-location.png" alt="Ads Interaction by Geographic Location">
-          <div class="rpt-overlay"><div class="rpt-view-btn">View Report →</div></div>
+          <div class="rpt-overlay"><div class="rpt-view-btn">View Report &#8594;</div></div>
           <div class="rpt-num">03</div>
         </div>
         <div class="rpt-body">
@@ -2743,7 +3474,7 @@
       <div class="rpt-card rpt-gold">
         <div class="rpt-img-wrap">
           <img src="images/reports/youtube-video-performance-report-according-devices.png" alt="Performance Report by Devices">
-          <div class="rpt-overlay"><div class="rpt-view-btn">View Report →</div></div>
+          <div class="rpt-overlay"><div class="rpt-view-btn">View Report &#8594;</div></div>
           <div class="rpt-num">04</div>
         </div>
         <div class="rpt-body">
@@ -2757,7 +3488,7 @@
       <div class="rpt-card rpt-purple">
         <div class="rpt-img-wrap">
           <img src="images/reports/youtube-analytics-graph-visual11.png" alt="Analytics Graph Visual">
-          <div class="rpt-overlay"><div class="rpt-view-btn">View Report →</div></div>
+          <div class="rpt-overlay"><div class="rpt-view-btn">View Report &#8594;</div></div>
           <div class="rpt-num">05</div>
         </div>
         <div class="rpt-body">
@@ -2771,7 +3502,7 @@
       <div class="rpt-card rpt-cyan">
         <div class="rpt-img-wrap">
           <img src="images/reports/youtube-video-performance-report-according-day-by-day.png" alt="Performance Report Day by Day">
-          <div class="rpt-overlay"><div class="rpt-view-btn">View Report →</div></div>
+          <div class="rpt-overlay"><div class="rpt-view-btn">View Report &#8594;</div></div>
           <div class="rpt-num">06</div>
         </div>
         <div class="rpt-body">
@@ -2787,13 +3518,13 @@
     <div class="rpt-cta-strip fade-up">
       <div class="rpt-cta-text">
         <h4>Every Order Includes Full Report Access</h4>
-        <p>Track views, subscribers, watch time, demographics &amp; geographic data — all in one place.</p>
+        <p>Track views, subscribers, watch time, demographics &amp; geographic data - all in one place.</p>
       </div>
       <div class="rpt-badges">
-        <div class="rpt-badge">📊 Real-Time Data</div>
-        <div class="rpt-badge">🌍 Geographic Insights</div>
-        <div class="rpt-badge">📱 Device Breakdown</div>
-        <div class="rpt-badge">👥 Demographics</div>
+        <div class="rpt-badge">&#128202; Real-Time Data</div>
+        <div class="rpt-badge">&#127757; Geographic Insights</div>
+        <div class="rpt-badge">&#128241; Device Breakdown</div>
+        <div class="rpt-badge">&#128101; Demographics</div>
       </div>
     </div>
 
@@ -2805,12 +3536,12 @@
   <div class="max-w">
     <div class="section-tag">YouTube Client's Feedback</div>
     <h2 class="section-title">Real Results From<br>Real Creators</h2>
-    <p class="section-sub">Hear from the creators we've worked with — real reviews from real YouTube channel owners.</p>
+    <p class="section-sub">Hear from the creators we've worked with - real reviews from real YouTube channel owners.</p>
 
     <!-- Rating summary strip -->
     <div class="testi-summary fade-up">
       <div class="testi-sum-item">
-        <div class="testi-sum-val">4.9<em>★</em></div>
+        <div class="testi-sum-val">4.9<em>&#9733;</em></div>
         <div class="testi-sum-label">
           <b>Average Rating</b>
           <span>Across all campaigns</span>
@@ -2837,15 +3568,15 @@
     <!-- Testimonial cards -->
     <div class="testi-grid fade-up">
 
-      <!-- Dr. DD — Red -->
+      <!-- Dr. DD - Red -->
       <div class="testi-card tc-red">
         <div class="testi-qmark">"</div>
         <div class="testi-stars">
-          <span class="testi-star">★</span><span class="testi-star">★</span>
-          <span class="testi-star">★</span><span class="testi-star">★</span>
-          <span class="testi-star">★</span>
+          <span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span>
+          <span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span>
+          <span class="testi-star">&#9733;</span>
         </div>
-        <p class="testi-text">"Best employers I came across with — since it's our first project with Adstube, it was a pleasure to get an opportunity to work with the Adstube team."</p>
+        <p class="testi-text">"Best employers I came across with - since it's our first project with Adstube, it was a pleasure to get an opportunity to work with the Adstube team."</p>
         <div class="testi-divider"></div>
         <div class="testi-author">
           <div class="author-avatar has-img"><img src="images/clients/Dr.DD.jpg" alt="Dr.DD"></div>
@@ -2853,19 +3584,19 @@
             <div class="author-name">Dr. DD</div>
             <div class="author-handle">YouTube Creator</div>
           </div>
-          <div class="author-verified">✓ Verified</div>
+          <div class="author-verified">&#10003; Verified</div>
         </div>
       </div>
 
-      <!-- Dream Chaser — Blue -->
+      <!-- Dream Chaser - Blue -->
       <div class="testi-card tc-blue">
         <div class="testi-qmark">"</div>
         <div class="testi-stars">
-          <span class="testi-star">★</span><span class="testi-star">★</span>
-          <span class="testi-star">★</span><span class="testi-star">★</span>
-          <span class="testi-star">★</span>
+          <span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span>
+          <span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span>
+          <span class="testi-star">&#9733;</span>
         </div>
-        <p class="testi-text">"The Adstube team is top notch — they are a full package. Not only in technical aspects, they also communicate better and guide you well enough."</p>
+        <p class="testi-text">"The Adstube team is top notch - they are a full package. Not only in technical aspects, they also communicate better and guide you well enough."</p>
         <div class="testi-divider"></div>
         <div class="testi-author">
           <div class="author-avatar has-img"><img src="images/clients/DREAM CHASER.jpg" alt="Dream Chaser"></div>
@@ -2873,19 +3604,19 @@
             <div class="author-name">Dream Chaser</div>
             <div class="author-handle">YouTube Creator</div>
           </div>
-          <div class="author-verified">✓ Verified</div>
+          <div class="author-verified">&#10003; Verified</div>
         </div>
       </div>
 
-      <!-- Nazim Sha — Green -->
+      <!-- Nazim Sha - Green -->
       <div class="testi-card tc-green">
         <div class="testi-qmark">"</div>
         <div class="testi-stars">
-          <span class="testi-star">★</span><span class="testi-star">★</span>
-          <span class="testi-star">★</span><span class="testi-star">★</span>
-          <span class="testi-star">★</span>
+          <span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span>
+          <span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span>
+          <span class="testi-star">&#9733;</span>
         </div>
-        <p class="testi-text">"The entire team of Adstube is so helpful — they have guided me on every step of promotion, starting from my video making to publishing. Best service providers ever!"</p>
+        <p class="testi-text">"The entire team of Adstube is so helpful - they have guided me on every step of promotion, starting from my video making to publishing. Best service providers ever!"</p>
         <div class="testi-divider"></div>
         <div class="testi-author">
           <div class="author-avatar has-img"><img src="images/clients/Nazim Sha.jpg" alt="Nazim Sha"></div>
@@ -2893,19 +3624,19 @@
             <div class="author-name">Nazim Sha</div>
             <div class="author-handle">YouTube Creator</div>
           </div>
-          <div class="author-verified">✓ Verified</div>
+          <div class="author-verified">&#10003; Verified</div>
         </div>
       </div>
 
-      <!-- Shivam Sadana — Gold -->
+      <!-- Shivam Sadana - Gold -->
       <div class="testi-card tc-gold">
         <div class="testi-qmark">"</div>
         <div class="testi-stars">
-          <span class="testi-star">★</span><span class="testi-star">★</span>
-          <span class="testi-star">★</span><span class="testi-star">★</span>
-          <span class="testi-star">★</span>
+          <span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span>
+          <span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span>
+          <span class="testi-star">&#9733;</span>
         </div>
-        <p class="testi-text">"Their video promotion services are quite beneficial — they use smart and innovative advertising tactics, which is so important in today's world."</p>
+        <p class="testi-text">"Their video promotion services are quite beneficial - they use smart and innovative advertising tactics, which is so important in today's world."</p>
         <div class="testi-divider"></div>
         <div class="testi-author">
           <div class="author-avatar has-img"><img src="images/clients/Shivam Sadana.jpg" alt="Shivam Sadana"></div>
@@ -2913,7 +3644,7 @@
             <div class="author-name">Shivam Sadana</div>
             <div class="author-handle">YouTube Creator</div>
           </div>
-          <div class="author-verified">✓ Verified</div>
+          <div class="author-verified">&#10003; Verified</div>
         </div>
       </div>
 
@@ -2948,7 +3679,7 @@
             <span class="faq-q-text">How quickly will my views start?</span>
             <div class="faq-icon">+</div>
           </button>
-          <div class="faq-a"><div class="faq-a-inner">Typically within 12–24 hours after your order is confirmed and payment is processed. We run a gradual delivery to ensure natural growth patterns that won't trigger any platform flags.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">Typically within 12-24 hours after your order is confirmed and payment is processed. We run a gradual delivery to ensure natural growth patterns that won't trigger any platform flags.</div></div>
         </div>
 
         <div class="faq-item fq-green" onclick="this.classList.toggle('open')">
@@ -2995,41 +3726,41 @@
         <div class="faq-panel-card">
           <div class="faq-panel-top">
             <h4>Still Have Questions?</h4>
-            <p>Our team replies within minutes — reach out anytime.</p>
+            <p>Our team replies within minutes - reach out anytime.</p>
           </div>
           <div class="faq-panel-body">
             <a href="https://api.whatsapp.com/send?phone=919120647421" class="faq-cbtn fcb-wa">
-              <div class="faq-cbtn-icon">💬</div>
+              <div class="faq-cbtn-icon">&#128172;</div>
               <div class="faq-cbtn-txt">
                 <b>WhatsApp Support</b>
                 <span>+91-9120647421</span>
               </div>
-              <span class="faq-cbtn-arr">→</span>
+              <span class="faq-cbtn-arr">&#8594;</span>
             </a>
             <a href="tel:+919026232414" class="faq-cbtn fcb-call">
-              <div class="faq-cbtn-icon">📞</div>
+              <div class="faq-cbtn-icon">&#128222;</div>
               <div class="faq-cbtn-txt">
                 <b>Call Us Now</b>
                 <span>+91-9026232414</span>
               </div>
-              <span class="faq-cbtn-arr">→</span>
+              <span class="faq-cbtn-arr">&#8594;</span>
             </a>
             <a href="mailto:contact@adstube.in" class="faq-cbtn fcb-mail">
-              <div class="faq-cbtn-icon">✉️</div>
+              <div class="faq-cbtn-icon">&#9993;</div>
               <div class="faq-cbtn-txt">
                 <b>Email Support</b>
                 <span>contact@adstube.in</span>
               </div>
-              <span class="faq-cbtn-arr">→</span>
+              <span class="faq-cbtn-arr">&#8594;</span>
             </a>
           </div>
         </div>
 
         <div class="faq-guarantee">
-          <div class="faq-gicon">🛡️</div>
+          <div class="faq-gicon">&#128737;</div>
           <div class="faq-gtxt">
             <h5>30-Day Refill Guarantee</h5>
-            <p>Views drop? We refill them free — no questions asked.</p>
+            <p>Views drop? We refill them free - no questions asked.</p>
           </div>
         </div>
 
@@ -3045,43 +3776,43 @@
     <div class="guar-hero fade-up">
       <div class="section-tag">Our Promise</div>
       <div class="guar-shield">
-        <img src="images/logo.png" alt="AdsTube">
+        <img src="logo2.png" alt="AdsTube">
       </div>
       <h2>The AdsTube Guarantee</h2>
-      <p>We stand behind every order with our iron-clad guarantee. Real views, real growth, real results — or your money back. No questions asked.</p>
+      <p>We stand behind every order with our iron-clad guarantee. Real views, real growth, real results - or your money back. No questions asked.</p>
     </div>
 
     <div class="guar-grid fade-up">
       <div class="guar-card">
         <div class="guar-card-header gc-red">
-          <img src="images/logo.png" alt="">
+          <img src="logo2.png" alt="">
         </div>
         <div class="guar-card-body">
           <h3>Real Views Only</h3>
-          <p>100% authentic views from real users. No bots, no fake traffic — only genuine engagement YouTube counts.</p>
+          <p>100% authentic views from real users. No bots, no fake traffic - only genuine engagement YouTube counts.</p>
         </div>
       </div>
       <div class="guar-card">
         <div class="guar-card-header gc-blue">
-          <img src="images/logo.png" alt="">
+          <img src="logo2.png" alt="">
         </div>
         <div class="guar-card-body">
           <h3>30-Day Refill</h3>
-          <p>If delivered views or subscribers drop within 30 days, we refill them completely free — no questions, no delays.</p>
+          <p>If delivered views or subscribers drop within 30 days, we refill them completely free - no questions, no delays.</p>
         </div>
       </div>
       <div class="guar-card">
         <div class="guar-card-header gc-grn">
-          <img src="images/logo.png" alt="">
+          <img src="logo2.png" alt="">
         </div>
         <div class="guar-card-body">
           <h3>Safe & Secure</h3>
-          <p>100% ToS-compliant methods. Your channel is never at risk — only safe, algorithm-friendly delivery.</p>
+          <p>100% ToS-compliant methods. Your channel is never at risk - only safe, algorithm-friendly delivery.</p>
         </div>
       </div>
       <div class="guar-card">
         <div class="guar-card-header gc-gold">
-          <img src="images/logo.png" alt="">
+          <img src="logo2.png" alt="">
         </div>
         <div class="guar-card-body">
           <h3>Money Back Guarantee</h3>
@@ -3110,7 +3841,7 @@
     </div>
 
     <div class="guar-cta fade-up">
-      <a href="#" class="btn-primary">Get Started — Risk Free</a>
+      <a href="#" class="btn-primary">Get Started - Risk Free</a>
     </div>
 
   </div>
@@ -3187,34 +3918,34 @@
       <div class="contact-info-card fade-up">
         <div class="contact-methods">
           <a href="tel:+919026232414" class="contact-method">
-            <div class="cm-icon red">📞</div>
+            <div class="cm-icon red">&#128222;</div>
             <div class="cm-text">
               <div class="cm-label">Call Us</div>
               <div class="cm-val">+91-9026232414</div>
             </div>
-            <span class="cm-arrow">›</span>
+            <span class="cm-arrow">&#8250;</span>
           </a>
           <a href="https://api.whatsapp.com/send?phone=919120647421" class="contact-method">
-            <div class="cm-icon green">💬</div>
+            <div class="cm-icon green">&#128172;</div>
             <div class="cm-text">
               <div class="cm-label">WhatsApp Support</div>
               <div class="cm-val">+91-9120647421</div>
             </div>
-            <span class="cm-arrow">›</span>
+            <span class="cm-arrow">&#8250;</span>
           </a>
           <a href="mailto:contact@adstube.in" class="contact-method">
-            <div class="cm-icon amber">✉</div>
+            <div class="cm-icon amber">&#9993;</div>
             <div class="cm-text">
               <div class="cm-label">Email Us</div>
               <div class="cm-val">contact@adstube.in</div>
             </div>
-            <span class="cm-arrow">›</span>
+            <span class="cm-arrow">&#8250;</span>
           </a>
           <div class="contact-method" style="cursor:default;">
-            <div class="cm-icon indigo">🏢</div>
+            <div class="cm-icon indigo">&#127970;</div>
             <div class="cm-text">
               <div class="cm-label">Company</div>
-              <div class="cm-val">Inonego Services Pvt. Ltd. — India</div>
+              <div class="cm-val">Inonego Services Pvt. Ltd. - India</div>
             </div>
           </div>
         </div>
@@ -3231,24 +3962,26 @@
 
       <!-- Right: Form -->
       <div class="contact-form-card fade-up">
-        <div class="contact-form">
+        <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)">
+          <input type="hidden" name="form" value="Contact Section Form">
+          <input type="hidden" name="triggeredBy" value="Send Message Button">
           <div class="form-row">
             <div class="form-group">
               <label class="form-label">Your Name</label>
-              <input type="text" placeholder="John Doe">
+              <input type="text" name="name" placeholder="John Doe">
             </div>
             <div class="form-group">
               <label class="form-label">Email Address</label>
-              <input type="email" placeholder="john@email.com">
+              <input type="email" name="email" placeholder="john@email.com">
             </div>
           </div>
           <div class="form-group">
             <label class="form-label">YouTube Channel URL</label>
-            <input type="url" placeholder="https://youtube.com/@yourchannel">
+            <input type="url" name="channelUrl" placeholder="https://youtube.com/@yourchannel">
           </div>
           <div class="form-group">
             <label class="form-label">Select a Service</label>
-            <select>
+            <select name="service">
               <option value="">Select a service...</option>
               <option>YouTube Views</option>
               <option>YouTube Subscribers</option>
@@ -3258,13 +3991,13 @@
           </div>
           <div class="form-group">
             <label class="form-label">Message</label>
-            <textarea placeholder="Tell us about your channel and goals..."></textarea>
+            <textarea name="message" placeholder="Tell us about your channel and goals..."></textarea>
           </div>
-          <button class="submit-btn">
+          <button type="submit" class="submit-btn" id="contactSubmitBtn">
             Send Message
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
-        </div>
+        </form>
       </div>
 
     </div>
@@ -3276,14 +4009,14 @@
   <div class="footer-top">
     <div>
       <a href="#" style="display:flex;align-items:center;text-decoration:none;margin-bottom:16px;">
-        <img src="images/logo.png" alt="AdsTube" style="height:36px;width:auto;">
+        <img src="logo2.png" alt="AdsTube" style="height:64px;width:auto;">
       </a>
       <p class="footer-desc">AdsTube is the easiest way to get your YouTube video seen by real viewers. We help you achieve watch time and subscribers for YouTube monetization.</p>
       <div class="footer-social">
-        <a href="https://www.youtube.com/c/AdsTube-India" target="_blank" class="soc-btn" title="YouTube">▶</a>
+        <a href="https://www.youtube.com/c/AdsTube-India" target="_blank" class="soc-btn" title="YouTube">&#9654;</a>
         <a href="https://www.facebook.com/AdsTube-1059588454225853/" target="_blank" class="soc-btn" title="Facebook">f</a>
-        <a href="https://www.instagram.com/adstube.in" target="_blank" class="soc-btn" title="Instagram">📸</a>
-        <a href="https://twitter.com/Adstube1" target="_blank" class="soc-btn" title="Twitter / X">𝕏</a>
+        <a href="https://www.instagram.com/adstube.in" target="_blank" class="soc-btn" title="Instagram">&#128248;</a>
+        <a href="https://twitter.com/Adstube1" target="_blank" class="soc-btn" title="Twitter / X">ð•</a>
         <a href="https://www.linkedin.com/company/adstube/" target="_blank" class="soc-btn" title="LinkedIn">in</a>
       </div>
     </div>
@@ -3320,8 +4053,12 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <div>© 2025 AdsTube — A subsidiary of Inonego Services Private Limited</div>
-    <div>Made with ❤ in India</div>
+    <div>&#169; 2025 AdsTube - A subsidiary of Inonego Services Private Limited</div>
+    <div style="display:flex;gap:20px;align-items:center;">
+      <a href="https://adstube.in/privacy-policy">Privacy</a>
+      <a href="https://adstube.in/terms-and-conditions">Terms</a>
+      <span>Made with &#9829; in India</span>
+    </div>
   </div>
 </footer>
 
@@ -3332,7 +4069,7 @@
     <!-- Header -->
     <div class="popup-header">
       <button class="popup-close" id="popupClose" aria-label="Close">&times;</button>
-      <div class="popup-header-tag">🚀 Limited Offer — Free Consultation</div>
+      <div class="popup-header-tag">&#128640; Limited Offer - Free Consultation</div>
       <h3>Grow Your Channel<br>Today</h3>
       <p>Fill in your details &amp; get a custom YouTube promotion strategy in 24 hrs.</p>
     </div>
@@ -3346,31 +4083,33 @@
       </div>
 
       <form class="popup-form" id="popupForm" onsubmit="handlePopupSubmit(event)">
+        <input type="hidden" name="form" value="Popup Form">
+        <input type="hidden" name="triggeredBy" id="popupTriggerSource" value="Unknown">
         <div class="popup-form-row">
           <div class="popup-field">
             <label>Your Name</label>
-            <input type="text" placeholder="Your Name" required>
+            <input type="text" name="name" placeholder="Your Name" required>
           </div>
           <div class="popup-field">
             <label>Phone / WhatsApp</label>
-            <input type="tel" placeholder="+91 9000000000" required>
+            <input type="tel" name="phone" placeholder="+91 9000000000" required>
           </div>
         </div>
 
         <div class="popup-field">
           <label>Email Address</label>
-          <input type="email" placeholder="john@email.com" required>
+          <input type="email" name="email" placeholder="john@email.com" required>
         </div>
 
         <div class="popup-field">
           <label>YouTube Channel URL</label>
-          <input type="url" placeholder="https://youtube.com/@yourchannel">
+          <input type="url" name="channelUrl" placeholder="https://youtube.com/@yourchannel">
         </div>
 
         <div class="popup-form-row">
           <div class="popup-field">
             <label>Service Needed</label>
-            <select required>
+            <select name="service" required>
               <option value="" disabled selected>Select...</option>
               <option>YouTube Views</option>
               <option>YouTube Subscribers</option>
@@ -3382,11 +4121,11 @@
           </div>
           <div class="popup-field">
             <label>Your Budget</label>
-            <select>
+            <select name="budget">
               <option value="" disabled selected>Select...</option>
               <option>Under ₹2,000</option>
-              <option>₹2,000 – ₹5,000</option>
-              <option>₹5,000 – ₹15,000</option>
+              <option>₹2,000 - ₹5,000</option>
+              <option>₹5,000 - ₹15,000</option>
               <option>₹15,000+</option>
             </select>
           </div>
@@ -3394,33 +4133,33 @@
 
         <div class="popup-field">
           <label>Your Goal (Optional)</label>
-          <textarea placeholder="E.g. I want 10K views on my latest video and reach 1000 subscribers for monetization..."></textarea>
+          <textarea name="message" placeholder="E.g. I want 10K views on my latest video and reach 1000 subscribers for monetization..."></textarea>
         </div>
 
         <button type="submit" class="popup-submit">
           <span>Get My Free Strategy</span>
-          <span>→</span>
+          <span>&#8594;</span>
         </button>
       </form>
 
       <div class="popup-footer-note">
-        <span>✓</span> No spam · 100% free consultation · Reply within 24 hrs
+        <span>&#10003;</span> No spam &#183; 100% free consultation &#183; Reply within 24 hrs
       </div>
 
       <div class="popup-trust">
-        <div class="popup-trust-item">🔒 <b>Secure &amp; Private</b></div>
-        <div class="popup-trust-item">⚡ <b>125K+ Videos Promoted</b></div>
-        <div class="popup-trust-item">🌟 <b>5-Star Rated</b></div>
+        <div class="popup-trust-item">&#128274; <b>Secure &amp; Private</b></div>
+        <div class="popup-trust-item">! <b>125K+ Videos Promoted</b></div>
+        <div class="popup-trust-item">&#127775; <b>5-Star Rated</b></div>
       </div>
     </div>
 
     <!-- Success State -->
     <div class="popup-success" id="popupSuccess">
-      <div class="popup-success-icon">✓</div>
+      <div class="popup-success-icon">&#10003;</div>
       <h4>You're All Set!</h4>
       <p>Thanks! Our YouTube growth expert will reach out to you within 24 hours with a custom strategy.</p>
       <a href="https://api.whatsapp.com/send?phone=918756655744" class="popup-submit" style="margin-top:24px;text-decoration:none;display:inline-flex;width:auto;padding:13px 28px;">
-        <span>Chat on WhatsApp</span> <span>→</span>
+        <span>Chat on WhatsApp</span> <span>&#8594;</span>
       </a>
     </div>
 
@@ -3452,6 +4191,14 @@
   function closeMobileMenu() {
     hamburger && hamburger.classList.remove('open');
     mobileMenu && mobileMenu.classList.remove('open');
+  }
+
+  // Pricing toggle
+  function switchPlan(type) {
+    document.querySelectorAll('.plan-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.plan-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel' + (type === 'views' ? 'Views' : 'Subs')).classList.add('active');
+    event.currentTarget.classList.add('active');
   }
 
   // Nav: scrolled state
@@ -3516,7 +4263,9 @@
   const popupFormWrap = document.getElementById('popupFormWrap');
   const popupSuccess = document.getElementById('popupSuccess');
 
-  function openPopup() {
+  function openPopup(source) {
+    var triggerField = document.getElementById('popupTriggerSource');
+    if (triggerField) triggerField.value = source || 'Unknown';
     popupBackdrop.classList.add('show');
     document.body.style.overflow = 'hidden';
   }
@@ -3527,13 +4276,8 @@
     document.body.style.overflow = '';
   }
 
-  // Auto-open after 6 seconds (only once per session)
-  if (!sessionStorage.getItem('popupSeen')) {
-    setTimeout(() => {
-      openPopup();
-      sessionStorage.setItem('popupSeen', '1');
-    }, 6000);
-  }
+  // Auto-open immediately on every page load / reload
+  openPopup('Auto Popup');
 
   // Close handlers
   popupClose && popupClose.addEventListener('click', closePopup);
@@ -3570,22 +4314,57 @@
     });
   })();
 
-  // Open popup on CTA buttons
+  // Open popup on CTA buttons (exclude #pricing so "View All Plans" scrolls normally)
   document.querySelectorAll('.btn-primary, .nav-cta, .plan-btn.primary-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const href = btn.getAttribute('href');
-      if (!href || href === '#' || href === '#pricing' || href === '#contact') {
+      if (!href || href === '#' || href === '#contact') {
         e.preventDefault();
-        openPopup();
+        var label = btn.innerText.trim().replace(/\s+/g, ' ') || btn.className;
+        openPopup(label + ' Button');
       }
     });
   });
 
-  // Form submit → show success
+  // ---- REPLACE THIS URL after deploying Code.gs as a Web App ----
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwXx6RtotX9pKNPTqXAKhcvyRIvGUlB2pyqJ3t94UfdzXS7GPCSgyqQGygWgd4lekhu/exec';
+
+  function sendToSheet(formEl) {
+    var data = new FormData(formEl);
+    var params = new URLSearchParams(data).toString();
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params
+    }).catch(function() {});  // silent fail - don't block UX
+  }
+
+  // Popup form submit
   function handlePopupSubmit(e) {
     e.preventDefault();
+    sendToSheet(e.target);
     popupFormWrap.style.display = 'none';
     popupSuccess.classList.add('show');
+  }
+
+  // Contact section form submit
+  function handleContactSubmit(e) {
+    e.preventDefault();
+    var btn = document.getElementById('contactSubmitBtn');
+    var form = e.target;
+    btn.disabled = true;
+    btn.innerHTML = 'Sending...';
+    sendToSheet(form);
+    setTimeout(function() {
+      btn.innerHTML = '&#10003; Message Sent!';
+      btn.style.background = '#22c55e';
+      form.reset();
+      setTimeout(function() {
+        btn.disabled = false;
+        btn.style.background = '';
+        btn.innerHTML = 'Send Message <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+      }, 3000);
+    }, 800);
   }
 
   // ===== LIGHTBOX =====
@@ -3639,3 +4418,9 @@
 </script>
 </body>
 </html>
+
+
+
+
+
+
