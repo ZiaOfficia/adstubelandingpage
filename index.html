@@ -770,6 +770,42 @@
   }
   .vp-card.vp-hot .vp-btn:hover { box-shadow: 0 10px 32px rgba(232,0,28,.6); }
 
+  /* Feature list inside vp-card */
+  .vp-features {
+    list-style: none; margin-bottom: 22px;
+    display: flex; flex-direction: column; gap: 0;
+  }
+  .vp-features li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 13px; color: #aaa; padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+  }
+  .vp-features li:last-child { border-bottom: none; }
+  .vp-features li::before {
+    content: '';
+    width: 16px; height: 16px; flex-shrink: 0;
+    border-radius: 50%;
+    background: rgba(232,0,28,.12);
+    border: 1px solid rgba(232,0,28,.3);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23e8001c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10px 10px;
+  }
+  .vp-card.vp-hot .vp-features li { color: #bbb; }
+  .vp-card.vp-hot .vp-features li::before {
+    background-color: rgba(232,0,28,.2);
+    border-color: rgba(232,0,28,.5);
+  }
+  .vp-delivery-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.22);
+    border-radius: 20px; padding: 5px 12px;
+    font-size: 11px; font-weight: 700; letter-spacing: .8px;
+    color: #22c55e; text-transform: uppercase; margin-bottom: 18px;
+  }
+  .vp-delivery-dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
+
   @media (max-width: 960px) { .vp-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 520px)  { .vp-grid { grid-template-columns: 1fr; } }
 
@@ -1452,9 +1488,9 @@
   .guarantee-inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; }
   .guar-hero { text-align: center; margin-bottom: 60px; }
   .guar-shield {
-    width: 90px; height: 90px;
+    width: 130px; height: 130px;
     background: linear-gradient(135deg, #e8001c 0%, #7a0010 100%);
-    border-radius: 20px; display: flex; align-items: center; justify-content: center;
+    border-radius: 26px; display: flex; align-items: center; justify-content: center;
     margin: 0 auto 28px; position: relative;
     box-shadow: 0 0 0 8px rgba(232,0,28,.08), 0 0 0 16px rgba(232,0,28,.04), 0 20px 60px rgba(232,0,28,.3);
     animation: guarPulse 2.5s ease infinite;
@@ -1464,7 +1500,7 @@
     50%  { box-shadow: 0 0 0 14px rgba(232,0,28,.12), 0 0 0 26px rgba(232,0,28,.06), 0 20px 60px rgba(232,0,28,.4); }
     100% { box-shadow: 0 0 0 8px rgba(232,0,28,.08), 0 0 0 16px rgba(232,0,28,.04), 0 20px 60px rgba(232,0,28,.3); }
   }
-  .guar-shield img { width: 62px; height: 62px; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,.4)); }
+  .guar-shield img { width: 100px; height: 100px; object-fit: contain; filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(0,0,0,.4)); }
   .guar-hero h2 {
     font-family: 'Oswald', sans-serif; font-size: 52px; font-weight: 700; text-transform: uppercase;
     line-height: 1.1; margin-bottom: 14px;
@@ -1482,7 +1518,7 @@
     height: 100px; display: flex; align-items: center; justify-content: center;
     position: relative; overflow: hidden;
   }
-  .guar-card-header img { width: 56px; height: 56px; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,.3)); position: relative; z-index: 1; }
+  .guar-card-header img { width: 56px; height: 56px; object-fit: contain; filter: brightness(0) invert(1) drop-shadow(0 2px 6px rgba(0,0,0,.3)); position: relative; z-index: 1; }
   .guar-icon { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; background: rgba(255,255,255,.12); border-radius: 16px; border: 1px solid rgba(255,255,255,.2); backdrop-filter: blur(4px); }
   .guar-icon svg { width: 30px; height: 30px; stroke: #fff; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 2px 6px rgba(0,0,0,.25)); }
   .faq-cbtn-icon svg, .cm-icon svg { width: 19px; height: 19px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
@@ -1988,7 +2024,7 @@
   }
   .adp-arrow { display: flex; align-items: center; justify-content: center; }
   .adp-arrow svg { width: 90px; height: 90px; opacity: .55; }
-  .adp-arrow-left svg { transform: scaleX(-1); }
+  .adp-arrow-left { transform: scaleX(-1); }
 
   /* Mockup cards grid */
   .adp-mockups { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
@@ -2556,36 +2592,29 @@
   }
   .popup-success p { color: #888; font-size: 14px; line-height: 1.6; max-width: 320px; }
 
-  /* --- Popup: mobile (&le; 600px) - full-width bottom sheet --- */
+  /* --- Popup: mobile (&le; 600px) - centered modal --- */
   @media (max-width: 600px) {
     .popup-backdrop {
-      align-items: flex-end;
-      padding: 0;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
     }
     .popup-modal {
       width: 100%;
-      max-width: 100%;
-      border-radius: 20px 20px 0 0;
-      border-bottom: none;
-      transform: translateY(100%);
+      max-width: 400px;
+      border-radius: 16px;
+      border-bottom: 1px solid rgba(232,0,28,.35);
+      transform: translateY(40px) scale(.97);
       transition: transform .4s cubic-bezier(.22,1,.36,1);
       max-height: 90dvh;
       display: flex;
       flex-direction: column;
       box-sizing: border-box;
     }
-    .popup-backdrop.show .popup-modal { transform: translateY(0); }
+    .popup-backdrop.show .popup-modal { transform: translateY(0) scale(1); }
 
-    /* Drag handle pill */
-    .popup-modal::before {
-      content: '';
-      display: block;
-      width: 40px; height: 4px;
-      background: rgba(255,255,255,.2);
-      border-radius: 2px;
-      margin: 10px auto 4px;
-      flex-shrink: 0;
-    }
+    /* No drag handle on centered modal */
+    .popup-modal::before { display: none; }
 
     /* Header - right padding keeps text clear of close button */
     .popup-header { padding: 14px 52px 14px 18px; flex-shrink: 0; }
@@ -2660,7 +2689,7 @@
 
   /* --- Popup: very small phones (&le; 390px) --- */
   @media (max-width: 390px) {
-    .popup-modal { max-height: 93dvh; }
+    .popup-modal { max-height: 95dvh; }
     .popup-header { padding: 12px 48px 12px 16px; }
     .popup-header-tag { font-size: 9px; letter-spacing: .8px; }
     .popup-header h3 { font-size: 18px; }
@@ -2937,6 +2966,14 @@
             <div class="vp-price">₹750</div>
             <div class="vp-period">One-Time Payment</div>
           </div>
+          <div class="vp-delivery-badge"><span class="vp-delivery-dot"></span> Delivery in 7–10 Days</div>
+          <ul class="vp-features">
+            <li>5,000+ Real YouTube Views</li>
+            <li>100% Safe &amp; Organic Traffic</li>
+            <li>Google Ads Powered</li>
+            <li>No Password Required</li>
+            <li>24/7 Customer Support</li>
+          </ul>
           <a href="https://payu.in/invoice/E633A2A3FBB429EED89935B9F829D64F7E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
@@ -2952,6 +2989,14 @@
             <div class="vp-price">₹1,500</div>
             <div class="vp-period">One-Time Payment</div>
           </div>
+          <div class="vp-delivery-badge"><span class="vp-delivery-dot"></span> Delivery in 7–10 Days</div>
+          <ul class="vp-features">
+            <li>10,000+ Real YouTube Views</li>
+            <li>100% Safe &amp; Organic Traffic</li>
+            <li>Google Ads Powered</li>
+            <li>No Password Required</li>
+            <li>24/7 Customer Support</li>
+          </ul>
           <a href="https://payu.in/invoice/B86FDF53EEF2DCF49543350CDDF792C97E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
@@ -2967,6 +3012,14 @@
             <div class="vp-price">₹2,600</div>
             <div class="vp-period">One-Time Payment</div>
           </div>
+          <div class="vp-delivery-badge"><span class="vp-delivery-dot"></span> Delivery in 10–15 Days</div>
+          <ul class="vp-features">
+            <li>20,000+ Real YouTube Views</li>
+            <li>100% Safe &amp; Organic Traffic</li>
+            <li>Google Ads Powered</li>
+            <li>Audience Targeting Included</li>
+            <li>Priority Customer Support</li>
+          </ul>
           <a href="https://payu.in/invoice/75F9E1DE59F22A69A78F82CE8D825F517E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
@@ -2982,6 +3035,14 @@
             <div class="vp-price">₹5,500</div>
             <div class="vp-period">One-Time Payment</div>
           </div>
+          <div class="vp-delivery-badge"><span class="vp-delivery-dot"></span> Delivery in 15–20 Days</div>
+          <ul class="vp-features">
+            <li>50,000+ Real YouTube Views</li>
+            <li>100% Safe &amp; Organic Traffic</li>
+            <li>Google Ads Powered</li>
+            <li>Advanced Audience Targeting</li>
+            <li>Priority Customer Support</li>
+          </ul>
           <a href="https://payu.in/invoice/6203AE67FEE61BABB37D393EDD7F785F7E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
@@ -2998,6 +3059,14 @@
             <div class="vp-price">₹10,000</div>
             <div class="vp-period">One-Time Payment</div>
           </div>
+          <div class="vp-delivery-badge"><span class="vp-delivery-dot"></span> Delivery in 20–30 Days</div>
+          <ul class="vp-features">
+            <li>1,00,000+ Real YouTube Views</li>
+            <li>100% Safe &amp; Organic Traffic</li>
+            <li>Google Ads Powered</li>
+            <li>Advanced Audience Targeting</li>
+            <li>Dedicated Account Manager</li>
+          </ul>
           <a href="https://payu.in/invoice/8D6FB5590456B2FEFDAC7B824E111ACA7E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
@@ -3013,6 +3082,14 @@
             <div class="vp-price">₹80,000</div>
             <div class="vp-period">One-Time Payment</div>
           </div>
+          <div class="vp-delivery-badge"><span class="vp-delivery-dot"></span> Delivery in 60–90 Days</div>
+          <ul class="vp-features">
+            <li>10,00,000+ Real YouTube Views</li>
+            <li>100% Safe &amp; Organic Traffic</li>
+            <li>Google Ads Powered</li>
+            <li>Full Audience Targeting</li>
+            <li>Dedicated Manager + Reports</li>
+          </ul>
           <a href="https://payu.in/invoice/0751E3C20D71E7FC7578B31AC6E2C0167E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
@@ -3035,6 +3112,14 @@
             <div class="vp-price">₹500</div>
             <div class="vp-period">One-Time Payment</div>
           </div>
+          <div class="vp-delivery-badge"><span class="vp-delivery-dot"></span> Delivery in 5–7 Days</div>
+          <ul class="vp-features">
+            <li>100 Real Subscribers</li>
+            <li>100% Safe &amp; Organic</li>
+            <li>No Password Required</li>
+            <li>Permanent Subscribers</li>
+            <li>24/7 Customer Support</li>
+          </ul>
           <a href="https://payu.in/invoice/EC78447DEDD1C12BDBA0A85779B140DD7E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
@@ -3050,6 +3135,14 @@
             <div class="vp-price">₹1,000</div>
             <div class="vp-period">One-Time Payment</div>
           </div>
+          <div class="vp-delivery-badge"><span class="vp-delivery-dot"></span> Delivery in 7–10 Days</div>
+          <ul class="vp-features">
+            <li>200 Real Subscribers</li>
+            <li>100% Safe &amp; Organic</li>
+            <li>No Password Required</li>
+            <li>Permanent Subscribers</li>
+            <li>24/7 Customer Support</li>
+          </ul>
           <a href="https://payu.in/invoice/8D87EDC5AA126976421E03AC8403F7E47E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
@@ -3065,6 +3158,14 @@
             <div class="vp-price">₹2,000</div>
             <div class="vp-period">One-Time Payment</div>
           </div>
+          <div class="vp-delivery-badge"><span class="vp-delivery-dot"></span> Delivery in 10–15 Days</div>
+          <ul class="vp-features">
+            <li>500 Real Subscribers</li>
+            <li>100% Safe &amp; Organic</li>
+            <li>No Password Required</li>
+            <li>Permanent Subscribers</li>
+            <li>Priority Customer Support</li>
+          </ul>
           <a href="https://payu.in/invoice/E3A7B6987138EC2FAC3E85C3E68ACFCB7E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
@@ -3080,6 +3181,14 @@
             <div class="vp-price">₹4,000</div>
             <div class="vp-period">One-Time Payment</div>
           </div>
+          <div class="vp-delivery-badge"><span class="vp-delivery-dot"></span> Delivery in 15–20 Days</div>
+          <ul class="vp-features">
+            <li>1,000 Real Subscribers</li>
+            <li>100% Safe &amp; Organic</li>
+            <li>No Password Required</li>
+            <li>Audience Targeting</li>
+            <li>Priority Customer Support</li>
+          </ul>
           <a href="https://payu.in/invoice/C72221C07D04FB6A3EF038C5A2B9FDB47E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
@@ -3096,6 +3205,14 @@
             <div class="vp-price">₹18,000</div>
             <div class="vp-period">One-Time Payment</div>
           </div>
+          <div class="vp-delivery-badge"><span class="vp-delivery-dot"></span> Delivery in 30–45 Days</div>
+          <ul class="vp-features">
+            <li>5,000 Real Subscribers</li>
+            <li>100% Safe &amp; Organic</li>
+            <li>No Password Required</li>
+            <li>Advanced Audience Targeting</li>
+            <li>Dedicated Account Manager</li>
+          </ul>
           <a href="https://payu.in/invoice/0EBAC007D0C9C7726958B0D116545C137E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
@@ -3111,6 +3228,14 @@
             <div class="vp-price">₹35,000</div>
             <div class="vp-period">One-Time Payment</div>
           </div>
+          <div class="vp-delivery-badge"><span class="vp-delivery-dot"></span> Delivery in 45–60 Days</div>
+          <ul class="vp-features">
+            <li>10,000 Real Subscribers</li>
+            <li>100% Safe &amp; Organic</li>
+            <li>No Password Required</li>
+            <li>Full Audience Targeting</li>
+            <li>Dedicated Manager + Reports</li>
+          </ul>
           <a href="https://payu.in/invoice/C9D7890A83190960F65E50F557054AD67E7188F585220534625FAFB9C5BA7A91/C5D00C5F83D0C58C84CA93F695887F71" target="_blank" class="vp-btn">Buy Now <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
 
@@ -3138,7 +3263,7 @@
           <div class="step-content">
             <div class="step-tag-label st-1">Step 01</div>
             <h3>Understand Your Audience</h3>
-            <p>We begin by gaining a deep understanding of your target audience - their demographics, interests and preferences - to connect your channel with the right viewers.</p>
+            <p>You share your YouTube channel, niche and goals with us. We analyse your content, target demographics, interests and competitors to build a clear picture of who your ideal viewer is.</p>
           </div>
         </div>
 
@@ -3146,8 +3271,8 @@
           <div class="step-node sn-2">02</div>
           <div class="step-content">
             <div class="step-tag-label st-2">Step 02</div>
-            <h3>Highly Targeted YouTube Ads</h3>
-            <p>We craft compelling, targeted ad campaigns using advanced targeting options like demographics, interests and keywords to maximise your reach and impact.</p>
+            <h3>Free Callback &amp; Consultation</h3>
+            <p>Our expert team schedules a free callback with you to understand your exact requirements, budget and promotion goals — so we can craft a plan that fits your channel perfectly.</p>
           </div>
         </div>
 
@@ -3155,8 +3280,8 @@
           <div class="step-node sn-3">03</div>
           <div class="step-content">
             <div class="step-tag-label st-3">Step 03</div>
-            <h3>Get Real Views &amp; Real Subscribers</h3>
-            <p>We bring you genuine views and subscribers who are actually interested in your content - focused on long-term organic growth rather than temporary shortcuts.</p>
+            <h3>In-Depth Research by Our Team</h3>
+            <p>Our specialists conduct thorough keyword research, audience profiling and competitor analysis for your niche — identifying the highest-impact targeting strategy before a single rupee is spent.</p>
           </div>
         </div>
 
@@ -3164,8 +3289,8 @@
           <div class="step-node sn-4">04</div>
           <div class="step-content">
             <div class="step-tag-label st-4">Step 04</div>
-            <h3>Customized Solutions</h3>
-            <p>Every YouTube channel is unique. We tailor promotion strategies, keyword research and optimisation techniques to your specific niche, content and goals.</p>
+            <h3>Google Ads Campaign Setup</h3>
+            <p>We build and launch a precision-targeted Google Ads campaign for your YouTube video — choosing the right ad format, placements and bidding strategy to maximise genuine reach and impact.</p>
           </div>
         </div>
 
@@ -3173,8 +3298,8 @@
           <div class="step-node sn-5">05</div>
           <div class="step-content">
             <div class="step-tag-label st-5">Step 05</div>
-            <h3>Transparent Reporting</h3>
-            <p>We provide regular reports and analytics - view counts, subscriber growth, engagement metrics - so you can track progress and measure every campaign's success.</p>
+            <h3>Real Views &amp; Real Subscribers</h3>
+            <p>You start receiving genuine views and subscribers from people who are actually interested in your content — backed by regular analytics reports so you can track every result in real time.</p>
           </div>
         </div>
 
