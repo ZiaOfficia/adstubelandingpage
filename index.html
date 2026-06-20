@@ -2515,6 +2515,7 @@
     font-size: 12px; font-weight: 600; color: #888;
     text-transform: uppercase; letter-spacing: .8px;
   }
+  .popup-field label .req { color: var(--red); margin-left: 2px; }
   .popup-field input,
   .popup-field select,
   .popup-field textarea {
@@ -4250,16 +4251,20 @@
         <input type="hidden" name="triggeredBy" id="popupTriggerSource" value="Unknown">
         <div class="popup-form-row">
           <div class="popup-field">
-            <label>Name</label>
+            <label>Name <span class="req">*</span></label>
             <input type="text" name="name" placeholder="Your name" required>
           </div>
           <div class="popup-field">
-            <label>WhatsApp No.</label>
+            <label>WhatsApp No. <span class="req">*</span></label>
             <input type="tel" name="phone" placeholder="+91 9000000000" required>
           </div>
         </div>
         <div class="popup-field">
-          <label>Service Needed</label>
+          <label>Channel Link <span class="req">*</span></label>
+          <input type="url" name="channelLink" placeholder="https://youtube.com/@yourchannel" required>
+        </div>
+        <div class="popup-field">
+          <label>Service Needed <span class="req">*</span></label>
           <select name="service" required>
             <option value="" disabled selected>Select a service...</option>
             <option>YouTube Views</option>
