@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -2423,7 +2423,7 @@
   /* ===== POPUP MODAL ===== */
   .popup-backdrop {
     position: fixed; inset: 0; z-index: 1000;
-    background: rgba(0,0,0,0.82);
+    background: rgba(0,0,0,0.75);
     backdrop-filter: blur(8px);
     display: flex; align-items: center; justify-content: center;
     padding: 20px;
@@ -2433,277 +2433,272 @@
   .popup-backdrop.show { opacity: 1; pointer-events: all; }
 
   .popup-modal {
-    background: #111;
-    border: 1px solid rgba(232,0,28,.35);
-    border-radius: 16px;
-    width: 100%; max-width: 400px;
+    background: #0e0e14;
+    border: 1.5px solid transparent;
+    background-clip: padding-box;
+    border-radius: 24px;
+    width: 100%; max-width: 430px;
     position: relative;
     overflow: hidden;
-    transform: translateY(40px) scale(.97);
-    transition: transform .4s cubic-bezier(.22,1,.36,1);
-    box-shadow: 0 0 80px rgba(232,0,28,.25), 0 40px 100px rgba(0,0,0,.7);
+    transform: translateY(36px) scale(.97);
+    transition: transform .42s cubic-bezier(.22,1,.36,1);
+    box-shadow:
+      0 0 0 1.5px rgba(232,0,28,.5),
+      0 0 0 3px rgba(59,130,246,.25),
+      0 0 0 5px rgba(34,197,94,.12),
+      0 32px 80px rgba(0,0,0,.8),
+      0 0 60px rgba(232,0,28,.08);
+  }
+  /* RGB color-stripe at top of modal */
+  .popup-modal::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #e8001c 0%, #e8001c 33%, #22c55e 33%, #22c55e 66%, #3b82f6 66%, #3b82f6 100%);
+    z-index: 10;
   }
   .popup-backdrop.show .popup-modal { transform: translateY(0) scale(1); }
 
   .popup-header {
-    background: linear-gradient(135deg, #1a0a00 0%, #e8001c 45%, #8b0010 100%);
-    padding: 16px 24px 14px;
+    background: linear-gradient(145deg, #1a0206 0%, #2d0008 25%, #e8001c 65%, #1a3a6b 100%);
+    padding: 22px 26px 20px;
     position: relative;
     overflow: hidden;
     border-bottom: 1px solid rgba(255,255,255,.08);
   }
+  /* Blue orb top-right */
   .popup-header::before {
     content: '';
-    position: absolute; top: -28px; right: -28px;
-    width: 110px; height: 110px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,255,255,.13) 0%, transparent 70%);
+    position: absolute; top: -50px; right: -50px;
+    width: 180px; height: 180px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(59,130,246,.35) 0%, transparent 65%);
     pointer-events: none;
   }
+  /* Green orb bottom-left */
   .popup-header::after {
     content: '';
-    position: absolute; bottom: 0; left: 0; right: 0; top: 0;
-    background:
-      radial-gradient(ellipse at 0% 100%, rgba(255,180,0,.10) 0%, transparent 55%),
-      radial-gradient(ellipse at 100% 0%, rgba(255,255,255,.06) 0%, transparent 50%);
+    position: absolute; bottom: -30px; left: -30px;
+    width: 120px; height: 120px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(34,197,94,.2) 0%, transparent 65%);
     pointer-events: none;
   }
   .popup-header-tag {
     display: inline-flex; align-items: center; gap: 6px;
-    background: rgba(255,255,255,.18); border-radius: 20px;
-    padding: 4px 12px; font-size: 11px; font-weight: 700;
-    letter-spacing: 1.5px; text-transform: uppercase; color: #fff;
-    margin-bottom: 12px; position: relative; z-index: 1;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 20px;
+    padding: 5px 14px; font-size: 11px; font-weight: 700;
+    letter-spacing: 1px; color: #fff;
+    margin-bottom: 14px; position: relative; z-index: 1;
+    text-transform: uppercase;
   }
   .popup-header h3 {
     font-family: 'Oswald', sans-serif;
-    font-size: 20px; font-weight: 700;
-    text-transform: uppercase; color: #fff;
-    line-height: 1.1; margin-bottom: 6px;
+    font-size: 24px; font-weight: 700;
+    color: #fff; line-height: 1.15; margin-bottom: 10px;
     position: relative; z-index: 1;
+    letter-spacing: .4px;
+    text-shadow: 0 2px 12px rgba(0,0,0,.4);
   }
   .popup-header p {
-    font-size: 13px; color: rgba(255,255,255,.75);
-    font-weight: 400; position: relative; z-index: 1;
+    font-size: 13.5px; color: rgba(255,255,255,.78);
+    font-weight: 400; line-height: 1.6;
+    position: relative; z-index: 1;
   }
 
   .popup-close {
-    position: absolute; top: 14px; right: 16px;
-    width: 30px; height: 30px;
-    background: rgba(255,255,255,.15);
-    border: none; border-radius: 50%;
-    color: #fff; font-size: 16px; line-height: 1;
+    position: absolute; top: 15px; right: 17px;
+    width: 32px; height: 32px;
+    background: rgba(255,255,255,.14);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 50%;
+    color: rgba(255,255,255,.9); font-size: 16px; line-height: 1;
     cursor: pointer; display: flex; align-items: center; justify-content: center;
-    transition: background .2s;
-    z-index: 2;
+    transition: background .2s, border-color .2s, transform .2s;
+    z-index: 10;
   }
-  .popup-close:hover { background: rgba(255,255,255,.3); }
+  .popup-close:hover { background: rgba(232,0,28,.35); border-color: rgba(232,0,28,.6); transform: rotate(90deg); }
 
-  .popup-body { padding: 20px 24px 22px; }
+  .popup-body { padding: 22px 24px 24px; background: #0e0e14; }
 
-  .popup-steps {
-    display: flex; gap: 8px; margin-bottom: 24px;
-  }
+  /* RGB step dots */
+  .popup-steps { display: flex; gap: 7px; margin-bottom: 20px; }
   .popup-step-dot {
-    height: 3px; border-radius: 2px; flex: 1;
-    background: rgba(255,255,255,.08);
+    height: 5px; border-radius: 5px; flex: 1;
+    background: rgba(255,255,255,.07);
     transition: background .3s;
   }
-  .popup-step-dot.active { background: var(--red); }
+  .popup-step-dot:nth-child(1).active { background: #e8001c; box-shadow: 0 0 8px rgba(232,0,28,.6); }
+  .popup-step-dot:nth-child(2).active { background: #22c55e; box-shadow: 0 0 8px rgba(34,197,94,.6); }
+  .popup-step-dot:nth-child(3).active { background: #3b82f6; box-shadow: 0 0 8px rgba(59,130,246,.6); }
+  .popup-step-dot:nth-child(4).active { background: #e8001c; box-shadow: 0 0 8px rgba(232,0,28,.6); }
 
-  .popup-form { display: flex; flex-direction: column; gap: 10px; }
+  .popup-form { display: flex; flex-direction: column; gap: 15px; }
+  .popup-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
 
-  .popup-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
-  .popup-field { display: flex; flex-direction: column; gap: 6px; }
+  .popup-field { display: flex; flex-direction: column; gap: 7px; }
   .popup-field label {
-    font-size: 12px; font-weight: 600; color: #888;
-    text-transform: uppercase; letter-spacing: .8px;
+    font-size: 12px; font-weight: 700; color: #ccc;
+    letter-spacing: .8px; text-transform: uppercase;
+    display: flex; align-items: center; gap: 6px;
   }
-  .popup-field label .req { color: var(--red); margin-left: 2px; }
+  .popup-field label .req { color: #e8001c; margin-left: 1px; font-weight: 800; }
+
   .popup-field input,
   .popup-field select,
   .popup-field textarea {
-    background: rgba(255,255,255,.05);
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 8px; padding: 9px 12px;
-    color: #fff; font-size: 13px;
+    background: rgba(255,255,255,.04);
+    border: 1.5px solid rgba(255,255,255,.1);
+    border-radius: 12px; padding: 12px 14px;
+    color: #f0f0f0; font-size: 14px;
     font-family: 'Barlow', sans-serif;
-    transition: border-color .2s, background .2s;
+    transition: border-color .22s, background .22s, box-shadow .22s;
     outline: none; width: 100%;
   }
   .popup-field input::placeholder,
-  .popup-field textarea::placeholder { color: #555; }
+  .popup-field textarea::placeholder { color: #3a3a4a; }
+
+  /* Each field gets its own focus color: red → green → blue → red */
+  .popup-form-row .popup-field:nth-child(1) input:focus { border-color: rgba(232,0,28,.7); background: rgba(232,0,28,.06); box-shadow: 0 0 0 3px rgba(232,0,28,.12); }
+  .popup-form-row .popup-field:nth-child(2) input:focus { border-color: rgba(34,197,94,.7); background: rgba(34,197,94,.05); box-shadow: 0 0 0 3px rgba(34,197,94,.1); }
+  .popup-field:nth-child(2) input:focus  { border-color: rgba(59,130,246,.7); background: rgba(59,130,246,.05); box-shadow: 0 0 0 3px rgba(59,130,246,.1); }
+  .popup-field:nth-child(3) select:focus { border-color: rgba(232,0,28,.7); background: rgba(232,0,28,.06); box-shadow: 0 0 0 3px rgba(232,0,28,.12); }
   .popup-field input:focus,
   .popup-field select:focus,
   .popup-field textarea:focus {
-    border-color: rgba(232,0,28,.6);
+    border-color: rgba(232,0,28,.65);
     background: rgba(232,0,28,.05);
+    box-shadow: 0 0 0 3px rgba(232,0,28,.1);
   }
-  .popup-field select { appearance: none; }
-  .popup-field select option { background: #1a1a1a; }
+  .popup-field select { appearance: none; cursor: pointer; }
+  .popup-field select option { background: #141420; color: #fff; }
   .popup-field textarea { resize: none; height: 80px; }
 
+  /* Submit button — red-to-blue gradient with green glow shimmer */
   .popup-submit {
-    width: 100%; padding: 11px;
-    background: linear-gradient(135deg, #e8001c, #b50016);
-    border: none; border-radius: 8px;
-    color: #fff; font-size: 15px; font-weight: 700;
+    width: 100%; padding: 14px;
+    background: linear-gradient(135deg, #e8001c 0%, #b50016 40%, #1a3a8a 100%);
+    border: none; border-radius: 12px;
+    color: #fff; font-size: 15.5px; font-weight: 800;
     font-family: 'Barlow', sans-serif; letter-spacing: .5px;
     cursor: pointer; margin-top: 4px;
-    transition: all .25s;
-    box-shadow: 0 4px 20px rgba(232,0,28,.4);
-    display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: all .28s;
+    box-shadow: 0 4px 20px rgba(232,0,28,.35), 0 0 0 1px rgba(59,130,246,.2);
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    position: relative; overflow: hidden;
+    text-transform: uppercase;
   }
-  .popup-submit:hover {
-    background: linear-gradient(135deg, #ff1a33, #e8001c);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(232,0,28,.55);
+  .popup-submit::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(34,197,94,.18) 50%, transparent 100%);
+    transform: translateX(-100%);
+    transition: transform .55s ease;
   }
+  .popup-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(232,0,28,.5), 0 0 0 1px rgba(59,130,246,.35), 0 0 20px rgba(34,197,94,.1); }
+  .popup-submit:hover::before { transform: translateX(100%); }
 
+  /* Footer note */
   .popup-footer-note {
     display: flex; align-items: center; justify-content: center; gap: 6px;
     margin-top: 14px; font-size: 12px; color: #555;
+    line-height: 1.5; text-align: center; flex-wrap: wrap;
   }
-  .popup-footer-note span { color: var(--green); font-size: 14px; }
+  .popup-footer-note .fn-r { color: #e8001c; font-weight: 700; }
+  .popup-footer-note .fn-g { color: #22c55e; font-weight: 700; }
+  .popup-footer-note .fn-b { color: #3b82f6; font-weight: 700; }
 
+  /* Trust badges */
   .popup-trust {
-    display: flex; gap: 16px; flex-wrap: wrap;
-    margin-top: 18px; padding-top: 18px;
+    display: flex; gap: 0; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 16px;
     border-top: 1px solid rgba(255,255,255,.06);
+    justify-content: space-between;
   }
   .popup-trust-item {
     display: flex; align-items: center; gap: 5px;
-    font-size: 11px; color: #666;
+    font-size: 11px; color: #555;
+    padding: 4px 0;
   }
-  .popup-trust-item b { color: #999; }
+  .popup-trust-item b { color: #bbb; }
 
+  /* Success screen */
   .popup-success {
     display: none; flex-direction: column;
     align-items: center; text-align: center;
     padding: 40px 32px 32px;
+    background: #0e0e14;
   }
   .popup-success.show { display: flex; }
   .popup-success-icon {
-    width: 72px; height: 72px;
-    border-radius: 50%;
-    background: rgba(34,197,94,.15);
-    border: 2px solid rgba(34,197,94,.4);
+    width: 78px; height: 78px; border-radius: 50%;
+    background: linear-gradient(135deg, rgba(34,197,94,.2) 0%, rgba(59,130,246,.15) 100%);
+    border: 2px solid #22c55e;
+    box-shadow: 0 0 24px rgba(34,197,94,.3);
     display: flex; align-items: center; justify-content: center;
-    font-size: 30px; margin-bottom: 20px;
+    font-size: 32px; margin-bottom: 20px; color: #22c55e;
   }
   .popup-success h4 {
-    font-family: 'Oswald', sans-serif; font-size: 24px;
+    font-family: 'Oswald', sans-serif; font-size: 26px;
     text-transform: uppercase; color: #fff; margin-bottom: 10px;
+    background: linear-gradient(90deg, #e8001c, #22c55e, #3b82f6);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
-  .popup-success p { color: #888; font-size: 14px; line-height: 1.6; max-width: 320px; }
+  .popup-success p { color: #777; font-size: 14px; line-height: 1.65; max-width: 320px; }
 
-  /* --- Popup: mobile (&le; 600px) - centered modal --- */
+  /* --- Popup: mobile (≤ 600px) --- */
   @media (max-width: 600px) {
     .popup-backdrop {
       align-items: center;
       justify-content: center;
-      padding: 16px;
+      padding: 14px;
     }
     .popup-modal {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 16px;
-      border-bottom: 1px solid rgba(232,0,28,.35);
+      width: 100%; max-width: 400px; border-radius: 20px;
       transform: translateY(40px) scale(.97);
       transition: transform .4s cubic-bezier(.22,1,.36,1);
-      max-height: 90dvh;
-      display: flex;
-      flex-direction: column;
+      max-height: 90dvh; display: flex; flex-direction: column;
       box-sizing: border-box;
     }
+    .popup-modal::before { border-radius: 20px 20px 0 0; }
     .popup-backdrop.show .popup-modal { transform: translateY(0) scale(1); }
-
-    /* No drag handle on centered modal */
-    .popup-modal::before { display: none; }
-
-    /* Header - right padding keeps text clear of close button */
-    .popup-header { padding: 14px 52px 14px 18px; flex-shrink: 0; }
-    .popup-header-tag { font-size: 10px; padding: 3px 10px; margin-bottom: 8px; letter-spacing: 1px; }
-    .popup-header h3 { font-size: 20px; line-height: 1.2; margin-bottom: 5px; }
+    .popup-header { padding: 16px 52px 14px 18px; flex-shrink: 0; }
+    .popup-header-tag { font-size: 10px; padding: 4px 10px; margin-bottom: 8px; }
+    .popup-header h3 { font-size: 20px; line-height: 1.2; margin-bottom: 6px; }
     .popup-header p { font-size: 12px; line-height: 1.5; }
-
-    /* Close button - generous tap target */
     .popup-close { width: 34px; height: 34px; font-size: 18px; top: 12px; right: 14px; }
-
-    /* Scrollable body - min-height:0 fixes Safari flex-scroll bug */
     .popup-body {
-      padding: 16px 18px 24px;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      overscroll-behavior: contain;
-      flex: 1;
-      min-height: 0;
+      padding: 16px 16px 22px;
+      overflow-y: auto; -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain; flex: 1; min-height: 0;
     }
-
-    /* Form layout */
     .popup-form { gap: 12px; }
     .popup-form-row { grid-template-columns: 1fr; gap: 12px; }
-
-    /* Labels - readable, not microscopic */
     .popup-field { gap: 5px; }
-    .popup-field label { font-size: 12px; color: #999; letter-spacing: .5px; }
-
-    /* Inputs - 16px prevents iOS auto-zoom; box-sizing stops width overflow */
-    .popup-field input,
-    .popup-field select,
-    .popup-field textarea {
-      font-size: 16px;
-      padding: 12px 14px;
-      border-radius: 9px;
-      box-sizing: border-box;
-      width: 100%;
+    .popup-field label { font-size: 11px; letter-spacing: .5px; }
+    .popup-field input, .popup-field select, .popup-field textarea {
+      font-size: 16px; padding: 12px 13px; border-radius: 10px;
+      box-sizing: border-box; width: 100%;
     }
     .popup-field textarea { height: 60px; }
-
-    /* Submit */
-    .popup-submit { padding: 14px; font-size: 15px; border-radius: 9px; }
-
-    /* Steps progress bar */
+    .popup-submit { padding: 14px; font-size: 14px; border-radius: 10px; }
     .popup-steps { margin-bottom: 14px; }
-
-    /* Trust badges - centered, wrapping */
-    .popup-trust {
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-      padding-top: 14px;
-    }
-    .popup-trust-item { font-size: 11px; }
-
-    /* Footer note - wrap so long text never overflows */
-    .popup-footer-note {
-      font-size: 12px;
-      flex-wrap: wrap;
-      gap: 4px;
-      text-align: center;
-      margin-top: 12px;
-    }
-
-    /* Success screen */
+    .popup-trust { justify-content: center; gap: 10px; margin-top: 12px; padding-top: 12px; }
+    .popup-footer-note { font-size: 11px; gap: 4px; margin-top: 10px; }
     .popup-success { padding: 28px 20px 24px; }
-    .popup-success-icon { width: 60px; height: 60px; font-size: 26px; }
-    .popup-success h4 { font-size: 20px; }
+    .popup-success-icon { width: 64px; height: 64px; font-size: 26px; }
+    .popup-success h4 { font-size: 22px; }
     .popup-success p { font-size: 13px; }
   }
 
-  /* --- Popup: very small phones (&le; 390px) --- */
+  /* --- Popup: very small phones (≤ 390px) --- */
   @media (max-width: 390px) {
     .popup-modal { max-height: 95dvh; }
     .popup-header { padding: 12px 48px 12px 16px; }
-    .popup-header-tag { font-size: 9px; letter-spacing: .8px; }
     .popup-header h3 { font-size: 18px; }
     .popup-header p { font-size: 11px; }
-    .popup-body { padding: 14px 16px 20px; }
-    .popup-field input,
-    .popup-field select,
-    .popup-field textarea { padding: 11px 12px; }
+    .popup-body { padding: 12px 14px 18px; }
+    .popup-field input, .popup-field select, .popup-field textarea { padding: 11px 12px; }
     .popup-field textarea { height: 52px; }
     .popup-footer-note { font-size: 11px; }
     .popup-trust { display: none; }
@@ -4244,13 +4239,20 @@
     <!-- Header -->
     <div class="popup-header">
       <button class="popup-close" id="popupClose" aria-label="Close">&times;</button>
-      <div class="popup-header-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3" fill="rgba(255,255,255,0.85)" stroke="none"/></svg> Limited Offer - Free Consultation</div>
-      <h3>Grow Your Channel<br>Today</h3>
-      <p>Fill in your details &amp; get a custom YouTube promotion strategy in 24 hrs.</p>
+      <div class="popup-header-tag">Free Consultation &mdash; No Commitment</div>
+      <h3>Let's Grow Your Channel Together</h3>
+      <p>Tell us about your channel and get a <strong>FREE personalised growth plan</strong> within 24 hours.</p>
     </div>
 
     <!-- Form Body -->
     <div class="popup-body" id="popupFormWrap">
+      <!-- RGB step progress dots -->
+      <div class="popup-steps">
+        <div class="popup-step-dot active"></div>
+        <div class="popup-step-dot active"></div>
+        <div class="popup-step-dot active"></div>
+        <div class="popup-step-dot"></div>
+      </div>
       <form class="popup-form" id="popupForm" onsubmit="handlePopupSubmit(event)">
         <input type="hidden" name="form" value="Popup Form">
         <input type="hidden" name="triggeredBy" id="popupTriggerSource" value="Unknown">
@@ -4280,19 +4282,29 @@
             <option>Full Channel Growth</option>
           </select>
         </div>
-        <button type="submit" class="popup-submit"><span>Get Free Consultation</span> <span>&#8594;</span></button>
+        <button type="submit" class="popup-submit"><span>Send Me My Free Plan</span> <span>&#10140;</span></button>
       </form>
-      <div class="popup-footer-note">&#10003; No spam &nbsp;&#183;&nbsp; Free &nbsp;&#183;&nbsp; Reply in 24 hrs</div>
-    </div>
+      <div class="popup-footer-note">
+        <span class="fn-g">&#10003; 100% Free</span>
+        &nbsp;&bull;&nbsp;
+        <span class="fn-b">No spam, ever</span>
+        &nbsp;&bull;&nbsp;
+        <span class="fn-r">Reply within 24 hrs</span>
+      </div>
+      <div class="popup-trust">
+        <div class="popup-trust-item"><b>10,000+</b>&nbsp;Channels Grown</div>
+        <div class="popup-trust-item"><b>Verified</b>&nbsp;Google Partner</div>
+        <div class="popup-trust-item"><b>Safe</b>&nbsp;&amp; Secure</div>
+      </div>
     </div>
 
     <!-- Success State -->
     <div class="popup-success" id="popupSuccess">
       <div class="popup-success-icon">&#10003;</div>
       <h4>You're All Set!</h4>
-      <p>Thanks! Our YouTube growth expert will reach out to you within 24 hours with a custom strategy.</p>
+      <p>Our YouTube growth expert will reach out within 24 hours with a custom strategy tailored for your channel.</p>
       <a href="https://api.whatsapp.com/send?phone=918756655744" class="popup-submit" style="margin-top:24px;text-decoration:none;display:inline-flex;width:auto;padding:13px 28px;">
-        <span>Chat on WhatsApp</span> <span>&#8594;</span>
+        <span>Chat on WhatsApp</span> <span>&#10140;</span>
       </a>
     </div>
 
@@ -4551,9 +4563,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
